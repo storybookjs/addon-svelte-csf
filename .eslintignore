@@ -1,0 +1,12 @@
+dist
+build
+coverage
+node_modules
+*.d.ts
+!.remarkrc.js
+!.babelrc.js
+!.eslintrc.js
+!.eslintrc-markdown.js
+!.jest.config.js
+!.storybook
+
