@@ -28,6 +28,9 @@
     "build-storybook": "build-storybook",
     "release": "npm run build && auto shipit --base-branch=main"
   },
+  "dependencies": {
+    "ts-dedent": "^2.0.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
@@ -68,8 +71,7 @@
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0",
     "svelte": "^3.32.3",
-    "svelte-loader": "^2.9.1",
-    "ts-dedent": "^2.0.0"
+    "svelte-loader": "^2.9.1"
   },
   "peerDependenciesMeta": {
     "svelte": {
