@@ -11,7 +11,8 @@
     "url": "https://github.com/storybookjs/addon-svelte-csf"
   },
   "license": "MIT",
-  "main": "dist/preset.js",
+  "main": "dist/preset",
+  "browser": "dist/index.js",
   "files": [
     "dist/**/*",
     "README.md",
