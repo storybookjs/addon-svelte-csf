@@ -47,4 +47,4 @@ It supports:
 
 1. Add '@storybook/addon-svelte-csf' to your dev dependencies
 2. In `.storybook/main.js`, add `*.stories.svelte` to the stories patterns
-
+3. In `.storybook/main.js`, add `@storybook/addon-svelte-csf` to the addons array
