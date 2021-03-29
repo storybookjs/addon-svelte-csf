@@ -13,7 +13,7 @@ It supports:
 
 ## Example
 
-```
+```svelte
 <script>
   import { Meta, Story, Template } from '@storybook/addon-svelte-csf';
 
