@@ -11,22 +11,26 @@
     "url": "https://github.com/storybookjs/addon-svelte-csf"
   },
   "license": "MIT",
-  "main": "dist/preset.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "files": [
     "dist/**/*",
     "README.md",
-    "*.js"
+    "*.js",
+    "*.d.ts"
   ],
   "scripts": {
     "clean": "rimraf ./dist",
-    "build": "babel ./src --out-dir ./dist --extensions .ts --extensions .js --copy-files",
+    "build": "concurrently \"yarn build:cjs\" \"yarn build:esm\"",
+    "build:cjs": "babel ./src -d ./dist/cjs --extensions \".js,.ts\" --copy-files",
+    "build:esm": "babel ./src -d ./dist/esm --env-name esm --extensions \".js,.ts\" --copy-files",
     "prepublish": "npm run clean && npm run build",
     "test": "jest",
     "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "storybook": "start-storybook -p 6006",
-    "start": "concurrently \"npm run storybook -- --no-manager-cache --quiet\" \"npm run build -- --watch\"",
+    "start": "concurrently \"yarn storybook -- --no-manager-cache --quiet\" \"yarn build -- --watch\"",
     "build-storybook": "build-storybook",
-    "release": "npm run build && auto shipit --base-branch=main"
+    "release": "yarn && auto shipit --base-branch=main"
   },
   "dependencies": {
     "ts-dedent": "^2.0.0"
@@ -46,7 +50,7 @@
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.1.0",
     "chromatic": "^5.6.1",
-    "concurrently": "^5.3.0",
+    "concurrently": "^6.2.0",
     "eslint": "^7.17.0",
     "jest": "^26.6.3",
     "jest-environment-jsdom-thirteen": "^1.0.1",
