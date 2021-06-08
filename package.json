@@ -24,7 +24,7 @@
     "build": "concurrently \"yarn build:cjs\" \"yarn build:esm\"",
     "build:cjs": "babel ./src -d ./dist/cjs --extensions \".js,.ts\" --copy-files",
     "build:esm": "babel ./src -d ./dist/esm --env-name esm --extensions \".js,.ts\" --copy-files",
-    "prepublish": "npm run clean && npm run build",
+    "prepublish": "yarn clean && yarn build",
     "test": "jest",
     "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "storybook": "start-storybook -p 6006",
