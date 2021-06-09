@@ -10,4 +10,5 @@ module.exports = {
   },
   moduleFileExtensions: ['js', 'ts', 'svelte', 'json'],
   testEnvironment: 'jest-environment-jsdom-thirteen',
+  transformIgnorePatterns: ['node_modules/(?!(@storybook/svelte)/)'],
 };
