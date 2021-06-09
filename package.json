@@ -11,8 +11,8 @@
     "url": "https://github.com/storybookjs/addon-svelte-csf"
   },
   "license": "MIT",
-  "main": "dist/cjs/preset",
-  "module": "dist/esm/preset",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "browser": "dist/cjs/index.js",
   "files": [
     "dist/**/*",
@@ -65,14 +65,14 @@
     "typescript": "^3.3.3333"
   },
   "peerDependencies": {
-    "@storybook/addons": "^6.2.1",
-    "@storybook/api": "^6.2.1",
-    "@storybook/client-api": "^6.2.1",
-    "@storybook/client-logger": "^6.2.1",
-    "@storybook/components": "^6.2.1",
-    "@storybook/core-events": "^6.2.1",
-    "@storybook/svelte": "^6.2.1",
-    "@storybook/theming": "^6.2.1",
+    "@storybook/addons": "^6.2.9",
+    "@storybook/api": "^6.2.9",
+    "@storybook/client-api": "^6.2.9",
+    "@storybook/client-logger": "^6.2.9",
+    "@storybook/components": "^6.2.9",
+    "@storybook/core-events": "^6.2.9",
+    "@storybook/svelte": "^6.2.9",
+    "@storybook/theming": "^6.2.9",
     "react": "^16.8.0 || ^17.0.0",
     "react-dom": "^16.8.0 || ^17.0.0",
     "svelte": "^3.35.0",
