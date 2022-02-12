@@ -1,22 +1,23 @@
 import dedent from 'ts-dedent';
 import { readFileSync } from 'fs';
-
+import * as svelte from 'svelte/compiler';
+import { PreprocessorGroup } from 'svelte/types/compiler/preprocess/types';
 import { extractStories } from './extract-stories';
 
 const parser = require.resolve('./collect-stories').replace(/[/\\]/g, '/');
 
 // From https://github.com/sveltejs/svelte/blob/8db3e8d0297e052556f0b6dde310ef6e197b8d18/src/compiler/compile/utils/get_name_from_filename.ts
 // Copied because it is not exported from the compiler
-export function getNameFromFilename(filename: string) {
+export function getNameFromFilename(filename: string): string {
   if (!filename) return null;
 
   const parts = filename.split(/[/\\]/).map(encodeURI);
 
   if (parts.length > 1) {
-    const index_match = parts[parts.length - 1].match(/^index(\.\w+)/);
-    if (index_match) {
+    const indexMatch = parts[parts.length - 1].match(/^index(\.\w+)/);
+    if (indexMatch) {
       parts.pop();
-      parts[parts.length - 1] += index_match[1];
+      parts[parts.length - 1] += indexMatch[1];
     }
   }
 
@@ -36,13 +37,17 @@ export function getNameFromFilename(filename: string) {
   return base[0].toUpperCase() + base.slice(1);
 }
 
-function transformSvelteStories(code: string) {
-  // eslint-disable-next-line no-underscore-dangle
-  const { resource } = this._module;
-
+async function transformSvelteStories(
+  code: string,
+  resource: string,
+  preprocess?: PreprocessorGroup | PreprocessorGroup[]
+) {
   const componentName = getNameFromFilename(resource);
 
-  const source = readFileSync(resource).toString();
+  let source = readFileSync(resource).toString();
+  if (preprocess) {
+    source = (await svelte.preprocess(source, preprocess, { filename: resource })).code;
+  }
 
   const storiesDef = extractStories(source);
   const { stories } = storiesDef;
@@ -62,4 +67,12 @@ function transformSvelteStories(code: string) {
   `;
 }
 
-export default transformSvelteStories;
+function svelteStoriesLoader(code: string): void {
+  // eslint-disable-next-line no-underscore-dangle
+  const { resource } = this._module;
+  const callback = this.async();
+  const preprocess = typeof this.query === 'object' ? this.query.preprocess : undefined;
+  transformSvelteStories(code, resource, preprocess).then((processed) => callback(null, processed));
+}
+
+export default svelteStoriesLoader;

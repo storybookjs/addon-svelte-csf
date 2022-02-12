@@ -2,7 +2,8 @@ export function managerEntries(entry = []) {
   return [...entry, require.resolve('./manager')];
 }
 
-export function webpack(config) {
+export async function webpack(config, options) {
+  const svelteOptions = await options.presets.apply('svelteOptions', {}, options);
   return {
     ...config,
     module: {
@@ -15,6 +16,7 @@ export function webpack(config) {
           use: [
             {
               loader: require.resolve('../parser/svelte-stories-loader'),
+              options: svelteOptions,
             },
           ],
         },
