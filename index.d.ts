@@ -1,5 +1,5 @@
 import type { SvelteComponentTyped, SvelteComponent } from 'svelte';
-import type { BaseMeta, BaseAnnotations } from '@storybook/addons';
+import type { BaseMeta, BaseAnnotations, StoryContext } from '@storybook/addons';
 
 
 type DecoratorReturnType = void|SvelteComponent|{
@@ -47,6 +47,7 @@ interface TemplateProps extends BaseAnnotations<any, DecoratorReturnType> {
 interface Slots {
     default: {
         args: any;
+        context: StoryContext;
         [key: string]: any;
     }
 }
