@@ -31,12 +31,13 @@
     "storybook": "start-storybook -p 6006",
     "start": "concurrently \"yarn storybook -- --no-manager-cache --quiet\" \"yarn build -- --watch\"",
     "build-storybook": "build-storybook",
-    "release": "yarn && auto shipit --base-branch=main"
+    "release": "yarn build && auto shipit"
   },
   "dependencies": {
     "ts-dedent": "^2.0.0"
   },
   "devDependencies": {
+    "@auto-it/released": "^10.32.6",
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
@@ -88,6 +89,12 @@
     "react-dom": {
       "optional": true
     }
+  },
+  "auto": {
+    "plugins": [
+      "npm",
+      "released"
+    ]
   },
   "publishConfig": {
     "access": "public"
