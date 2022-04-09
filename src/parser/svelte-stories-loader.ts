@@ -67,6 +67,7 @@ async function transformSvelteStories(
   `;
 }
 
+
 function svelteStoriesLoader(code: string): void {
   // eslint-disable-next-line no-underscore-dangle
   const { resource } = this._module;

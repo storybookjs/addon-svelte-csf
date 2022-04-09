@@ -2,7 +2,10 @@ const svelte = require('svelte/compiler');
 
 const parser = require.resolve('./parser/collect-stories').replace(/[/\\]/g, '/');
 
-function process(src, filename) {
+async function processAsync(src, filename, options) {
+  if (options.preprocess) {
+    src = await svelte.preprocess(options.preprocess,{ filename });
+  }
   const result = svelte.compile(src, {
     format: 'cjs',
     filename,
@@ -22,4 +25,4 @@ function process(src, filename) {
   return z;
 }
 
-exports.process = process;
+exports.processAsync = processAsync;
