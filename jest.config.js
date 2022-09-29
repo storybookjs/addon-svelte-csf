@@ -9,6 +9,10 @@ module.exports = {
     '!!raw-loader!.*': '<rootDir>/__mocks__/fileMock.js',
   },
   moduleFileExtensions: ['js', 'ts', 'svelte', 'json'],
-  testEnvironment: 'jest-environment-jsdom-thirteen',
+  testEnvironment: 'jest-environment-jsdom',
   transformIgnorePatterns: ['node_modules/(?!(@storybook/svelte)/)'],
+  snapshotFormat: {
+    escapeString: true,
+    printBasicPrototype: true,
+  },
 };
