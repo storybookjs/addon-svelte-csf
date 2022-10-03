@@ -1,1 +1,1 @@
-module.exports = require('./dist/jest-transform');
+module.exports = require('./dist/cjs/jest-transform');
