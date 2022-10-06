@@ -34,6 +34,7 @@
     "release": "yarn build && auto shipit"
   },
   "dependencies": {
+    "magic-string": "^0.26.6",
     "ts-dedent": "^2.0.0"
   },
   "devDependencies": {
@@ -45,11 +46,12 @@
     "@babel/preset-typescript": "^7.16.7",
     "@storybook/addon-essentials": "^6.4.20",
     "@storybook/addon-interactions": "^6.4.20",
-    "@storybook/jest": "^0.0.10",
-    "@storybook/testing-library": "^0.0.9",
     "@storybook/addon-storyshots": "^6.4.20",
     "@storybook/eslint-config-storybook": "^3.1.2",
+    "@storybook/jest": "^0.0.10",
     "@storybook/svelte": "^6.4.20",
+    "@storybook/testing-library": "^0.0.9",
+    "@sveltejs/vite-plugin-svelte": "^1.0.8",
     "auto": "^10.3.0",
     "babel-jest": "^29.1.0",
     "babel-loader": "^8.1.0",
@@ -65,15 +67,24 @@
     "svelte": "^3.46.6",
     "svelte-jester": "^2.3.2",
     "svelte-loader": "^3.1.2",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "vite": "^3.1.4"
   },
   "peerDependencies": {
     "@storybook/svelte": ">=6.4.20",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0",
     "svelte": "^3.46.6",
-    "svelte-loader": "^3.1.2"
+    "svelte-loader": "^3.1.2",
+    "vite": "^3.0.0"
   },
   "peerDependenciesMeta": {
+    "@sveltejs/vite-plugin-svelte": {
+      "optional": true
+    },
     "svelte-loader": {
+      "optional": true
+    },
+    "vite": {
       "optional": true
     }
   },
