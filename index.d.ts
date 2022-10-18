@@ -58,10 +58,10 @@ export class Meta extends SvelteComponentTyped<BaseMeta<any> & BaseAnnotations<a
 /**
  * Story.
  */
-export class Story extends SvelteComponentTyped<StoryProps, {}, Slots> {}
+export class Story extends SvelteComponentTyped<StoryProps, any, Slots> { }
 /**
  * Template.
  * 
  * Allow to reuse definition between stories.
  */
-export class Template extends SvelteComponentTyped<TemplateProps, {}, Slots> {}
+export class Template extends SvelteComponentTyped<TemplateProps, any, Slots> { }
