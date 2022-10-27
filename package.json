@@ -28,14 +28,13 @@
     "prepublish": "yarn clean && yarn build",
     "test": "jest",
     "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
-    "storybook": "sb dev -p 6006",
+    "storybook": "start-storybook -p 6006",
     "start": "concurrently \"yarn storybook -- --no-manager-cache --quiet\" \"yarn build -- --watch\"",
-    "build-storybook": "sb build",
+    "build-storybook": "build-storybook",
     "release": "yarn build && auto shipit"
   },
   "dependencies": {
-    "ts-dedent": "^2.0.0",
-    "@babel/runtime": "^7.17.5"
+    "ts-dedent": "^2.0.0"
   },
   "devDependencies": {
     "@auto-it/released": "^10.32.6",
@@ -44,18 +43,13 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
-    "@babel/plugin-transform-runtime": "^7.17.5",
-    "@storybook/addon-essentials": "^7.0.0-alpha.29",
-    "@storybook/addon-interactions": "^7.0.0-alpha.29",
+    "@storybook/addon-essentials": "^6.4.20",
+    "@storybook/addon-interactions": "^6.4.20",
     "@storybook/jest": "^0.0.10",
     "@storybook/testing-library": "^0.0.9",
-    "@storybook/addon-storyshots": "^7.0.0-alpha.29",
+    "@storybook/addon-storyshots": "^6.4.20",
     "@storybook/eslint-config-storybook": "^3.1.2",
-    "@storybook/svelte": "^7.0.0-alpha.29",
-    "@storybook/core-server": "^7.0.0-alpha.29",
-    "@storybook/core-client": "^7.0.0-alpha.29",
-    "@storybook/svelte-webpack5": "7.0.0-alpha.29",
-    "sb": "7.0.0-alpha.29",
+    "@storybook/svelte": "^6.4.20",
     "auto": "^10.3.0",
     "babel-jest": "^29.1.0",
     "babel-loader": "^8.1.0",
@@ -68,15 +62,14 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",
-    "svelte": "^3.50.0",
+    "svelte": "^3.46.6",
     "svelte-jester": "^2.3.2",
     "svelte-loader": "^3.1.2",
     "typescript": "^3.9.7"
   },
   "peerDependencies": {
     "@storybook/svelte": ">=6.4.20",
-    "@storybook/theming": ">=6.4.20",
-    "svelte": "^3.50.0",
+    "svelte": "^3.46.6",
     "svelte-loader": "^3.1.2"
   },
   "peerDependenciesMeta": {
