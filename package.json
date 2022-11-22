@@ -1,6 +1,6 @@
 {
   "name": "@storybook/addon-svelte-csf",
-  "version": "2.0.8",
+  "version": "2.0.10",
   "description": "Allows to write stories in Svelte syntax",
   "keywords": [
     "storybook-addons",
@@ -28,14 +28,15 @@
     "prepublish": "yarn clean && yarn build",
     "test": "jest",
     "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "sb dev -p 6006",
     "start": "concurrently \"yarn storybook -- --no-manager-cache --quiet\" \"yarn build -- --watch\"",
-    "build-storybook": "build-storybook",
+    "build-storybook": "sb build",
     "release": "yarn build && auto shipit"
   },
   "dependencies": {
     "magic-string": "^0.26.6",
-    "ts-dedent": "^2.0.0"
+    "ts-dedent": "^2.0.0",
+    "@babel/runtime": "^7.17.5"
   },
   "devDependencies": {
     "@auto-it/released": "^10.32.6",
@@ -44,14 +45,17 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
-    "@storybook/addon-essentials": "^6.4.20",
-    "@storybook/addon-interactions": "^6.4.20",
-    "@storybook/addon-storyshots": "^6.4.20",
+    "@babel/plugin-transform-runtime": "^7.17.5",
+    "@storybook/addon-essentials": "^7.0.0-alpha.29",
+    "@storybook/addon-interactions": "^7.0.0-alpha.29",
+    "@storybook/addon-storyshots": "^7.0.0-alpha.29",
+    "@storybook/core-server": "^7.0.0-alpha.29",
+    "@storybook/core-client": "^7.0.0-alpha.29",
     "@storybook/eslint-config-storybook": "^3.1.2",
     "@storybook/jest": "^0.0.10",
-    "@storybook/svelte": "^6.4.20",
     "@storybook/testing-library": "^0.0.9",
-    "@sveltejs/vite-plugin-svelte": "^1.0.8",
+    "@storybook/svelte": "^7.0.0-alpha.29",
+    "@storybook/svelte-webpack5": "7.0.0-alpha.29",
     "auto": "^10.3.0",
     "babel-jest": "^29.1.0",
     "babel-loader": "^8.1.0",
@@ -64,7 +68,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",
-    "svelte": "^3.46.6",
+    "sb": "7.0.0-alpha.29",
+    "svelte": "^3.50.0",
     "svelte-jester": "^2.3.2",
     "svelte-loader": "^3.1.2",
     "typescript": "^3.9.7",
@@ -72,10 +77,10 @@
   },
   "peerDependencies": {
     "@storybook/svelte": ">=6.4.20",
+    "@storybook/theming": ">=6.4.20",
     "@sveltejs/vite-plugin-svelte": "^1.0.0",
-    "svelte": "^3.46.6",
-    "svelte-loader": "^3.1.2",
-    "vite": "^3.0.0"
+    "svelte": "^3.50.0",
+    "svelte-loader": "^3.1.2"
   },
   "peerDependenciesMeta": {
     "@sveltejs/vite-plugin-svelte": {
