@@ -34,28 +34,28 @@
     "release": "yarn build && auto shipit"
   },
   "dependencies": {
-    "ts-dedent": "^2.0.0",
-    "@babel/runtime": "^7.17.5"
+    "@babel/runtime": "^7.17.5",
+    "magic-string": "^0.26.6",
+    "ts-dedent": "^2.0.0"
   },
   "devDependencies": {
     "@auto-it/released": "^10.32.6",
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-runtime": "^7.17.5",
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
-    "@babel/plugin-transform-runtime": "^7.17.5",
     "@storybook/addon-essentials": "^7.0.0-alpha.29",
     "@storybook/addon-interactions": "^7.0.0-alpha.29",
-    "@storybook/jest": "^0.0.10",
-    "@storybook/testing-library": "^0.0.9",
     "@storybook/addon-storyshots": "^7.0.0-alpha.29",
-    "@storybook/eslint-config-storybook": "^3.1.2",
-    "@storybook/svelte": "^7.0.0-alpha.29",
-    "@storybook/core-server": "^7.0.0-alpha.29",
     "@storybook/core-client": "^7.0.0-alpha.29",
+    "@storybook/core-server": "^7.0.0-alpha.29",
+    "@storybook/eslint-config-storybook": "^3.1.2",
+    "@storybook/jest": "^0.0.10",
+    "@storybook/svelte": "^7.0.0-alpha.29",
     "@storybook/svelte-webpack5": "7.0.0-alpha.29",
-    "sb": "7.0.0-alpha.29",
+    "@storybook/testing-library": "^0.0.9",
     "auto": "^10.3.0",
     "babel-jest": "^29.1.0",
     "babel-loader": "^8.1.0",
@@ -68,19 +68,29 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",
+    "sb": "7.0.0-alpha.29",
     "svelte": "^3.50.0",
     "svelte-jester": "^2.3.2",
     "svelte-loader": "^3.1.2",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "vite": "^3.1.4"
   },
   "peerDependencies": {
     "@storybook/svelte": ">=6.4.20",
     "@storybook/theming": ">=6.4.20",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0",
     "svelte": "^3.50.0",
-    "svelte-loader": "^3.1.2"
+    "svelte-loader": "^3.1.2",
+    "vite": ">=3.0.0"
   },
   "peerDependenciesMeta": {
+    "@sveltejs/vite-plugin-svelte": {
+      "optional": true
+    },
     "svelte-loader": {
+      "optional": true
+    },
+    "vite": {
       "optional": true
     }
   },
