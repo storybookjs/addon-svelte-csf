@@ -45,6 +45,24 @@ It supports:
 
 # Getting Started
 
-1. Add '@storybook/addon-svelte-csf' to your dev dependencies
-2. In `.storybook/main.js`, add `*.stories.svelte` to the stories patterns
-3. In `.storybook/main.js`, add `@storybook/addon-svelte-csf` to the addons array
+1. `npm install --save-dev @storybook/addon-svelte-csf` or `yarn add --dev @storybook/addon-svelte-csf`
+2. In `.storybook/main.js`, add `@storybook/addon-svelte-csf` to the addons array
+3. In `.storybook/main.js`, add `*.stories.svelte` to the stories patterns
+
+An example `main.js` configuration could look like this:
+
+```js
+module.exports = {
+  stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|svelte)'],
+  addons: [
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    '@storybook/addon-svelte-csf',
+  ],
+  framework: '@storybook/svelte-vite',
+};
+```
+
+> **Warning**
+> v3 and above of this addon requires at least Storybook v7. If you're using Storybook between v6.4.20 and v7.0.0, you should instead use v2 of this addon with `npm install --save-dev @storybook/addon-svelte-csf@^2.0.10` or `yarn add --dev @storybook/addon-svelte-csf@^2.0.10`
