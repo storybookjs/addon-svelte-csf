@@ -76,9 +76,9 @@
     "vite": "^3.1.4"
   },
   "peerDependencies": {
-    "@storybook/svelte": ">=7.0.0",
-    "@storybook/theming": ">=7.0.0",
-    "@sveltejs/vite-plugin-svelte": "^1.0.0",
+    "@storybook/svelte": "^7.0.0-beta",
+    "@storybook/theming": "^7.0.0-beta",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0 || ^2.0.0",
     "svelte": "^3.50.0",
     "svelte-loader": "^3.1.2",
     "vite": ">=3.0.0"
