@@ -65,4 +65,4 @@ module.exports = {
 ```
 
 > **Warning**
-> v3 and above of this addon requires at least Storybook v7. If you're using Storybook between v6.4.20 and v7.0.0, you should instead use v2 of this addon with `npm install --save-dev @storybook/addon-svelte-csf@^2.0.10` or `yarn add --dev @storybook/addon-svelte-csf@^2.0.10`
+> v3 and above of this addon requires at least Storybook v7.0.0. If you're using Storybook between v6.4.20 and v7.0.0, you should instead use v2 of this addon with `npm install --save-dev @storybook/addon-svelte-csf@^2.0.10` or `yarn add --dev @storybook/addon-svelte-csf@^2.0.10`
