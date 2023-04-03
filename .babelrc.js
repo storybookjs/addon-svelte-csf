@@ -1,5 +1,9 @@
 module.exports = {
-  presets: ['@babel/preset-env', '@babel/preset-typescript'],
+  presets: [
+    ['@babel/preset-env', { targets: { node: '16' }, modules: false }],
+    '@babel/preset-typescript',
+  ],
+  plugins: ['@babel/plugin-transform-runtime'],
   env: {
     esm: {
       presets: [
@@ -7,6 +11,7 @@ module.exports = {
           '@babel/env',
           {
             modules: false,
+            targets: { chrome: '100' },
           },
         ],
       ],
