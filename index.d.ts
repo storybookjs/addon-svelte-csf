@@ -1,13 +1,13 @@
 import type { SvelteComponentTyped, SvelteComponent } from 'svelte';
-import type { Addon_BaseMeta as BaseMeta, Addon_BaseAnnotations as BaseAnnotations, StoryContext } from '@storybook/types';
+import type { Addon_BaseMeta as BaseMeta, Addon_BaseAnnotations as BaseAnnotations, StoryContext, WebRenderer } from '@storybook/types';
 
 
-type DecoratorReturnType = void|SvelteComponent|{
+type DecoratorReturnType = void | SvelteComponent | {
     Component: any,
     props?: any
 }
 
-interface StoryProps extends BaseAnnotations<any, DecoratorReturnType> {
+interface StoryProps extends BaseAnnotations<any, DecoratorReturnType, WebRenderer> {
     /**
      * Id of the story.
      * 
@@ -32,7 +32,7 @@ interface StoryProps extends BaseAnnotations<any, DecoratorReturnType> {
      * If source is true, then the source of the story will be used instead.
      * If source is a string, it replaces the source of the story.
      */
-    source?: boolean|string
+    source?: boolean | string
 }
 
 interface TemplateProps extends BaseAnnotations<any, DecoratorReturnType> {
@@ -54,7 +54,7 @@ interface Slots {
 /**
  * Meta.
  */
-export class Meta extends SvelteComponentTyped<BaseMeta<any> & BaseAnnotations<any, DecoratorReturnType>> {}
+export class Meta extends SvelteComponentTyped<BaseMeta<any> & BaseAnnotations<any, DecoratorReturnType>> { }
 /**
  * Story.
  */
