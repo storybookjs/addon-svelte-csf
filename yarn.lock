@@ -3263,6 +3263,11 @@
   resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-7.0.0-rc.11.tgz#9f8d43f5a78e3d286b0399e0188beac32e9a10a5"
   integrity sha512-MyY8tZPwCW9JjOvpFCDWZDqqnh0DnDt/iwOyFr9W4b5K/oGkTtZaVOMp0pq6nhjhDEOIp4p4MnSu/Sh1qZroKw==
 
+"@storybook/channels@7.0.20":
+  version "7.0.20"
+  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-7.0.20.tgz#a681c3d463b4099b001dae9edeb3a607a8f4854a"
+  integrity sha512-AL5GGSQ8WTDUoh3gitKEzo3fu7Vq5okXq2pAknAZlQA2Oio+HHO5nMeXvOfGdvo/tzbpNE3n5utmCJz006xrCA==
+
 "@storybook/cli@7.0.0-rc.11":
   version "7.0.0-rc.11"
   resolved "https://registry.yarnpkg.com/@storybook/cli/-/cli-7.0.0-rc.11.tgz#1ee39807173ffe5d6586b0bf8d487553b954b4d5"
@@ -3817,6 +3822,16 @@
   integrity sha512-y+9bqsE7Pzl74F1Q3EJVQzChyclWL/FPCYOeBmwpY2O++MJKSBJMauCLcGDztNc645wVGvfQXW016b3fbBELgA==
   dependencies:
     "@storybook/channels" "7.0.0-rc.11"
+    "@types/babel__core" "^7.0.0"
+    "@types/express" "^4.7.0"
+    file-system-cache "^2.0.0"
+
+"@storybook/types@^7.0.0-beta.0 || ^7.0.0-rc.0 || ^7.0.0":
+  version "7.0.20"
+  resolved "https://registry.yarnpkg.com/@storybook/types/-/types-7.0.20.tgz#6aadc565f5894512b7f8da2aea9cac9448160519"
+  integrity sha512-Z7RhHRnhrPd2jXPZtjbOILj1QgylqlsD3cFIYMcSz3yvUvxLRx3BKCftXyFbIuxr0QoCJE38adRp7YGO9uJnQQ==
+  dependencies:
+    "@storybook/channels" "7.0.20"
     "@types/babel__core" "^7.0.0"
     "@types/express" "^4.7.0"
     file-system-cache "^2.0.0"
