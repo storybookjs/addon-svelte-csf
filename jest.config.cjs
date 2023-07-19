@@ -2,7 +2,7 @@ module.exports = {
   clearMocks: true,
   transform: {
     '^.+\\.[jt]s$': 'babel-jest',
-    '^.+\\.stories\\.svelte$': '<rootDir>/src/jest-transform',
+    '^.+\\.stories\\.svelte$': '<rootDir>/dist/jest-transform.cjs',
     '^.+\\.svelte$': 'svelte-jester',
   },
   moduleNameMapper: {
