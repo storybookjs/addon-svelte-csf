@@ -11,7 +11,7 @@
     "module": "es2020",
     "moduleResolution": "nodenext",
     "noImplicitAny": false,
-    "rootDir": "./src",
+    "rootDir": ".",
     "skipLibCheck": true,
     "target": "esnext"
   },
