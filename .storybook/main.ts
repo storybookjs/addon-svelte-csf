@@ -6,9 +6,9 @@ const config: StorybookConfig = {
     '../stories/**/*.stories.svelte',
   ],
   addons: [
+    '../dist/preset/index.js',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    '../dist/preset/index.js',
   ],
 };
 export default config;

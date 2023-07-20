@@ -39,6 +39,7 @@
     "test": "jest",
     "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "storybook": "sb dev -p 6006",
+    "test-storybook": "test-storybook",
     "start": "concurrently \"yarn storybook --quiet\" \"yarn build --watch\"",
     "build-storybook": "sb build",
     "release": "yarn build && auto shipit"
