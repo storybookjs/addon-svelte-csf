@@ -35,15 +35,15 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "svelte-package --input ./src --types",
-    "prepublish": "yarn clean && yarn build",
+    "prepublish": "npm run clean && npm run build",
     "test": "vitest run",
     "chromatic": "chromatic --exit-zero-on-changes",
     "coverage": "vitest run --coverage",
     "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "storybook": "storybook dev --port 6006",
-    "start": "concurrently \"yarn storybook --quiet\" \"yarn build --watch\"",
+    "start": "concurrently \"npm run storybook --quiet\" \"npm run build --watch\"",
     "build-storybook": "sb build",
-    "release": "yarn build && auto shipit"
+    "release": "npm run build && auto shipit"
   },
   "dependencies": {
     "@babel/runtime": "^7.22.6",
@@ -53,11 +53,14 @@
   },
   "devDependencies": {
     "@auto-it/released": "^10.32.6",
+    "@storybook/addon-actions": "^7.1.1",
     "@storybook/addon-essentials": "^7.1.1",
     "@storybook/addon-interactions": "^7.1.1",
     "@storybook/client-api": "^7.1.1",
+    "@storybook/client-logger": "^7.1.1",
     "@storybook/core-client": "^7.1.1",
     "@storybook/core-server": "^7.1.1",
+    "@storybook/csf": "^0.1.1",
     "@storybook/eslint-config-storybook": "^3.1.2",
     "@storybook/jest": "^0.1.0",
     "@storybook/svelte": "^7.1.1",
@@ -79,7 +82,7 @@
     "react-dom": "^18.2.0",
     "rimraf": "^3.0.2",
     "storybook": "^7.1.1",
-    "svelte": "^3.58.0 || ^4.0.0",
+    "svelte": "^4.0.0",
     "svelte-jester": "^2.3.2",
     "svelte-loader": "^3.1.7",
     "typescript": "^5.1.6",
@@ -93,10 +96,6 @@
     "svelte": "^3.50.0 || ^4.0.0",
     "svelte-loader": "^3.1.2",
     "vite": "^3.0.0 || ^4.0.0"
-  },
-  "resolutions": {
-    "string-width": "4.2.3",
-    "wrap-ansi": "7.0.0"
   },
   "peerDependenciesMeta": {
     "@sveltejs/vite-plugin-svelte": {
