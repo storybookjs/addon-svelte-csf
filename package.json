@@ -34,7 +34,7 @@
   ],
   "scripts": {
     "clean": "rimraf ./dist",
-    "build": "svelte-package -i ./src -t",
+    "build": "svelte-package --input ./src --types",
     "prepublish": "yarn clean && yarn build",
     "test": "vitest run",
     "chromatic": "chromatic --exit-zero-on-changes",
