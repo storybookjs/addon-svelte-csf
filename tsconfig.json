@@ -13,7 +13,8 @@
     "noImplicitAny": false,
     "rootDir": ".",
     "skipLibCheck": true,
-    "target": "esnext"
+    "target": "esnext",
+    "strict": true
   },
   "include": ["src/**/*"]
 }
