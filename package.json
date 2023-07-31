@@ -35,15 +35,15 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "svelte-package --input ./src --types",
-    "prepublish": "npm run clean && npm run build",
+    "prepublish": "pnpm run clean && pnpm run build",
     "test": "vitest run",
     "chromatic": "chromatic --exit-zero-on-changes",
     "coverage": "vitest run --coverage",
     "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "storybook": "storybook dev --port 6006",
-    "start": "concurrently \"npm run storybook --quiet\" \"npm run build --watch\"",
-    "build-storybook": "sb build",
-    "release": "npm run build && auto shipit"
+    "start": "concurrently \"pnpm run storybook --quiet\" \"pnpm run build --watch\"",
+    "build-storybook": "storybook build",
+    "release": "pnpm run build && auto shipit"
   },
   "dependencies": {
     "@babel/runtime": "^7.22.6",
