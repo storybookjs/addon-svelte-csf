@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ['@storybook/eslint-config-storybook'],
+  extends: ['plugin:storybook/recommended'],
   rules: {
     '@typescript-eslint/dot-notation': 'off',
     '@typescript-eslint/no-implied-eval': 'off',

@@ -1,0 +1,20 @@
+{
+  "extends": "@tsconfig/svelte/tsconfig.json",
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "incremental": false,
+    "isolatedModules": true,
+    "lib": ["esnext"],
+    "module": "es2020",
+    "moduleResolution": "nodenext",
+    "noImplicitAny": false,
+    "rootDir": ".",
+    "skipLibCheck": true,
+    "target": "esnext",
+    "strict": true
+  },
+  "include": ["src/**/*"]
+}

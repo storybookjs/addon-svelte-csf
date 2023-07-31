@@ -4,9 +4,18 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
       - name: Install dependencies
-        run: yarn
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: true
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
