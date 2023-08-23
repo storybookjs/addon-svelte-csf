@@ -1,6 +1,6 @@
 # Svelte Story Format
 
-Allows to write your stories in Svelte syntax and compiles it to Storybook's CSF syntax. See the native format tab in the [getting started docs](https://storybook.js.org/docs/svelte/get-started/whats-a-story) for an example.
+Allows you to write your stories in `.svelte` syntax rather than `.js` syntax.
 
 It supports:
 
@@ -9,7 +9,7 @@ It supports:
 - extractions of sources of the stories and compatible with addon-sources
 - decorators
 - knobs, actions, controls
-- storyshots (with a special jest transformation shipped under @storybook/addon-svelte-csf/jest-transform)
+- storyshots (with a special jest transformation shipped under `@storybook/addon-svelte-csf/jest-transform`)
 
 ## Example
 
