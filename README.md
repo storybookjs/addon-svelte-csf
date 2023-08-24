@@ -43,7 +43,7 @@ It supports:
 </Story>
 ```
 
-# Getting Started
+## Getting Started
 
 1. `npm install --save-dev @storybook/addon-svelte-csf` or `yarn add --dev @storybook/addon-svelte-csf`
 2. In `.storybook/main.js`, add `@storybook/addon-svelte-csf` to the addons array
@@ -64,5 +64,21 @@ module.exports = {
 };
 ```
 
-> **Warning**
-> v3 and above of this addon requires at least Storybook v7. If you're using Storybook between v6.4.20 and v7.0.0, you should instead use v2 of this addon with `npm install --save-dev @storybook/addon-svelte-csf@^2.0.10` or `yarn add --dev @storybook/addon-svelte-csf@^2.0.10`
+## Version Dependencies
+
+### 4.0.0
+
+Version 4 of this addon requires _at least_:
+
+- Storybook v7
+- Svelte v4
+- Vite v4 (if using Vite)
+- `@sveltejs/vite-plugin-svelte` v2 (if using Vite)
+
+If you're using Svelte v3 you can use version `^3.0.0` of this addon instead.
+
+### 3.0.0
+
+Version 3 of this addon requires at least Storybook v7.
+
+If you're using Storybook between v6.4.20 and v7.0.0, you should instead use version `^2.0.0` of this addon.
