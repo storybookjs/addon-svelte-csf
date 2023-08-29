@@ -7,7 +7,7 @@
     "experimentalDecorators": true,
     "incremental": false,
     "isolatedModules": true,
-    "lib": ["esnext"],
+    "lib": ["esnext", "dom"],
     "module": "es2020",
     "moduleResolution": "nodenext",
     "noImplicitAny": false,
