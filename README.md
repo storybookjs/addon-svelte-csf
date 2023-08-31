@@ -14,18 +14,23 @@ It supports:
 ## Example
 
 ```svelte
-<script>
-  import { Meta, Story, Template } from '@storybook/addon-svelte-csf';
-
+<script content="module">
   import Button from './Button.svelte';
+
+  export const meta = {
+    title: "Button",
+    component: Button
+  }
+</script>
+
+<script>
+  import { Story, Template } from '@storybook/addon-svelte-csf';
 
   let count = 0;
   function handleClick() {
     count += 1;
   }
 </script>
-
-<Meta title="Button" component={Button}/>
 
 <Template let:args>
   <Button {...args} on:click={handleClick}>
