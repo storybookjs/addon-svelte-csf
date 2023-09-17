@@ -33,7 +33,10 @@ It supports:
 </script>
 
 <Template let:args>
-  <Button {...args} on:click={handleClick}>
+  <!--👇 'on:click' allows to forward event to addon-actions  -->
+  <Button {...args} 
+    on:click
+    on:click={handleClick}>
     You clicked: {count}
   </Button>
 </Template>
@@ -47,6 +50,9 @@ It supports:
   <Button>Label</Button>
 </Story>
 ```
+
+Actions are automatically registered by Storybook. To be used by this addon, you just have to forward the event (`on:click` in the previous example).
+
 
 ## Getting Started
 
