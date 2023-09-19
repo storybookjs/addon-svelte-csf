@@ -14,7 +14,7 @@ It supports:
 ## Example
 
 ```svelte
-<script content="module">
+<script context="module">
   import Button from './Button.svelte';
 
   export const meta = {
