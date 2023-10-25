@@ -33,7 +33,7 @@ Have a basic button component:
   }
 </style>
 
-<button class="button" class:rounded on:click={onClick}>\
+<button class="button" class:rounded on:click={onClick}>
   <slot />
 </button>
 ```
