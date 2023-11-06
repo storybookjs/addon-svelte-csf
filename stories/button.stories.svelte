@@ -1,12 +1,14 @@
 <script>
-  import { Meta, Story, Template } from '../src/index';
-
+  import { Meta, makeFrom } from '../src/index.js';
   import Button from './Button.svelte';
 
   let count = 0;
   function handleClick() {
     count += 1;
   }
+
+  const { Story, Template } = makeFrom(Button)
+
 </script>
 
 <Meta component={Button}/>
