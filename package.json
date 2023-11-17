@@ -26,7 +26,8 @@
     "./manager": {
       "types": "./dist/preset/manager.d.ts",
       "default": "./dist/preset/manager.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist/**/*",
