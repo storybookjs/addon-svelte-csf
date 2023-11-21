@@ -1,5 +1,5 @@
-<script>
-  import { Meta, makeFrom } from '../src/index.js';
+<script context="module">
+  import { typed } from '../src/index.js';
   import Button from './Button.svelte';
 
   let count = 0;
@@ -7,13 +7,15 @@
     count += 1;
   }
 
-  const { Story, Template } = makeFrom(Button)
+  export const meta = {
+    component: Button,
+  };
+
+  const { Story, Template } = typed(meta);
 
 </script>
 
-<Meta component={Button}/>
-
-<Template let:args>
+<Template let:args let:text>
   <Button {...args} on:click={handleClick} on:click>
     You clicked: {count}
   </Button>
@@ -21,7 +23,7 @@
 
 <Story name="Default"/>
 
-<Story name="Rounded" args={{rounded: true}}/>
+<Story name="Rounded" args={{ rounded: true }}/>
 
 <Story name="Square" source args={{rounded: false}}/>
 

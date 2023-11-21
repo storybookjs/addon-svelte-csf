@@ -1,6 +1,6 @@
 import type { SvelteComponent, ComponentType } from 'svelte'
 import type { Addon_BaseMeta as BaseMeta, Addon_BaseAnnotations as BaseAnnotations, StoryContext, WebRenderer } from '@storybook/types';
-
+import type { Meta } from '@storybook/svelte';
 
 type DecoratorReturnType = void | SvelteComponent | {
     Component: any,
@@ -44,7 +44,7 @@ interface TemplateProps<Props = any> extends BaseAnnotations<Props, DecoratorRet
     id?: string;
 }
 
-interface MetaProps extends BaseMeta<any>, BaseAnnotations<any, DecoratorReturnType> {
+interface MetaProps extends BaseMeta<any>, BaseAnnotations<Props, DecoratorReturnType> {
     /**
      * Enable the tag 'autodocs'.
      * 
@@ -94,10 +94,14 @@ export interface StoriesComponents<Props = any> {
  * 
  * @exemple
  * ```
- * <script context="meta">
- *   import { makeFrom } from "@storybook/addon-svelte-csf";
+ * <script context="module">
+ *   import { typed } from "@storybook/addon-svelte-csf";
  *   import Button from "./Button.svelte";
- *   const { Template, Story } = makeFrom(Button);
+ * 
+ *   export const meta = {
+ *     component: Button
+ *   }
+ *   const { Template, Story } = typed(meta); // or typed(Button)
  * </script>
  * 
  * <Template let:args>
@@ -111,5 +115,5 @@ export interface StoriesComponents<Props = any> {
  * 
  * @param component Component
  */
-export function makeFrom<C extends SvelteComponent>(component?: ComponentType<C>): 
-    C extends SvelteComponent<infer Props> ? StoriesComponents<Props> : never;
+export function typed<C>(meta?: C): 
+    C extends Meta<infer Args> ? StoriesComponents<Args> : C extends ComponentType<SvelteComponent<infer Props>> ? StoriesComponents<Props> : never;

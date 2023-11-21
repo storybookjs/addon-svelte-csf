@@ -4,7 +4,7 @@ import Template from './components/Template.svelte';
 
 export { Story, Template };
 
-export function makeFrom() {
+export function typed() {
   return { Story, Template };
 }
 if (module?.hot?.decline) {
