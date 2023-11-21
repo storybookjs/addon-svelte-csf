@@ -1,17 +1,21 @@
-<script>
-  import { Meta, Story, Template } from '../src/index';
-
+<script context="module">
+  import { typed } from '../src/index.js';
   import Button from './Button.svelte';
 
   let count = 0;
   function handleClick() {
     count += 1;
   }
+
+  export const meta = {
+    component: Button,
+  };
+
+  const { Story, Template } = typed(meta);
+
 </script>
 
-<Meta component={Button}/>
-
-<Template let:args>
+<Template let:args let:text>
   <Button {...args} on:click={handleClick} on:click>
     You clicked: {count}
   </Button>
@@ -19,7 +23,7 @@
 
 <Story name="Default"/>
 
-<Story name="Rounded" args={{rounded: true}}/>
+<Story name="Rounded" args={{ rounded: true }}/>
 
 <Story name="Square" source args={{rounded: false}}/>
 

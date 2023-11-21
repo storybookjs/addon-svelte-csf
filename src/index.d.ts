@@ -1,13 +1,13 @@
-import type { SvelteComponent } from 'svelte'
+import type { SvelteComponent, ComponentType } from 'svelte'
 import type { Addon_BaseMeta as BaseMeta, Addon_BaseAnnotations as BaseAnnotations, StoryContext, WebRenderer } from '@storybook/types';
-
+import type { Meta } from '@storybook/svelte';
 
 type DecoratorReturnType = void | SvelteComponent | {
     Component: any,
     props?: any
 }
 
-interface StoryProps extends BaseAnnotations<any, DecoratorReturnType, WebRenderer> {
+interface StoryProps<Props = any> extends BaseAnnotations<Props, DecoratorReturnType, WebRenderer> {
     /**
      * Id of the story.
      * 
@@ -35,7 +35,7 @@ interface StoryProps extends BaseAnnotations<any, DecoratorReturnType, WebRender
     source?: boolean | string
 }
 
-interface TemplateProps extends BaseAnnotations<any, DecoratorReturnType> {
+interface TemplateProps<Props = any> extends BaseAnnotations<Props, DecoratorReturnType> {
     /**
      * Id of the template.
      * 
@@ -44,7 +44,7 @@ interface TemplateProps extends BaseAnnotations<any, DecoratorReturnType> {
     id?: string;
 }
 
-interface MetaProps extends BaseMeta<any>, BaseAnnotations<any, DecoratorReturnType> {
+interface MetaProps extends BaseMeta<any>, BaseAnnotations<Props, DecoratorReturnType> {
     /**
      * Enable the tag 'autodocs'.
      * 
@@ -61,11 +61,10 @@ interface MetaProps extends BaseMeta<any>, BaseAnnotations<any, DecoratorReturnT
     tags?: string[];
 }
 
-interface Slots {
-    default: {
-        args: any;
+interface Slots<Props extends Record<string, any> = any> {
+    default: Props & {
+        args: Props;
         context: StoryContext;
-        [key: string]: any;
     }
 }
 /**
@@ -77,10 +76,44 @@ export class Meta extends SvelteComponent<MetaProps> { }
 /**
  * Story.
  */
-export class Story extends SvelteComponent<StoryProps, any, Slots> { }
+export class Story<Props = any> extends SvelteComponent<StoryProps<Props>, any, Slots<Props>> { }
 /**
  * Template.
  * 
  * Allow to reuse definition between stories.
  */
-export class Template extends SvelteComponent<TemplateProps, any, Slots> { }
+export class Template<Props extends Record<string, any> = any> extends SvelteComponent<TemplateProps<Props>, any, Slots<Props>> { }
+
+export interface StoriesComponents<Props = any> {
+    Template: ComponentType<Template<Props>>,
+    Story: ComponentType<Story<Props>>
+}
+
+/**
+ * Generate typed Template and Story components.
+ * 
+ * @exemple
+ * ```
+ * <script context="module">
+ *   import { typed } from "@storybook/addon-svelte-csf";
+ *   import Button from "./Button.svelte";
+ * 
+ *   export const meta = {
+ *     component: Button
+ *   }
+ *   const { Template, Story } = typed(meta); // or typed(Button)
+ * </script>
+ * 
+ * <Template let:args>
+ *  <!- args is typed here -->
+ *   <Button {...args}/>
+ * </Template>
+ * 
+ * <!-- args is type checked here -->
+ * <Story args={{rounded: false}}/>
+ * ```
+ * 
+ * @param component Component
+ */
+export function typed<C>(meta?: C): 
+    C extends Meta<infer Args> ? StoriesComponents<Args> : C extends ComponentType<SvelteComponent<infer Props>> ? StoriesComponents<Props> : never;
