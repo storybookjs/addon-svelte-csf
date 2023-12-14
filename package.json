@@ -100,7 +100,7 @@
   "peerDependencies": {
     "@storybook/svelte": "^7.0.0",
     "@storybook/theming": "^7.0.0",
-    "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@sveltejs/vite-plugin-svelte": "^2.0.0 || ^3.0.0",
     "svelte": "^4.0.0",
     "svelte-loader": "^3.1.2",
     "vite": "^4.0.0 || ^5.0.0"
