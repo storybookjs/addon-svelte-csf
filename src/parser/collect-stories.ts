@@ -7,6 +7,7 @@ import { extractId } from './extract-id.js';
 import { logger } from '@storybook/client-logger';
 import type { Meta, StoriesDef, Story } from './types.js';
 import type { SvelteComponent } from 'svelte';
+import { storyArguments } from '../components/context.js';
 
 /* Called from a webpack loader and a jest transformation.
  *
@@ -19,19 +20,13 @@ import type { SvelteComponent } from 'svelte';
  * the one selected is disabled.
  */
 
-
-
 const createFragment = document.createDocumentFragment
   ? () => document.createDocumentFragment()
   : () => document.createElement('div');
 
 export default (
   StoriesComponent: SvelteComponent,
-  {
-    stories = {},
-    meta: parsedMeta = {},
-    allocatedIds = [],
-  }: StoriesDef,
+  { stories = {}, meta: parsedMeta = {}, allocatedIds = [] }: StoriesDef,
   exportedMeta = undefined
 ) => {
   const repositories = {
@@ -64,9 +59,9 @@ export default (
     meta.parameters = combineParameters(meta.parameters, {
       docs: {
         description: {
-          component: parsedMeta.description
-        }
-      }
+          component: parsedMeta.description,
+        },
+      },
     });
   }
 
@@ -122,7 +117,15 @@ export default (
 
         storyFn.storyName = name;
         Object.entries(props).forEach(([k, v]) => {
-          storyFn[k] = v;
+          if ((v as any) instanceof Function) {
+            // if the value it's a function we call the function from storyArguments
+            // rather than the one we collected in this phase
+            storyFn[k] = (...props) => {
+              storyArguments.get(name)?.[k]?.(...props);
+            };
+          } else {
+            storyFn[k] = v;
+          }
         });
 
         // inject story sources
@@ -140,7 +143,7 @@ export default (
           });
         }
 
-        let snippet: string|null|undefined;
+        let snippet: string | null | undefined;
 
         if (source === true || (source === false && !hasArgs)) {
           snippet = rawSource;

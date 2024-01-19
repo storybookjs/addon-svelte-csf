@@ -6,10 +6,18 @@ import { writable } from 'svelte/store';
 const CONTEXT_KEY = 'storybook-registration-context';
 const CONTEXT_KEY_COMPONENT = 'storybook-registration-context-component';
 
+// this is used to keep track of the arguments of the stories at render time
+export const storyArguments = new Map<string, unknown>();
+
 export function createRenderContext(props: any = {}) {
   setContext(CONTEXT_KEY, {
     render: true,
-    register: () => {},
+    register: (props) => {
+      // when the story is rendered the new props are set to allow
+      // for functions to be in the scope of the correct instance of
+      // the component
+      storyArguments.set(props.name, props);
+    },
     meta: {},
     args: {},
     ...props,
