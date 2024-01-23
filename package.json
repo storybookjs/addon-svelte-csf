@@ -1,6 +1,6 @@
 {
   "name": "@storybook/addon-svelte-csf",
-  "version": "3.0.9",
+  "version": "4.1.0",
   "description": "Allows to write stories in Svelte syntax",
   "keywords": [
     "storybook-addons",
@@ -26,7 +26,8 @@
     "./manager": {
       "types": "./dist/preset/manager.d.ts",
       "default": "./dist/preset/manager.js"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist/**/*",
@@ -41,6 +42,7 @@
     "test": "vitest run",
     "chromatic": "chromatic --exit-zero-on-changes",
     "coverage": "vitest run --coverage",
+    "check": "svelte-check",
     "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
     "storybook": "storybook dev --port 6006",
     "start": "concurrently \"pnpm run storybook --quiet\" \"pnpm run build --watch\"",
@@ -55,23 +57,26 @@
   },
   "devDependencies": {
     "@auto-it/released": "^10.32.6",
-    "@storybook/addon-actions": "^7.1.1",
-    "@storybook/addon-essentials": "^7.1.1",
-    "@storybook/addon-interactions": "^7.1.1",
-    "@storybook/preview-api": "^7.1.1",
-    "@storybook/client-logger": "^7.1.1",
-    "@storybook/core-server": "^7.1.1",
+    "@storybook/addon-actions": "^7.5.2",
+    "@storybook/addon-essentials": "^7.5.2",
+    "@storybook/addon-interactions": "^7.5.2",
+    "@storybook/preview-api": "^7.5.2",
+    "@storybook/client-logger": "^7.5.2",
+    "@storybook/core-server": "^7.5.2",
     "@storybook/csf": "^0.1.1",
     "@storybook/eslint-config-storybook": "^3.1.2",
     "@storybook/jest": "^0.1.0",
-    "@storybook/svelte": "^7.1.1",
-    "@storybook/svelte-vite": "^7.1.1",
+    "@storybook/manager-api": "^7.5.2",
+    "@storybook/node-logger": "^7.5.2",
+    "@storybook/svelte": "^7.5.2",
+    "@storybook/svelte-vite": "^7.5.2",
     "@storybook/test-runner": "^0.11.0",
     "@storybook/testing-library": "^0.2.0",
-    "@storybook/types": "^7.1.1",
+    "@storybook/types": "^7.5.2",
     "@sveltejs/package": "^2.2.0",
     "@sveltejs/vite-plugin-svelte": "^2.4.2",
     "@tsconfig/svelte": "^5.0.0",
+    "@types/estree": "^1.0.1",
     "auto": "^10.43.0",
     "chromatic": "^6.19.9",
     "concurrently": "^8.2.0",
@@ -82,8 +87,9 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rimraf": "^3.0.2",
-    "storybook": "^7.1.1",
-    "svelte": "^4.0.0",
+    "storybook": "^7.5.2",
+    "svelte": "^4.2.2",
+    "svelte-check": "^3.5.0",
     "svelte-jester": "^2.3.2",
     "svelte-loader": "^3.1.7",
     "typescript": "^5.1.6",
@@ -93,10 +99,10 @@
   "peerDependencies": {
     "@storybook/svelte": "^7.0.0",
     "@storybook/theming": "^7.0.0",
-    "@sveltejs/vite-plugin-svelte": "^1.0.0 || ^2.0.0",
-    "svelte": "^3.50.0 || ^4.0.0",
+    "@sveltejs/vite-plugin-svelte": "^2.0.0 || ^3.0.0",
+    "svelte": "^4.0.0",
     "svelte-loader": "^3.1.2",
-    "vite": "^3.0.0 || ^4.0.0"
+    "vite": "^4.0.0 || ^5.0.0"
   },
   "peerDependenciesMeta": {
     "@sveltejs/vite-plugin-svelte": {

@@ -2,9 +2,11 @@ import type { StorybookConfig } from '@storybook/svelte-vite';
 
 const config: StorybookConfig = {
   framework: '@storybook/svelte-vite',
-  stories: [
-    '../stories/**/*.stories.svelte',
-  ],
+  stories: [{
+    directory: '../stories',
+    files:'**/*.stories.svelte',
+    titlePrefix:'Demo'
+  }],
   addons: [
     '../dist/preset/index.js',
     '@storybook/addon-essentials',

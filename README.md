@@ -13,11 +13,45 @@ It supports:
 
 ## Example
 
+Have a basic button component:
+
 ```svelte
 <script>
-  import { Meta, Story, Template } from '@storybook/addon-svelte-csf';
+  export let rounded = true;
+</script>
 
+<style>
+  .rounded {
+    border-radius: 35px;
+  }
+
+  button {
+    border: 3px solid;
+    padding: 10px 20px;
+    background-color: white;
+    outline: none;
+  }
+</style>
+
+<button class="button" class:rounded on:click={onClick}>
+  <slot />
+</button>
+```
+
+And a `button.stories.svelte` file:
+
+```svelte
+<script context="module">
   import Button from './Button.svelte';
+
+  export const meta = {
+    title: "Button",
+    component: Button
+  }
+</script>
+
+<script>
+  import { Story, Template } from '@storybook/addon-svelte-csf';
 
   let count = 0;
   function handleClick() {
@@ -25,10 +59,11 @@ It supports:
   }
 </script>
 
-<Meta title="Button" component={Button}/>
-
 <Template let:args>
-  <Button {...args} on:click={handleClick}>
+  <!--👇 'on:click' allows to forward event to addon-actions  -->
+  <Button {...args} 
+    on:click
+    on:click={handleClick}>
     You clicked: {count}
   </Button>
 </Template>
@@ -43,7 +78,10 @@ It supports:
 </Story>
 ```
 
-# Getting Started
+Actions are automatically registered by Storybook. To be used by this addon, you just have to forward the event (`on:click` in the previous example).
+
+
+## Getting Started
 
 1. `npm install --save-dev @storybook/addon-svelte-csf` or `yarn add --dev @storybook/addon-svelte-csf`
 2. In `.storybook/main.js`, add `@storybook/addon-svelte-csf` to the addons array
@@ -64,5 +102,21 @@ module.exports = {
 };
 ```
 
-> **Warning**
-> v3 and above of this addon requires at least Storybook v7. If you're using Storybook between v6.4.20 and v7.0.0, you should instead use v2 of this addon with `npm install --save-dev @storybook/addon-svelte-csf@^2.0.10` or `yarn add --dev @storybook/addon-svelte-csf@^2.0.10`
+## Version Dependencies
+
+### 4.0.0
+
+Version 4 of this addon requires _at least_:
+
+- Storybook v7
+- Svelte v4
+- Vite v4 (if using Vite)
+- `@sveltejs/vite-plugin-svelte` v2 (if using Vite)
+
+If you're using Svelte v3 you can use version `^3.0.0` of this addon instead.
+
+### 3.0.0
+
+Version 3 of this addon requires at least Storybook v7.
+
+If you're using Storybook between v6.4.20 and v7.0.0, you should instead use version `^2.0.0` of this addon.
