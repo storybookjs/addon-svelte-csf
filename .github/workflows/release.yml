@@ -12,6 +12,11 @@ jobs:
       - name: Prepare repository
         run: git fetch --unshallow --tags
 
+      - name: 'Set git user'
+        run: |
+          git config --global user.name 'storybook-bot'
+          git config --global user.email '32066757+storybook-bot@users.noreply.github.com'
+
       - name: Use Node.js 20.x
         uses: actions/setup-node@v3
         with:
