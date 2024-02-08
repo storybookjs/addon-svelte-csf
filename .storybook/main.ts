@@ -12,5 +12,8 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
   ],
+  docs: {
+    autodocs: 'tag'
+  }
 };
 export default config;
