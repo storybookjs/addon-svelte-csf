@@ -85,7 +85,7 @@ Actions are automatically registered by Storybook. To be used by this addon, you
 
 1. `npm install --save-dev @storybook/addon-svelte-csf` or `yarn add --dev @storybook/addon-svelte-csf`
 2. In `.storybook/main.js`, add `@storybook/addon-svelte-csf` to the addons array
-3. In `.storybook/main.js`, add `*.stories.svelte` to the stories patterns
+4. In `.storybook/main.js`, include .stories.svelte files in your stories patterns, eg. by changing the patterns to `'../src/**/*.stories.@(js|jsx|ts|tsx|svelte)'`
 
 An example `main.js` configuration could look like this:
 
