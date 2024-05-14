@@ -13,6 +13,7 @@
   "license": "MIT",
   "type": "module",
   "main": "./dist/index.js",
+  "packageManager": "pnpm@9.1.1",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
