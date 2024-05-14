@@ -29,7 +29,7 @@ export async function viteFinal(config, options) {
   let svelteConfig = svelteOptions;
   try {
     const { loadSvelteConfig } = await import('@sveltejs/vite-plugin-svelte');
-    svelteConfig = { ...(await loadSvelteConfig()), ...svelteOptions };
+    svelteConfig = { ...loadSvelteConfig(), ...svelteOptions };
   } catch (err: any) {
     const { log } = console;
     if (err.code === 'MODULE_NOT_FOUND') {

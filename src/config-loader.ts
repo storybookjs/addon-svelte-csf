@@ -14,8 +14,8 @@ import type { Config } from '@sveltejs/kit';
  * @returns
  * Returns the svelte configuration object.
  */
-export async function loadSvelteConfig(): Promise<Config | undefined> {
-  const configFile = await findSvelteConfig();
+export function loadSvelteConfig(): Config | undefined {
+  const configFile = findSvelteConfig();
 
   // no need to throw error since we handle projects without config files
   if (configFile === undefined) {
@@ -116,12 +116,12 @@ const requireSvelteOptions = (() => {
  * @returns
  * Returns the absolute path of the config file.
  */
-async function findSvelteConfig(): Promise<string | undefined> {
+function findSvelteConfig(): string | undefined {
   const lookupDir = process.cwd();
-  let configFiles = await getConfigFiles(lookupDir);
+  let configFiles = getConfigFiles(lookupDir);
 
   if (configFiles.length === 0) {
-    configFiles = await getConfigFilesUp();
+    configFiles = getConfigFilesUp();
   }
   if (configFiles.length === 0) {
     return undefined;
@@ -142,7 +142,7 @@ async function findSvelteConfig(): Promise<string | undefined> {
  * @returns
  * Returns an array containing all available config files.
  */
-async function getConfigFilesUp(): Promise<string[]> {
+function getConfigFilesUp(): string[] {
   const importPath = fileURLToPath(import.meta.url);
   const pathChunks = path.dirname(importPath).split(path.sep);
 
@@ -151,7 +151,7 @@ async function getConfigFilesUp(): Promise<string[]> {
 
     const parentDir = pathChunks.join(path.posix.sep);
     // eslint-disable-next-line no-await-in-loop
-    const configFiles = await getConfigFiles(parentDir);
+    const configFiles = getConfigFiles(parentDir);
 
     if (configFiles.length !== 0) {
       return configFiles;
@@ -169,13 +169,11 @@ async function getConfigFilesUp(): Promise<string[]> {
  * @returns
  * Returns an array containing all available config files.
  */
-async function getConfigFiles(lookupDir: string): Promise<string[]> {
-  const fileChecks: Array<[string, boolean]> = await Promise.all(
-    knownConfigFiles.map(async (candidate) => {
-      const filePath = path.resolve(lookupDir, candidate);
-      return [filePath, fs.existsSync(filePath)];
-    })
-  );
+function getConfigFiles(lookupDir: string): string[] {
+  const fileChecks: Array<[string, boolean]> = knownConfigFiles.map((candidate) => {
+    const filePath = path.resolve(lookupDir, candidate);
+    return [filePath, fs.existsSync(filePath)];
+  });
 
   return fileChecks.reduce((files: string[], [file, exists]) => {
     if (exists) files.push(file);
