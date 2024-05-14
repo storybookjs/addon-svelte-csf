@@ -29,6 +29,12 @@ jobs:
           cache: pnpm
           node-version: 20
 
+      # https://pnpm.io/cli/install
+      - name: Install Node.js dependencies with pnpm
+        run: >
+          pnpm install
+          --frozen-lockfile
+
       - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
