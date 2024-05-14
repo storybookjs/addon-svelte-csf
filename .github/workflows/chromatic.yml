@@ -1,21 +1,31 @@
-name: "Chromatic"
+name: 'Chromatic'
 on: push
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+
+      # https://nodejs.org/api/corepack.html
+      - name: Enable corepack (for pnpm)
+        run: corepack enable
+
+      # https://github.com/actions/setup-node
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
+          cache: pnpm
           node-version: 20
-      - name: Install dependencies
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          run_install: true
+
+      # https://pnpm.io/cli/install
+      - name: Install Node.js dependencies with pnpm
+        run: >
+          pnpm install
+          --frozen-lockfile
+
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
