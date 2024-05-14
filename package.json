@@ -2,7 +2,10 @@
 	"name": "@storybook/addon-svelte-csf",
 	"version": "4.1.2",
 	"description": "Allows to write stories in Svelte syntax",
-	"keywords": ["storybook-addons", "svelte"],
+	"keywords": [
+		"storybook-addons",
+		"svelte"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/storybookjs/addon-svelte-csf"
@@ -22,7 +25,12 @@
 		},
 		"./package.json": "./package.json"
 	},
-	"files": ["dist/**/*", "README.md", "*.js", "*.d.ts"],
+	"files": [
+		"dist/**/*",
+		"README.md",
+		"*.js",
+		"*.d.ts"
+	],
 	"scripts": {
 		"clean": "rimraf ./dist",
 		"build": "svelte-package --input ./src --types",
@@ -76,7 +84,7 @@
 		"react-dom": "^18.2.0",
 		"rimraf": "^3.0.2",
 		"storybook": "^8.0.9",
-		"svelte": "5.0.0-next.131",
+		"svelte": "5.0.0-next.132",
 		"svelte-check": "^3.5.0",
 		"svelte-jester": "^3.0.0",
 		"svelte-loader": "^3.1.7",
@@ -105,14 +113,19 @@
 		}
 	},
 	"auto": {
-		"plugins": ["npm", "released"]
+		"plugins": [
+			"npm",
+			"released"
+		]
 	},
 	"publishConfig": {
 		"access": "public"
 	},
 	"storybook": {
 		"displayName": "Svelte CSF",
-		"supportedFrameworks": ["svelte"],
+		"supportedFrameworks": [
+			"svelte"
+		],
 		"icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
 	}
 }
