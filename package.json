@@ -71,6 +71,7 @@
 		"@sveltejs/kit": "^2.5.8",
 		"@sveltejs/package": "^2.2.0",
 		"@sveltejs/vite-plugin-svelte": "^3.1.0",
+		"@total-typescript/ts-reset": "^0.5.1",
 		"@tsconfig/svelte": "^5.0.0",
 		"@types/estree": "^1.0.5",
 		"auto": "^11.1.1",
