@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     steps:
-      - uses: actions/checkout@v3
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v4
 
       - name: Prepare repository
         run: git fetch --unshallow --tags
@@ -17,16 +18,22 @@ jobs:
           git config --global user.name 'storybook-bot'
           git config --global user.email '32066757+storybook-bot@users.noreply.github.com'
 
-      - name: Use Node.js 20.x
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.x
+      # https://nodejs.org/api/corepack.html
+      - name: Enable corepack (for pnpm)
+        run: corepack enable
 
-      - name: Install dependencies
-        uses: pnpm/action-setup@v2
+      # https://github.com/actions/setup-node
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          version: 8
-          run_install: true
+          cache: pnpm
+          node-version: 20
+
+      # https://pnpm.io/cli/install
+      - name: Install Node.js dependencies with pnpm
+        run: >
+          pnpm install
+          --frozen-lockfile
 
       - name: Create Release
         env:
