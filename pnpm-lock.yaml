@@ -45,9 +45,6 @@ importers:
       '@storybook/eslint-config-storybook':
         specifier: ^3.1.2
         version: 3.1.2(@typescript-eslint/parser@4.33.0(eslint@7.17.0)(typescript@5.1.6))(eslint@7.17.0)(prettier@3.2.5)(remark@13.0.0)(typescript@5.1.6)
-      '@storybook/node-logger':
-        specifier: ^8.0.0-rc.2
-        version: 8.0.0-rc.2
       '@storybook/preview-api':
         specifier: ^8.0.0-rc.2
         version: 8.0.0-rc.2
