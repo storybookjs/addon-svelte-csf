@@ -12,9 +12,6 @@
   },
   "license": "MIT",
   "type": "module",
-  "main": "./dist/index.js",
-  "packageManager": "pnpm@9.1.1",
-  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -26,6 +23,8 @@
     },
     "./package.json": "./package.json"
   },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist/**/*",
     "README.md",
@@ -33,18 +32,18 @@
     "*.d.ts"
   ],
   "scripts": {
-    "clean": "rimraf ./dist",
     "build": "svelte-package --input ./src --types",
-    "prepublish": "pnpm run clean && pnpm run build",
-    "test": "vitest run",
-    "chromatic": "chromatic --exit-zero-on-changes",
-    "coverage": "vitest run --coverage",
-    "check": "svelte-check",
-    "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
-    "storybook": "storybook dev --port 6006",
-    "start": "concurrently \"pnpm run storybook --quiet\" \"pnpm run build --watch\"",
     "build-storybook": "storybook build",
-    "release": "pnpm run build && auto shipit"
+    "check": "svelte-check",
+    "chromatic": "chromatic --exit-zero-on-changes",
+    "clean": "rimraf ./dist",
+    "coverage": "vitest run --coverage",
+    "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
+    "prepublish": "pnpm run clean && pnpm run build",
+    "release": "pnpm run build && auto shipit",
+    "start": "concurrently \"pnpm run storybook --quiet\" \"pnpm run build --watch\"",
+    "storybook": "storybook dev --port 6006",
+    "test": "vitest run"
   },
   "dependencies": {
     "@babel/runtime": "^7.22.6",
@@ -61,7 +60,6 @@
     "@storybook/components": "^8.0.0-rc.2",
     "@storybook/csf": "^0.1.1",
     "@storybook/eslint-config-storybook": "^3.1.2",
-    "@storybook/node-logger": "^8.0.0-rc.2",
     "@storybook/preview-api": "^8.0.0-rc.2",
     "@storybook/svelte": "^8.0.0-rc.2",
     "@storybook/svelte-vite": "^8.0.0-rc.2",
@@ -74,10 +72,10 @@
     "@tsconfig/svelte": "^5.0.0",
     "@types/estree": "^1.0.1",
     "auto": "^11.1.1",
-    "chromatic": "^6.19.9",
+    "chromatic": "^11.3.5",
     "concurrently": "^8.2.0",
     "eslint": "^7.17.0",
-    "eslint-plugin-storybook": "^0.6.12",
+    "eslint-plugin-storybook": "^0.8.0",
     "jsdom": "^22.1.0",
     "prettier": "^3.0.0",
     "react": "^18.2.0",
@@ -91,7 +89,7 @@
     "svelte-package": "^0.1.0",
     "typescript": "^5.1.6",
     "vite": "^4.4.3",
-    "vitest": "^0.33.0"
+    "vitest": "^1.6.0"
   },
   "peerDependencies": {
     "@storybook/svelte": "^7.0.0 || ^8.0.0 || ^8.0.0-beta.0",
@@ -111,14 +109,15 @@
       "optional": true
     }
   },
+  "packageManager": "pnpm@9.1.1",
+  "publishConfig": {
+    "access": "public"
+  },
   "auto": {
     "plugins": [
       "npm",
       "released"
     ]
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "storybook": {
     "displayName": "Svelte CSF",
