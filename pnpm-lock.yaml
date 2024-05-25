@@ -77,9 +77,6 @@ importers:
       '@types/node':
         specifier: ^20.12.12
         version: 20.12.12
-      '@types/webpack-env':
-        specifier: ^1.18.5
-        version: 1.18.5
       auto:
         specifier: ^11.1.1
         version: 11.1.6(@types/node@20.12.12)(typescript@5.4.5)
@@ -113,9 +110,6 @@ importers:
       svelte-check:
         specifier: ^3.5.0
         version: 3.7.1(@babel/core@7.24.5)(postcss-load-config@4.0.2(postcss@8.4.38))(postcss@8.4.38)(svelte@5.0.0-next.136)
-      svelte-loader:
-        specifier: ^3.1.7
-        version: 3.2.0(svelte@5.0.0-next.136)
       svelte-package:
         specifier: ^0.1.0
         version: 0.1.0(@sveltejs/kit@2.5.8(@sveltejs/vite-plugin-svelte@4.0.0-next.1(svelte@5.0.0-next.136)(vite@5.2.11(@types/node@20.12.12)))(svelte@5.0.0-next.136)(vite@5.2.11(@types/node@20.12.12)))
@@ -2959,12 +2953,6 @@ packages:
         integrity: sha512-jg+97EGIcY9AGHJJRaaPVgetKDsrTgbRjQ5Msgjh/DQKEFl0DtyRr/VCOyD1T2R1MNeWPK/u7JoGhlDZnKBAfA==,
       }
 
-  '@types/webpack-env@1.18.5':
-    resolution:
-      {
-        integrity: sha512-wz7kjjRRj8/Lty4B+Kr0LN6Ypc/3SymeCCGSbaXp2leH0ZVg/PriNiOwNj4bD4uphI7A8NXS4b6Gl373sfO5mA==,
-      }
-
   '@types/yargs-parser@21.0.3':
     resolution:
       {
@@ -3676,12 +3664,6 @@ packages:
         integrity: sha512-QxD8cf2eVqJOOz63z6JIN9BzvVs/dlySa5HGSBH5xtR8dPteIRQnBxxKqkNTiT6jbDTF6jAfrd4oMcND9RGbQg==,
       }
     engines: { node: '>=0.6' }
-
-  big.js@5.2.2:
-    resolution:
-      {
-        integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==,
-      }
 
   binary-extensions@2.3.0:
     resolution:
@@ -4655,13 +4637,6 @@ packages:
       {
         integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==,
       }
-
-  emojis-list@3.0.0:
-    resolution:
-      {
-        integrity: sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==,
-      }
-    engines: { node: '>= 4' }
 
   encodeurl@1.0.2:
     resolution:
@@ -6951,13 +6926,6 @@ packages:
       {
         integrity: sha512-od7eKCCZ62ITvFf8nHHrIiYmgOHb4xVNDRDqxBWSaao5FZyyZVX8OmRCbwjDGPrSrgIulwPNyBsWCGnhiDC0oQ==,
       }
-
-  loader-utils@2.0.4:
-    resolution:
-      {
-        integrity: sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw==,
-      }
-    engines: { node: '>=8.9.0' }
 
   local-pkg@0.5.0:
     resolution:
@@ -9283,29 +9251,6 @@ packages:
     hasBin: true
     peerDependencies:
       svelte: ^3.55.0 || ^4.0.0-next.0 || ^4.0.0 || ^5.0.0-next.0
-
-  svelte-dev-helper@1.1.9:
-    resolution:
-      {
-        integrity: sha512-oU+Xv7Dl4kRU2kdFjsoPLfJfnt5hUhsFUZtuzI3Ku/f2iAFZqBoEuXOqK3N9ngD4dxQOmN4OKWPHVi3NeAeAfQ==,
-      }
-
-  svelte-hmr@0.14.12:
-    resolution:
-      {
-        integrity: sha512-4QSW/VvXuqVcFZ+RhxiR8/newmwOCTlbYIezvkeN6302YFRE8cXy0naamHcjz8Y9Ce3ITTZtrHrIL0AGfyo61w==,
-      }
-    engines: { node: ^12.20 || ^14.13.1 || >= 16 }
-    peerDependencies:
-      svelte: '>=3.19.0'
-
-  svelte-loader@3.2.0:
-    resolution:
-      {
-        integrity: sha512-pxsNMC/1JHdQ63M0Zw5cS8dN299nvMiU2ze8yWPLlov/xBNXElEEM22so2q/vJDUyP0ZCrCVMV1d/tlWwxMRLA==,
-      }
-    peerDependencies:
-      svelte: ^3.0.0 || ^4.0.0-next.0 || ^5.0.0-next.1
 
   svelte-package@0.1.0:
     resolution:
@@ -13136,8 +13081,6 @@ snapshots:
 
   '@types/uuid@9.0.8': {}
 
-  '@types/webpack-env@1.18.5': {}
-
   '@types/yargs-parser@21.0.3':
     optional: true
 
@@ -13680,8 +13623,6 @@ snapshots:
       open: 8.4.2
 
   big-integer@1.6.52: {}
-
-  big.js@5.2.2: {}
 
   binary-extensions@2.3.0: {}
 
@@ -14252,8 +14193,6 @@ snapshots:
   emoji-regex@8.0.0: {}
 
   emoji-regex@9.2.2: {}
-
-  emojis-list@3.0.0: {}
 
   encodeurl@1.0.2: {}
 
@@ -16104,12 +16043,6 @@ snapshots:
       libnpmconfig: 1.2.1
       resolve-from: 5.0.0
 
-  loader-utils@2.0.4:
-    dependencies:
-      big.js: 5.2.2
-      emojis-list: 3.0.0
-      json5: 2.2.3
-
   local-pkg@0.5.0:
     dependencies:
       mlly: 1.7.0
@@ -17560,19 +17493,6 @@ snapshots:
       - sass
       - stylus
       - sugarss
-
-  svelte-dev-helper@1.1.9: {}
-
-  svelte-hmr@0.14.12(svelte@5.0.0-next.136):
-    dependencies:
-      svelte: 5.0.0-next.136
-
-  svelte-loader@3.2.0(svelte@5.0.0-next.136):
-    dependencies:
-      loader-utils: 2.0.4
-      svelte: 5.0.0-next.136
-      svelte-dev-helper: 1.1.9
-      svelte-hmr: 0.14.12(svelte@5.0.0-next.136)
 
   svelte-package@0.1.0(@sveltejs/kit@2.5.8(@sveltejs/vite-plugin-svelte@4.0.0-next.1(svelte@5.0.0-next.136)(vite@5.2.11(@types/node@20.12.12)))(svelte@5.0.0-next.136)(vite@5.2.11(@types/node@20.12.12))):
     dependencies:
