@@ -1,12 +1,6 @@
 import type { StorybookConfig } from '@storybook/svelte-vite';
 
 const config: StorybookConfig = {
-  framework: '@storybook/svelte-vite',
-  addons: [
-    '../dist/preset.js',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-  ],
   stories: [
     {
       directory: '../stories',
@@ -14,8 +8,12 @@ const config: StorybookConfig = {
       titlePrefix: 'Demo',
     },
   ],
-  docs: {
-    autodocs: 'tag',
-  },
+  framework: '@storybook/svelte-vite',
+  addons: [
+    '../dist/preset.js',
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+  ],
 };
+
 export default config;
