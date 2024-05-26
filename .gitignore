@@ -1,3 +1,4 @@
+.vite-inspect/
 .svelte-kit/
 dist/
 node_modules/
