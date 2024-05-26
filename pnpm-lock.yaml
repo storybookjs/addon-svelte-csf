@@ -65,9 +65,6 @@ importers:
       '@sveltejs/vite-plugin-svelte':
         specifier: 4.0.0-next.1
         version: 4.0.0-next.1(svelte@5.0.0-next.136)(vite@5.2.11(@types/node@20.12.12))
-      '@total-typescript/ts-reset':
-        specifier: ^0.5.1
-        version: 0.5.1
       '@tsconfig/svelte':
         specifier: ^5.0.0
         version: 5.0.4
@@ -2604,12 +2601,6 @@ packages:
     engines: { node: '>=12', npm: '>=6' }
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
-
-  '@total-typescript/ts-reset@0.5.1':
-    resolution:
-      {
-        integrity: sha512-AqlrT8YA1o7Ff5wPfMOL0pvL+1X+sw60NN6CcOCqs658emD6RfiXhF7Gu9QcfKBH7ELY2nInLhKSCWVoNL70MQ==,
-      }
 
   '@tsconfig/node10@1.0.11':
     resolution:
@@ -12896,8 +12887,6 @@ snapshots:
   '@testing-library/user-event@14.5.2(@testing-library/dom@9.3.4)':
     dependencies:
       '@testing-library/dom': 9.3.4
-
-  '@total-typescript/ts-reset@0.5.1': {}
 
   '@tsconfig/node10@1.0.11': {}
 
