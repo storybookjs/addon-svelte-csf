@@ -14,7 +14,8 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "esnext",
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "types": ["vitest/importMeta"]
   },
   "include": ["src/**/*"]
 }
