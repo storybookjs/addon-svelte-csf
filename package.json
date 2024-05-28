@@ -23,6 +23,10 @@
       "types": "./dist/preset.d.ts",
       "default": "./dist/preset.js"
     },
+    "./internal/create-story-fns": {
+      "types": "./dist/runtime/create-story-fns.d.ts",
+      "default": "./dist/runtime/create-story-fns.js"
+    },
     "./package.json": "./package.json"
   },
   "files": [
