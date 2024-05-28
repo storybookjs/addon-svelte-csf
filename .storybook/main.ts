@@ -4,16 +4,12 @@ const config: StorybookConfig = {
   stories: [
     {
       directory: '../stories',
-      files: '**/*.stories.svelte',
+      files: '**/*.stories.@(ts|svelte)',
       titlePrefix: 'Demo',
     },
   ],
   framework: '@storybook/svelte-vite',
-  addons: [
-    '../dist/preset.js',
-    '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
-  ],
+  addons: ['../dist/preset.js', '@storybook/addon-essentials', '@storybook/addon-interactions'],
 };
 
 export default config;
