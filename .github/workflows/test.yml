@@ -1,0 +1,44 @@
+name: Test
+
+on: [push]
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  CI: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v4
+
+      - name: Enable corepack (for pnpm)
+        # https://nodejs.org/api/corepack.html
+        run: corepack enable
+
+      - name: Setup the latest Node.js LTS version
+        # https://github.com/actions/setup-node
+        uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version: lts/*
+
+      - name: Install Node.js dependencies with pnpm
+        # https://pnpm.io/cli/install
+        run: >
+          pnpm install
+          --frozen-lockfile
+
+      - name: Run tests with Vitest
+        # https://vitest.dev/guide/cli.html
+        run: >
+          pnpm vitest run
