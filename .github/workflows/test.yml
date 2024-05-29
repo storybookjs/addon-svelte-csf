@@ -25,12 +25,12 @@ jobs:
         # https://nodejs.org/api/corepack.html
         run: corepack enable
 
-      - name: Setup the latest Node.js LTS version
+      - name: Setup Node.js
         # https://github.com/actions/setup-node
         uses: actions/setup-node@v4
         with:
           cache: pnpm
-          node-version: lts/*
+          node-version-file: '.nvmrc'
 
       - name: Install Node.js dependencies with pnpm
         # https://pnpm.io/cli/install
