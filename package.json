@@ -34,7 +34,7 @@
     "README.md"
   ],
   "scripts": {
-    "clean": "rimraf ./dist",
+    "clean": "rimraf ./dist ./node_modules/.cache ./storybook-static ./svelte-kit ./.vite-inspect",
     "build": "svelte-package --input ./src --types",
     "prepublish": "pnpm run clean && pnpm run build",
     "test": "vitest run",
