@@ -5,9 +5,9 @@ import { svelte } from '@sveltejs/vite-plugin-svelte';
 import inspect from 'vite-plugin-inspect';
 
 export default defineConfig({
-  define: {
-    'import.meta.vitest': 'undefined',
-  },
+  // define: {
+  //   'import.meta.vitest': 'undefined',
+  // },
   plugins: [
     svelte(),
     inspect({
@@ -19,6 +19,6 @@ export default defineConfig({
     dir: './src/',
     environment: 'jsdom',
     globals: true,
-    includeSource: ['**/*.ts'],
+    // includeSource: ['**/*.ts'],
   },
 });

@@ -24,9 +24,9 @@
       "types": "./dist/preset.d.ts",
       "default": "./dist/preset.js"
     },
-    "./internal/create-story-fns": {
-      "types": "./dist/runtime/create-story-fns.d.ts",
-      "default": "./dist/runtime/create-story-fns.js"
+    "./internal/create-runtime-stories": {
+      "types": "./dist/runtime/create-runtime-stories.d.ts",
+      "default": "./dist/runtime/create-runtime-stories.js"
     },
     "./package.json": "./package.json"
   },
