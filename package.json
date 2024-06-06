@@ -53,6 +53,7 @@
     "dedent": "^1.2.0",
     "estree-util-to-js": "^2.0.0",
     "magic-string": "^0.30.1",
+    "prettier-plugin-svelte": "^3.2.4",
     "zimmerframe": "^1.1.2"
   },
   "devDependencies": {
