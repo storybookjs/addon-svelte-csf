@@ -53,8 +53,6 @@
     "dedent": "^1.2.0",
     "estree-util-to-js": "^2.0.0",
     "magic-string": "^0.30.1",
-    "prettier": "^3.3.1",
-    "prettier-plugin-svelte": "^3.2.4",
     "zimmerframe": "^1.1.2"
   },
   "devDependencies": {
@@ -86,6 +84,7 @@
     "jsdom": "^24.1.0",
     "lodash-es": "^4.17.21",
     "prettier": "^3.3.1",
+    "prettier-plugin-svelte": "^3.2.4",
     "rimraf": "^5.0.7",
     "rollup": "^4.18.0",
     "storybook": "^8.1.6",
