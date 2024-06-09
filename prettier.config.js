@@ -1,6 +1,5 @@
-import { Config } from "prettier";
-
-const config: Config = {
+/** @type {import("prettier").Config} */
+const config = {
 	printWidth: 100,
 	tabWidth: 2,
 	bracketSpacing: true,
