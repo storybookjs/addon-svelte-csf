@@ -5,7 +5,7 @@ Example_stories.filename = "stories/Example.stories.svelte";
 
 import * as $ from "svelte/internal/client";
 
-var Example_default = $.add_locations($.template(`<p> </p> <p> </p> <br>`, 1), Example_stories.filename, [[33, 6], [34, 6], [35, 26]]);
+var Example_default = $.add_locations($.template(`<p> </p> <p> </p> <br>`, 1), Example_stories.filename, [[45, 4], [46, 4], [47, 24]]);
 var Example_default_1 = $.add_locations($.template(`Label`, 1), Example_stories.filename, []);
 var root = $.add_locations($.template(`<!> <!> <!> <!>`, 1), Example_stories.filename, []);
 
@@ -13,15 +13,23 @@ import { action } from '@storybook/addon-actions';
 import { defineMeta, setTemplate } from '@storybook/addon-svelte-csf';
 import Example from './Example.svelte';
 
-// Description set explicitly in the comment above `defineMeta`
+/**
+ * Description set explicitly in the comment above `defineMeta`.
+ *
+ * Multiline supported. And also Markdown syntax:
+ *
+ * * **Bold**,
+ * * _Italic_,
+ * * `Code`.
+ */
 const { Story } = defineMeta({
 	title: 'Example',
 	component: Example,
 	tags: ['autodocs'],
 	args: {
-		onclick: action("onclick"),
-		onmouseenter: action("onmouseenter"),
-		onmouseleave: action("onmouseleave")
+		onclick: action('onclick'),
+		onmouseenter: action('onmouseenter'),
+		onmouseleave: action('onmouseleave')
 	}
 });
 
