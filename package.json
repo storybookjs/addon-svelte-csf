@@ -43,6 +43,7 @@
     "prepublish": "pnpm run clean && pnpm run build",
     "test": "vitest run",
     "test:watch": "vitest watch",
+    "format": "prettier --write .",
     "chromatic": "chromatic --exit-zero-on-changes",
     "coverage": "vitest run --coverage",
     "check": "svelte-check",

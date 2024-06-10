@@ -1,2 +1,3 @@
 dist
 test/__compiled__
+pnpm-lock.yaml

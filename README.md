@@ -20,6 +20,10 @@ Have a basic button component:
   export let rounded = true;
 </script>
 
+<button class="button" class:rounded on:click={onClick}>
+  <slot />
+</button>
+
 <style>
   .rounded {
     border-radius: 35px;
@@ -32,10 +36,6 @@ Have a basic button component:
     outline: none;
   }
 </style>
-
-<button class="button" class:rounded on:click={onClick}>
-  <slot />
-</button>
 ```
 
 And a `button.stories.svelte` file:
@@ -45,9 +45,9 @@ And a `button.stories.svelte` file:
   import Button from './Button.svelte';
 
   export const meta = {
-    title: "Button",
-    component: Button
-  }
+    title: 'Button',
+    component: Button,
+  };
 </script>
 
 <script>
@@ -61,16 +61,14 @@ And a `button.stories.svelte` file:
 
 <Template let:args>
   <!--👇 'on:click' allows to forward event to addon-actions  -->
-  <Button {...args} 
-    on:click
-    on:click={handleClick}>
+  <Button {...args} on:click on:click={handleClick}>
     You clicked: {count}
   </Button>
 </Template>
 
-<Story name="Rounded" args={{rounded: true}}/>
+<Story name="Rounded" args={{ rounded: true }} />
 
-<Story name="Square" source args={{rounded: false}}/>
+<Story name="Square" source args={{ rounded: false }} />
 
 <!-- Dynamic snippet should be disabled for this story -->
 <Story name="Button No Args">
@@ -80,12 +78,11 @@ And a `button.stories.svelte` file:
 
 Actions are automatically registered by Storybook. To be used by this addon, you just have to forward the event (`on:click` in the previous example).
 
-
 ## Getting Started
 
 1. `npm install --save-dev @storybook/addon-svelte-csf` or `yarn add --dev @storybook/addon-svelte-csf`
 2. In `.storybook/main.js`, add `@storybook/addon-svelte-csf` to the addons array
-4. In `.storybook/main.js`, include .stories.svelte files in your stories patterns, eg. by changing the patterns to `'../src/**/*.stories.@(js|jsx|ts|tsx|svelte)'`
+3. In `.storybook/main.js`, include .stories.svelte files in your stories patterns, eg. by changing the patterns to `'../src/**/*.stories.@(js|jsx|ts|tsx|svelte)'`
 
 An example `main.js` configuration could look like this:
 
