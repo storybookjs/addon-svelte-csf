@@ -17,5 +17,5 @@
     "verbatimModuleSyntax": true,
     "types": ["vitest/importMeta"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "examples/**/*"]
 }

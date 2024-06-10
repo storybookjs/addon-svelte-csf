@@ -7,6 +7,11 @@ const config: StorybookConfig = {
       files: '**/*.stories.@(ts|svelte)',
       titlePrefix: 'Demo',
     },
+    {
+      directory: '../examples',
+      files: '**/*.stories.@(ts|svelte)',
+      titlePrefix: 'Examples',
+    },
   ],
   framework: '@storybook/svelte-vite',
   addons: ['../dist/preset.js', '@storybook/addon-essentials', '@storybook/addon-interactions'],
