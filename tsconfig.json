@@ -15,7 +15,14 @@
     "strict": true,
     "target": "esnext",
     "verbatimModuleSyntax": true,
-    "types": ["vitest/importMeta"]
+    "types": ["vitest/importMeta"],
+    "plugins": [
+      {
+        "name": "typescript-svelte-plugin",
+        "enabled": true,
+        "assumeIsSvelteProject": true
+      }
+    ]
   },
   "include": ["src/**/*", "examples/**/*"]
 }

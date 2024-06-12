@@ -95,6 +95,7 @@
     "svelte": "5.0.0-next.136",
     "svelte-check": "^3.5.0",
     "typescript": "^5.4.5",
+    "typescript-svelte-plugin": "^0.3.38",
     "vite": "^5.2.10",
     "vite-plugin-inspect": "^0.8.4",
     "vite-plugin-virtual": "^0.3.0",
