@@ -94,6 +94,7 @@
     "storybook": "^8.1.6",
     "svelte": "5.0.0-next.136",
     "svelte-check": "^3.5.0",
+    "type-fest": "^4.20.0",
     "typescript": "^5.4.5",
     "typescript-svelte-plugin": "^0.3.38",
     "vite": "^5.2.10",
