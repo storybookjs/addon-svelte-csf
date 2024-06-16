@@ -1,0 +1,44 @@
+name: Check
+
+on: [push]
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  CI: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v4
+
+      - name: Enable corepack (for pnpm)
+        # https://nodejs.org/api/corepack.html
+        run: corepack enable
+
+      - name: Setup Node.js
+        # https://github.com/actions/setup-node
+        uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version-file: '.nvmrc'
+
+      - name: Install Node.js dependencies with pnpm
+        # https://pnpm.io/cli/install
+        run: >
+          pnpm install
+          --frozen-lockfile
+
+      - name: Run svelte-check
+        # https://vitest.dev/guide/cli.html
+        run: >
+          pnpm check
