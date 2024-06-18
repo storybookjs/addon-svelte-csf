@@ -38,7 +38,10 @@ jobs:
           pnpm install
           --frozen-lockfile
 
+      - name: Build package
+        run: >
+          pnpm build
+
       - name: Run svelte-check
-        # https://vitest.dev/guide/cli.html
         run: >
           pnpm check
