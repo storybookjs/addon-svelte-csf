@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "dedent": "^1.5.3",
-    "estree-util-to-js": "^2.0.0",
+    "esrap": "^1.2.2",
     "magic-string": "^0.30.10",
     "zimmerframe": "^1.1.2"
   },
