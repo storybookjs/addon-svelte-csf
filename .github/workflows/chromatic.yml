@@ -30,8 +30,18 @@ jobs:
         run: >
           pnpm run build
 
-      - name: Publish to Chromatic
-        uses: chromaui/action@v1
+      - name: Upload to Chromatic
+        uses: chromaui/action@v11
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true
+
+      - name: Upload "Examples" to Chromatic
+        uses: chromaui/action@v11
+        env:
+          EXAMPLES_ONLY: true
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_EXAMPLES_ONLY }}
+          onlyChanged: true
