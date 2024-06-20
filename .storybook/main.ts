@@ -4,6 +4,7 @@ const examplesOnly = process.env.EXAMPLES_ONLY === 'true';
 
 const config: StorybookConfig = {
   stories: [
+    '../**/*.mdx',
     {
       directory: '../examples',
       files: '**/*.stories.@(ts|svelte)',
