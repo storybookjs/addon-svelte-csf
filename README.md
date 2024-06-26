@@ -120,7 +120,7 @@ If you need composition/snippets but also want a dynamic story that reacts to ar
 
 ```svelte
 <Story name="Simple Children" args={{ simpleChild: true }}>
-  {#snippet children(args, storyContext)}
+  {#snippet children(args)}
     <MyComponent {...args}>
       {#if args.simpleChild}
         <AChild data={args.childProps} />
@@ -138,7 +138,7 @@ If you need composition/snippets but also want a dynamic story that reacts to ar
 Often your stories are very similar and their only differences are args or play-functions. In this case it can be cumbersome to define the same `children` snippet over and over again. You can share snippets by defining them at the top-level and passing them as props to `Story`:
 
 ```svelte
-{#snippet template(args, storyContext)}
+{#snippet template(args)}
   <MyComponent {...args}>
     {#if args.simpleChild}
       <AChild data={args.childProps} />
@@ -187,7 +187,7 @@ In this case you can use the `setTemplate()` helper function that sets a default
   //          👆 the name of the snippet as defined below (can be any name)
 </script>
 
-{#snippet template(args, storyContext)}
+{#snippet template(args)}
   <MyComponent {...args}>
     {#if args.simpleChild}
       <AChild data={args.childProps} />
@@ -220,15 +220,29 @@ You can explicitly define the variable name of any story by passing the `exportN
 
 At least one of the `name` or `exportName` props must be passed to the `Story` component - passing both is also valid.
 
+#### Accessing Story context
+
+If for some reason you need to access the [Story context](https://storybook.js.org/docs/writing-stories/decorators#context-for-mocking) _(e.g. for mocking)_ while rendering the story, then `<Story />`'s attribute `children` snippet provides an optional second argument.
+
+```svelte
+<Story name="Default">
+  {#snippet children(args, context)}
+   <!--                    👆 use the optional second argument to access Story context -->
+     <MyComponent {...args}>
+  {/snippet}
+</Story>
+```
+
 ### TypeScript
 
-Story snippets and args can be type-safe when necessary. The type of the args are inferred from the component passed to `defineMeta`.
+Story snippets and args can be type-safe when necessary. The type of the args are inferred from the component props passed to `defineMeta`.
 
 You can make your snippets type-safe with the `Args` and `StoryContext` helper types:
 
 ```svelte
 <script context="module" lang="ts">
   import { defineMeta, type Args, type StoryContext } from '@storybook/addon-svelte-csf';
+  //                   👆         👆 import those type helpers from this addon -->
 
   import MyComponent from './MyComponent.svelte';
 
@@ -237,12 +251,14 @@ You can make your snippets type-safe with the `Args` and `StoryContext` helper t
   });
 </script>
 
+<!--                     👇 use to infer `args` type from the `Story` component -->
 {#snippet template(args: Args<typeof Story>, context: StoryContext<typeof Story>)}
+  <!--                                         👆 use to infer `context` type from the `Story` component -->
   <MyComponent {...args} />
 {/snippet}
 ```
 
-If you need to customize the type of the args, you can pass in a generic to `defineMeta` that will override the types inferred from the component:
+If you need to customize the type of the `args`, you can pass in a generic type parameter to `defineMeta` that will override the types inferred from the component:
 
 ```svelte
 const { Story } = defineMeta<{ anotherProp: boolean }>( ... );
@@ -254,12 +270,15 @@ const { Story } = defineMeta<{ anotherProp: boolean }>( ... );
 
 Version 5 and up of this addon requires _at least_:
 
-- Storybook v8.0.0
-- Svelte v5.0.0
-- Vite v5.0.0
-- `@sveltejs/vite-plugin-svelte` v4.0.0
+| Dependency                                                                                                             | Version  |
+| ---------------------------------------------------------------------------------------------------------------------- | -------- |
+| [Storybook](https://github.com/storybookjs/storybook)                                                                  | `v8.0.0` |
+| [Svelte](https://github.com/sveltejs/svelte)                                                                           | `v5.0.0` |
+| [Vite](https://github.com/vitejs/vite)                                                                                 | `v5.0.0` |
+| [`@sveltejs/vite-plugin-svelte`](https://github.com/sveltejs/vite-plugin-svelte/tree/main/packages/vite-plugin-svelte) | `v4.0.0` |
 
-As of v5 this addon does not support Webpack.
+> [!IMPORTANT]
+> As of `v5` this addon does not support Webpack.
 
 ### v4
 
