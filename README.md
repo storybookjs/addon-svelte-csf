@@ -59,7 +59,7 @@ All stories files must have a "meta" (aka. "default export") defined, and its st
 
 ```svelte
 <script context="module">
-  //    👆 notice the module context, defineMeta does not work in a regular <script> tag
+  //    👆 notice the module context, defineMeta does not work in a regular <script> tag - instance
   import { defineMeta } from '@storybook/addon-svelte-csf';
 
   import MyComponent from './MyComponent.svelte';
@@ -158,7 +158,17 @@ You can also use this pattern to define multiple templates and share the differe
 
 #### Default snippet
 
-If you only need a single template that you want to share, it can be tedious to include `children={template}` in each `Story` component. In this case you can use the `setTemplate()` helper function that sets a default template for all stories. In regular CSF terms, this is the equivalent of defining a meta-level `render`-function versus story-level `render`-functions:
+If you only need a single template that you want to share, it can be tedious to include `children={template}` in each `Story` component. Like in th example below:
+
+```svelte
+<Story name="Primary" args={{ variant: 'primary' }} children={template} />
+<Story name="Secondary" args={{ variant: 'secondary' }} children={template} />
+<Story name="Tertiary" args={{ variant: 'tertiary' }} children={template} />
+<!-- ... more ... -->
+<Story name="Denary" args={{ variant: 'denary' }} children={template} />
+```
+
+In this case you can use the `setTemplate()` helper function that sets a default template for all stories. In regular CSF terms, this is the equivalent of defining a meta-level `render`-function versus story-level `render`-functions:
 
 ```svelte
 <script context="module">
@@ -172,7 +182,7 @@ If you only need a single template that you want to share, it can be tedious to 
 </script>
 
 <script>
-  // 👆 note this must be within a regular <script> tag as the module context can not reference snippets defined in the markup
+  // 👆 note this must be within a instance (regular) <script> tag as the module context can not reference snippets defined in the markup
   setTemplate(template);
   //          👆 the name of the snippet as defined below (can be any name)
 </script>
