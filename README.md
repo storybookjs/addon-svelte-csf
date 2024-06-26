@@ -6,7 +6,7 @@ This Storybook addon allows you to write Storybook stories using the Svelte lang
 npx storybook@latest add @storybook/addon-svelte-csf
 ```
 
-Using the Svelte langauge makes it easier to write stories for composed components that rely on snippets or slots, which aren't easily re-created outside of Svelte files.
+Using the Svelte language makes it easier to write stories for composed components that rely on snippets or slots, which aren't easily re-created outside of Svelte files.
 
 ## 🐣 Getting Started
 
