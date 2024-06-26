@@ -47,7 +47,7 @@ Restart your Storybook server for the changes to take effect.
 ## 🐓 Usage
 
 > [!NOTE]
-> The documentation here does not cover all of Storybook's features, only the aspects that are specific to the addon and Svelte CSF. We recommend that you familiarize yourself with Storybook's core concepts at https://storybook.js.org/docs.
+> The documentation here does not cover all of Storybook's features, only the aspects that are specific to the addon and Svelte CSF. We recommend that you familiarize yourself with Storybook's core concepts at <https://storybook.js.org/docs>.
 
 The [`examples`](./examples/) directory contains examples describing each feature of the addon. The [`Button.stories.svelte` example](./examples/Button.stories.svelte) is a good one to get started with. [The Storybook with all the examples is published on Chromatic here](https://next--667492d3e52064f1d418ec95.chromatic.com).
 
@@ -60,16 +60,20 @@ All stories files must have a "meta" (aka. "default export") defined, and its st
 ```svelte
 <script context="module">
   //    👆 notice the module context, defineMeta does not work in a regular <script> tag
-  import { defineMeta } from "@storybook/addon-svelte-csf";
+  import { defineMeta } from '@storybook/addon-svelte-csf';
 
-  import MyComponent from "./MyComponent.svelte";
+  import MyComponent from './MyComponent.svelte';
 
   //      👇 Get the Story component from the return value
   const { Story } = defineMeta({
     title: 'Path/To/MyComponent',
     component: MyComponent,
-    decorators: [ ... ],
-    parameters: { ... },
+    decorators: [
+      /* ... */
+    ],
+    parameters: {
+      /* ... */
+    },
   });
 </script>
 ```
@@ -158,11 +162,13 @@ If you only need a single template that you want to share, it can be tedious to 
 
 ```svelte
 <script context="module">
-  import { defineMeta, setTemplate } from "@storybook/addon-svelte-csf";
+  import { defineMeta, setTemplate } from '@storybook/addon-svelte-csf';
   //                   👆 import the function
-  import MyComponent from "./MyComponent.svelte";
+  import MyComponent from './MyComponent.svelte';
 
-  const { Story } = defineMeta({ ... });
+  const { Story } = defineMeta({
+    /* ... */
+  });
 </script>
 
 <script>
