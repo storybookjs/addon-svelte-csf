@@ -16,7 +16,7 @@
     "target": "esnext",
     "verbatimModuleSyntax": true,
     "types": ["vitest/importMeta"],
-    "customConditions": ["source"],
+    "customConditions": ["development"],
     "plugins": [
       {
         "name": "typescript-svelte-plugin",
