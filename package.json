@@ -60,6 +60,7 @@
   "dependencies": {
     "dedent": "^1.5.3",
     "esrap": "^1.2.2",
+    "lodash-es": "^4.17.21",
     "magic-string": "^0.30.10",
     "zimmerframe": "^1.1.2"
   },
@@ -91,7 +92,6 @@
     "eslint": "^7.32.0",
     "eslint-plugin-storybook": "^0.6.15",
     "jsdom": "^24.1.0",
-    "lodash-es": "^4.17.21",
     "prettier": "^3.3.2",
     "prettier-plugin-svelte": "^3.2.5",
     "rimraf": "^5.0.7",
