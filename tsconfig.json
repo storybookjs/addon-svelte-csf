@@ -4,17 +4,26 @@
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "esModuleInterop": true,
-    "experimentalDecorators": true,
     "incremental": false,
-    "isolatedModules": true,
     "lib": ["esnext", "dom"],
-    "module": "es2020",
-    "moduleResolution": "nodenext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "noImplicitAny": false,
+    "resolveJsonModule": true,
     "rootDir": ".",
     "skipLibCheck": true,
+    "strict": true,
     "target": "esnext",
-    "strict": true
+    "verbatimModuleSyntax": true,
+    "types": ["vitest/importMeta"],
+    "customConditions": ["development"],
+    "plugins": [
+      {
+        "name": "typescript-svelte-plugin",
+        "enabled": true,
+        "assumeIsSvelteProject": true
+      }
+    ]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "examples/**/*", "tests/**/*"]
 }
