@@ -82,7 +82,7 @@ All stories files must have a "meta" (aka. "default export") defined, and its st
 
 ### Defining stories
 
-To define stories, you use the `Story` component returned from the `defineMeta` function. Depending on what you want the story to contain, there are multiple ways to use the `Story` component. Common for all the use case is that all properties of [a regular CSF story](https://storybook.js.org/docs/api/csf#named-story-exports) are passed as props to the `Story` component, with the exception of the `render` function, which does not have any effect in Svelte CSF.
+To define stories, you use the `Story` component returned from the `defineMeta` function. Depending on what you want the story to contain, [there are multiple ways to use the `Story` component](./examples/Templating.stories.svelte). Common for all the use case is that all properties of [a regular CSF story](https://storybook.js.org/docs/api/csf#named-story-exports) are passed as props to the `Story` component, with the exception of the `render` function, which does not have any effect in Svelte CSF.
 
 All story requires either the `name` prop or [`exportName` prop](#custom-export-name).
 
@@ -121,14 +121,7 @@ If you need composition/snippets but also want a dynamic story that reacts to ar
 ```svelte
 <Story name="Simple Children" args={{ simpleChild: true }}>
   {#snippet children(args)}
-    <MyComponent {...args}>
-      {#if args.simpleChild}
-        <AChild data={args.childProps} />
-      {:else}
-        <ComplexChildA data={args.childProps} />
-        <ComplexChildB data={args.childProps} />
-      {/if}
-    </MyComponent>
+    <MyComponent {...args}>Component with args</MyComponent>
   {/snippet}
 </Story>
 ```
