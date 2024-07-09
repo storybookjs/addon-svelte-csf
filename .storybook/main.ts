@@ -21,7 +21,7 @@ const config: StorybookConfig = {
     {
       name: '../dist/preset.js',
       options: {
-        supportLegacy: true,
+        legacyTemplate: true,
       },
     },
     '@storybook/addon-essentials',
