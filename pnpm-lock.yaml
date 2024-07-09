@@ -124,8 +124,8 @@ importers:
         specifier: 5.0.0-next.155
         version: 5.0.0-next.155
       svelte-ast-print:
-        specifier: ^0.2.1
-        version: 0.2.1(@types/node@20.14.9)(jsdom@24.1.0)(svelte@5.0.0-next.155)(typescript@5.5.2)
+        specifier: 0.2.2
+        version: 0.2.2(@types/node@20.14.9)(jsdom@24.1.0)(svelte@5.0.0-next.155)(typescript@5.5.2)
       svelte-check:
         specifier: ^3.8.4
         version: 3.8.4(@babel/core@7.24.7)(postcss@8.4.39)(svelte@5.0.0-next.155)
@@ -2354,9 +2354,6 @@ packages:
   ajv@8.12.0:
     resolution: {integrity: sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==}
 
-  ajv@8.14.0:
-    resolution: {integrity: sha512-oYs1UUtO97ZO2lJ4bwnWeQW8/zvOIQLGKcvPTsWmvc2SYgBb+upuNS5NxoLaMU4h8Ju3Nbj6Cq8mD2LQoqVKFA==}
-
   ajv@8.16.0:
     resolution: {integrity: sha512-F0twR8U1ZU67JIEtekUcLkXkoO5mMMmgGD8sK/xUFzJ805jxHQl92hImFAqqXMyMYjSPOyUPAwHYhB72g5sTXw==}
 
@@ -4135,6 +4132,7 @@ packages:
 
   inflight@1.0.6:
     resolution: {integrity: sha512-k92I/b08q4wvFscXCLvqfsHCrjrF7yiXsQuIVvVE7N82W3+aqpzuUdBbfhWcy/FZR3/4IgflMgKLOsvPDrGCJA==}
+    deprecated: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
 
   inherits@2.0.4:
     resolution: {integrity: sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==}
@@ -6364,8 +6362,8 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
-  svelte-ast-print@0.2.1:
-    resolution: {integrity: sha512-hT2cvxw2D608bkIYl1rL/BKR1UsStNJL/VIyZ0UMhBwNw+cWZU3dMHpaGtU60ZsK7Y2xVWj46XMva/U+ZFZuqA==}
+  svelte-ast-print@0.2.2:
+    resolution: {integrity: sha512-q0rd2wCw+aO2ix8EHSsM4pc7ARfzAPMV19OubfAlC3mQspVyeCirlYMJAKb2c80NH6J9yQjXNHik0JfctLtedQ==}
     engines: {node: '>=20'}
     peerDependencies:
       svelte: ^5.0.0-next.164 || ^5.0.0
@@ -10028,7 +10026,7 @@ snapshots:
       '@typescript-eslint/experimental-utils': 4.33.0(eslint@7.32.0)(typescript@5.5.2)
       '@typescript-eslint/parser': 7.15.0(eslint@7.32.0)(typescript@5.5.2)
       '@typescript-eslint/scope-manager': 4.33.0
-      debug: 4.3.4
+      debug: 4.3.5
       eslint: 7.32.0
       functional-red-black-tree: 1.0.1
       ignore: 5.3.1
@@ -10058,7 +10056,7 @@ snapshots:
       '@typescript-eslint/scope-manager': 4.33.0
       '@typescript-eslint/types': 4.33.0
       '@typescript-eslint/typescript-estree': 4.33.0(typescript@5.5.2)
-      debug: 4.3.4
+      debug: 4.3.5
       eslint: 7.32.0
     optionalDependencies:
       typescript: 5.5.2
@@ -10300,7 +10298,7 @@ snapshots:
 
   agent-base@7.1.1:
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
 
@@ -10324,13 +10322,6 @@ snapshots:
       require-from-string: 2.0.2
       uri-js: 4.4.1
     optional: true
-
-  ajv@8.14.0:
-    dependencies:
-      fast-deep-equal: 3.1.3
-      json-schema-traverse: 1.0.0
-      require-from-string: 2.0.2
-      uri-js: 4.4.1
 
   ajv@8.16.0:
     dependencies:
@@ -10675,11 +10666,11 @@ snapshots:
 
   before-after-hook@2.2.3: {}
 
-  better-ajv-errors@1.2.0(ajv@8.14.0):
+  better-ajv-errors@1.2.0(ajv@8.16.0):
     dependencies:
       '@babel/code-frame': 7.24.6
       '@humanwhocodes/momoa': 2.0.4
-      ajv: 8.14.0
+      ajv: 8.16.0
       chalk: 4.1.2
       jsonpointer: 5.0.1
       leven: 3.1.0
@@ -11734,8 +11725,8 @@ snapshots:
 
   eslint-plugin-json-files@1.5.0(eslint@7.32.0):
     dependencies:
-      ajv: 8.14.0
-      better-ajv-errors: 1.2.0(ajv@8.14.0)
+      ajv: 8.16.0
+      better-ajv-errors: 1.2.0(ajv@8.16.0)
       eslint: 7.32.0
       requireindex: 1.2.0
       semver: 7.6.2
@@ -12701,7 +12692,6 @@ snapshots:
   is-core-module@2.14.0:
     dependencies:
       hasown: 2.0.2
-    optional: true
 
   is-data-view@1.0.1:
     dependencies:
@@ -13931,7 +13921,7 @@ snapshots:
 
   micromatch@4.0.5:
     dependencies:
-      braces: 3.0.2
+      braces: 3.0.3
       picomatch: 2.3.1
 
   micromatch@4.0.7:
@@ -14959,7 +14949,7 @@ snapshots:
 
   resolve@1.22.8:
     dependencies:
-      is-core-module: 2.13.1
+      is-core-module: 2.14.0
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
@@ -15430,7 +15420,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-ast-print@0.2.1(@types/node@20.14.9)(jsdom@24.1.0)(svelte@5.0.0-next.155)(typescript@5.5.2):
+  svelte-ast-print@0.2.2(@types/node@20.14.9)(jsdom@24.1.0)(svelte@5.0.0-next.155)(typescript@5.5.2):
     dependencies:
       esrap: 1.2.2
       svelte: 5.0.0-next.155

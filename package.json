@@ -101,7 +101,7 @@
     "rollup": "^4.18.0",
     "storybook": "^8.1.11",
     "svelte": "5.0.0-next.155",
-    "svelte-ast-print": "^0.2.1",
+    "svelte-ast-print": "0.2.2",
     "svelte-check": "^3.8.4",
     "tslib": "^2.6.3",
     "type-fest": "^4.20.1",
