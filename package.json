@@ -1,6 +1,6 @@
 {
   "name": "@storybook/addon-svelte-csf",
-  "version": "4.1.3",
+  "version": "4.1.4",
   "description": "Allows to write stories in Svelte syntax",
   "keywords": [
     "storybook-addons",
