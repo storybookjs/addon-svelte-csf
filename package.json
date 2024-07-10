@@ -120,6 +120,11 @@
       "released"
     ]
   },
+  "pnpm": {
+    "overrides": {
+      "svelte-preprocess": "^6.0.2"
+    }
+  },
   "publishConfig": {
     "access": "public"
   },
