@@ -9,7 +9,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/storybookjs/addon-svelte-csf"
+    "url": "git+https://github.com/storybookjs/addon-svelte-csf.git"
   },
   "license": "MIT",
   "type": "module",
@@ -58,8 +58,9 @@
   },
   "dependencies": {
     "@storybook/csf": "^0.1.11",
-    "@storybook/node-logger": "^8.2.2",
-    "@storybook/types": "^8.2.2",
+    "@storybook/docs-tools": "^8.0.0",
+    "@storybook/node-logger": "^8.0.0",
+    "@storybook/types": "^8.0.0",
     "dedent": "^1.5.3",
     "esrap": "^1.2.2",
     "lodash-es": "^4.17.21",
@@ -72,7 +73,6 @@
     "@storybook/addon-essentials": "^8.2.2",
     "@storybook/addon-interactions": "^8.2.2",
     "@storybook/client-logger": "^8.2.2",
-    "@storybook/docs-tools": "^8.2.2",
     "@storybook/eslint-config-storybook": "^4.0.0",
     "@storybook/preview-api": "^8.2.2",
     "@storybook/svelte": "^8.2.2",
