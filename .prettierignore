@@ -1,1 +1,3 @@
 dist
+tests/__compiled__
+pnpm-lock.yaml

@@ -1,23 +1,49 @@
-name: "Chromatic"
+name: Chromatic
+
 on: push
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Install Node.js
-        uses: actions/setup-node@v3
+
+      - name: Enable corepack (for pnpm)
+        # https://nodejs.org/api/corepack.html
+        run: corepack enable
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - name: Install dependencies
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          run_install: true
-      - name: Publish to Chromatic
-        uses: chromaui/action@v1
+          cache: 'pnpm'
+          node-version-file: '.nvmrc'
+
+      - name: Install Node.js dependencies with pnpm
+        # https://pnpm.io/cli/install
+        run: >
+          pnpm install
+          --frozen-lockfile
+
+      - name: Build package
+        run: >
+          pnpm run build
+
+      - name: Upload to Chromatic
+        uses: chromaui/action@v11
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true
+          exitOnceUploaded: true
+
+      - name: Upload "Examples" to Chromatic
+        uses: chromaui/action@v11
+        env:
+          EXAMPLES_ONLY: true
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_EXAMPLES_ONLY }}
+          onlyChanged: true
+          exitOnceUploaded: true
