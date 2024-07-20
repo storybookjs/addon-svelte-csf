@@ -65,10 +65,11 @@
     "@storybook/node-logger": "^8.0.0",
     "@storybook/types": "^8.0.0",
     "dedent": "^1.5.3",
+    "es-toolkit": "^1.13.1",
     "esrap": "^1.2.2",
     "lodash-es": "^4.17.21",
-    "svelte-ast-print": "0.2.3",
     "magic-string": "^0.30.10",
+    "svelte-ast-print": "0.2.3",
     "zimmerframe": "^1.1.2"
   },
   "devDependencies": {
