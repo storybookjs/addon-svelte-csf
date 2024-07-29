@@ -55,8 +55,8 @@
     source?: never;
   } & ({ exportName: string } | { name: string });
 
-  const { children, name, exportName: exportNameProp, play, ...restProps }: Props = $props();
-  const exportName = exportNameProp ?? storyNameToExportName(name!);
+  const props: Props = $props();
+  const exportName = props.exportName ?? storyNameToExportName(props.name!);
 
   const extractor = useStoriesExtractor<TOverrideArgs, TCmp, TMeta>();
   const renderer = useStoryRenderer<TOverrideArgs, TCmp, TMeta>();
@@ -67,14 +67,14 @@
   );
 
   if (extractor.isExtracting) {
-    extractor.register({ children, name, exportName, play, ...restProps } as Parameters<
+    extractor.register({ ...props, exportName } as Parameters<
       (typeof extractor)['register']
     >[0]);
   }
 
   function injectIntoPlayFunction(
     storyContext: typeof renderer.storyContext,
-    playToInject: typeof play
+    playToInject: typeof props.play
   ) {
     if (playToInject && storyContext.playFunction) {
       storyContext.playFunction.__play = playToInject;
@@ -83,14 +83,14 @@
 
   $effect(() => {
     if (isCurrentlyViewed) {
-      injectIntoPlayFunction(renderer.storyContext, play);
+      injectIntoPlayFunction(renderer.storyContext, props.play);
     }
   });
 </script>
 
 {#if isCurrentlyViewed}
-  {#if children}
-    {@render children(renderer.args, renderer.storyContext)}
+  {#if props.children}
+    {@render props.children(renderer.args, renderer.storyContext)}
   {:else if template}
     {@render template(renderer.args, renderer.storyContext)}
   {:else if renderer.storyContext.component}
