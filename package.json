@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.22.6",
-    "@storybook/types": "^8.0.0-rc.2",
+    "@storybook/types": "^8.0.0",
     "dedent": "^1.2.0",
     "magic-string": "^0.30.1"
   },
