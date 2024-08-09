@@ -125,6 +125,11 @@ Below is a demonstration of correct usage:
 {/snippet}
 ```
 
+### SB_SVELTE_CSF_PARSER_EXTRACT_SVELTE_0009
+
+Storybook stories indexer parser threw an unrecognized error.
+If you see this error, [please report it on the issue tracker on GitHub](https://github.com/storybookjs/addon-svelte-csf/issues/new?assignees=&labels=bug&projects=&template=bug_report.md&title=%5BBug%5D).
+
 ## `PARSER_EXTRACT_COMPILED`
 
 > [!NOTE]
@@ -325,3 +330,37 @@ eg. `Some story name!!` will be converted to `SomeStoryName`.
 You can fix this collision by providing a unique `exportName` prop with`<Story exportName="SomeUniqueExportName" ... />`.
 
 See more in [the `exportName` API docs](./README.md#custom-export-name).
+
+## `CODEMOD`
+
+### `SB_SVELTE_CSF_CODEMOD_0001`
+
+`<Story/>` component prop `template` value must be a text with string reference to existing `<Template />`'s `id` prop.
+
+It cannot be a shorthand or a dynamic value.
+
+```diff
+<Story
+-  template
+-  template={dynamicId}
++  template="custom-template"
+/>
+```
+
+### `SB_SVELTE_CSF_CODEMOD_0002`
+
+You are using legacy template API, with deprecated components.\
+To enable support for legacy API, tweak this addon options in your _(`./.storybook/main.(j|t)s`)_ file:
+
+```diff
+addons: [
+    // ... other addons
+-    '@storybook/addon-svelte-csf',
++   {
++       name: '@storybook/addon-svelte-csf',
++       options: {
++           legacyTemplate: true,
++       },
++   },
+],
+```
