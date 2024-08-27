@@ -20,9 +20,6 @@ importers:
       '@storybook/node-logger':
         specifier: ^8.0.0
         version: 8.2.5(storybook@8.2.5(@babel/preset-env@7.24.8(@babel/core@7.24.9)))
-      '@storybook/types':
-        specifier: ^8.0.0
-        version: 8.2.5(storybook@8.2.5(@babel/preset-env@7.24.8(@babel/core@7.24.9)))
       dedent:
         specifier: ^1.5.3
         version: 1.5.3
@@ -1519,11 +1516,6 @@ packages:
 
   '@storybook/theming@8.2.5':
     resolution: {integrity: sha512-EEOSmW55MeLB3iskf5uUqffsqu003tTta8XQ1Xg8em3gePxPsjqzQtly1Ws5PtRg1Zvt1Zc6NKHwabiVzxothA==}
-    peerDependencies:
-      storybook: ^8.2.5
-
-  '@storybook/types@8.2.5':
-    resolution: {integrity: sha512-xrF/+uIFstsGEAM8B67XA/YdTm5uu/8g+7b96qU7WTEf7A+k8wxaB0RQhHvOwz3ZtNModsKX8heIDOMMQlZJew==}
     peerDependencies:
       storybook: ^8.2.5
 
@@ -8268,10 +8260,6 @@ snapshots:
       - vitest
 
   '@storybook/theming@8.2.5(storybook@8.2.5(@babel/preset-env@7.24.8(@babel/core@7.24.9)))':
-    dependencies:
-      storybook: 8.2.5(@babel/preset-env@7.24.8(@babel/core@7.24.9))
-
-  '@storybook/types@8.2.5(storybook@8.2.5(@babel/preset-env@7.24.8(@babel/core@7.24.9)))':
     dependencies:
       storybook: 8.2.5(@babel/preset-env@7.24.8(@babel/core@7.24.9))
 
