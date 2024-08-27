@@ -20,9 +20,6 @@ importers:
       '@storybook/node-logger':
         specifier: ^8.0.0
         version: 8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))
-      '@storybook/types':
-        specifier: ^8.0.0
-        version: 8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))
       dedent:
         specifier: ^1.5.3
         version: 1.5.3
@@ -1495,11 +1492,6 @@ packages:
 
   '@storybook/test@8.2.2':
     resolution: {integrity: sha512-X2qAKErjTh1X7XLAZqCMtU0ZK8JuwdKmgiqU0oXWxIDmCX6/Dm9ZIcdMZHs/S+K/UnIByjNlQpTShLVfRUeN1w==}
-    peerDependencies:
-      storybook: ^8.2.2
-
-  '@storybook/types@8.2.2':
-    resolution: {integrity: sha512-SlwfeluJC/FgTPIda4ivjSeCyi7G8krWZDX/FzM3k6MtZdDsV9vdg1ttBObugn6AESy4Zh+unePo7SbD8/sSfQ==}
     peerDependencies:
       storybook: ^8.2.2
 
@@ -7841,10 +7833,6 @@ snapshots:
       - '@types/jest'
       - jest
       - vitest
-
-  '@storybook/types@8.2.2(storybook@8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7)))':
-    dependencies:
-      storybook: 8.2.2(@babel/preset-env@7.24.7(@babel/core@7.24.7))
 
   '@sveltejs/package@2.3.2(svelte@5.0.0-next.215)(typescript@5.5.2)':
     dependencies:

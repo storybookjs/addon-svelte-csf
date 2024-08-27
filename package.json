@@ -60,7 +60,6 @@
     "@storybook/csf": "^0.1.11",
     "@storybook/docs-tools": "^8.0.0",
     "@storybook/node-logger": "^8.0.0",
-    "@storybook/types": "^8.0.0",
     "dedent": "^1.5.3",
     "esrap": "^1.2.2",
     "lodash-es": "^4.17.21",
