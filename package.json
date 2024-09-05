@@ -99,7 +99,7 @@
     "rimraf": "^5.0.7",
     "rollup": "^4.18.0",
     "storybook": "^8.2.2",
-    "svelte": "5.0.0-next.215",
+    "svelte": "5.0.0-next.243",
     "svelte-check": "^3.8.4",
     "tslib": "^2.6.3",
     "type-fest": "^4.20.1",
@@ -113,7 +113,7 @@
   "peerDependencies": {
     "@storybook/svelte": "^8.0.0",
     "@sveltejs/vite-plugin-svelte": "^4.0.0-next.0 || ^4.0.0",
-    "svelte": "^5.0.0-next.117 || ^5.0.0",
+    "svelte": "^5.0.0-next.243 || ^5.0.0",
     "vite": "^5.0.0"
   },
   "packageManager": "pnpm@9.5.0+sha256.dbdf5961c32909fb030595a9daa1dae720162e658609a8f92f2fa99835510ca5",
