@@ -96,7 +96,7 @@ export async function extractCompiledASTNodes(params: Params): Promise<CompiledA
         id.type === 'ObjectPattern' &&
         init?.type === 'CallExpression' &&
         init.callee.type === 'Identifier' &&
-        init.callee.name === state.defineMetaImport?.local.name
+        init.callee.name === AST_NODES_NAMES.defineMeta
       ) {
         state.defineMetaVariableDeclaration = node;
 

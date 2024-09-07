@@ -26,8 +26,14 @@ interface Params {
  */
 export function getStoryPropsObjectExpression(params: Params): ESTreeAST.ObjectExpression {
   const { node, filename } = params;
-  if (node.type === 'CallExpression' && node.arguments[1].type === 'ObjectExpression') {
-    return node.arguments[1];
+  if (node.type === 'CallExpression') {
+    const secondArg = node.arguments[1];
+    if (secondArg.type === 'ObjectExpression') {
+      return secondArg;
+    }
+    if (secondArg.type === 'CallExpression' && secondArg.arguments[0].type === 'ObjectExpression') {
+      return secondArg.arguments[0];
+    }
   }
 
   if (
