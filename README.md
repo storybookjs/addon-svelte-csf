@@ -257,6 +257,31 @@ If you need to customize the type of the `args`, you can pass in a generic type 
 const { Story } = defineMeta<{ anotherProp: boolean }>( ... );
 ```
 
+### Legacy API
+
+Version 5 of the addon changes the API from v4 in key areas, as described above. However a feature flag has been introduced to maintain support for the `<Template>`-based legacy API as it was prior to v5.
+
+To enable supoprt for the legacy API, make the following change to your main Storybook config:
+
+```diff
+export default {
+  addons: [
+-    '@storybook/addon-svelte-csf',
++    {
++      name: '@storybook/addon-svelte-csf',
++      options: {
++         legacyTemplate: true
++    },
+    ...
+  ],
+  ...
+}
+```
+
+This can make the overall experience slower, because it adds more transformation steps on top of the existing ones. It should only be used temporarily while migrating to the new API. It's highly likely that the legacy support will be dropped in future major versions of the addon.
+
+The legacy support is not bullet-proof, and it might not work in all scenarios that previously worked. If you're experiencing issues or getting errors after upgrading to v5, try migrating the problematic stories files to the modern API.
+
 ## Version compatibility
 
 ### latest
