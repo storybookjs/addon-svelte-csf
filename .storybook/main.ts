@@ -17,7 +17,16 @@ const config: StorybookConfig = {
     },
   ].filter(Boolean) as StorybookConfig['stories'],
   framework: '@storybook/svelte-vite',
-  addons: ['../dist/preset.js', '@storybook/addon-essentials', '@storybook/addon-interactions'],
+  addons: [
+    {
+      name: '../dist/preset.js',
+      options: {
+        legacyTemplate: true,
+      },
+    },
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+  ],
 };
 
 export default config;
