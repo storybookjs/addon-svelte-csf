@@ -1,5 +1,6 @@
 import type { PlayFunctionContext } from '@storybook/types';
-import type { Component, ComponentProps } from 'svelte';
+import type { Component, ComponentProps, Snippet } from 'svelte';
+import type { Primitive } from 'type-fest/source/primitive';
 import { describe, expectTypeOf, it } from 'vitest';
 
 import type {
@@ -45,5 +46,19 @@ describe('Meta', () => {
 
     expectTypeOf(meta).toMatchTypeOf<Meta<typeof Button>>();
     expectTypeOf(meta).toMatchTypeOf<ComponentAnnotations<typeof Button>>();
+  });
+
+  it('allows using string in optional children with Snippet', () => {
+    const meta = {
+      component: Button,
+      args: {
+        children: 'optional children as string',
+      },
+    } satisfies Meta<typeof Button>;
+
+    expectTypeOf(meta.args.children).toMatchTypeOf<Snippet | Primitive>();
+    expectTypeOf<NonNullable<Meta<typeof Button>['args']>['children']>().toMatchTypeOf<
+      Snippet | Primitive
+    >();
   });
 });

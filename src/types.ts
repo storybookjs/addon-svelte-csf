@@ -39,7 +39,9 @@ export interface SvelteStoryResult<TCmpOrArgs extends CmpOrArgs> {
 }
 
 export type MapSnippetsToAcceptPrimitives<Props extends Args> = {
-  [ArgKey in keyof Props]: Props[ArgKey] extends Snippet ? Snippet | Primitive : Props[ArgKey];
+  [ArgKey in keyof Props]: Props[ArgKey] extends Snippet | undefined
+    ? Snippet | Primitive
+    : Props[ArgKey];
 };
 
 type InferArgs<TCmpOrArgs extends CmpOrArgs> = MapSnippetsToAcceptPrimitives<

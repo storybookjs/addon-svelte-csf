@@ -1,5 +1,4 @@
 <script lang="ts">
-  import type { Snippet } from 'svelte';
   import type { HTMLButtonAttributes } from 'svelte/elements';
 
   interface Props extends HTMLButtonAttributes {
@@ -19,7 +18,7 @@
     /**
      * Content of the button
      */
-    children: Snippet;
+    children: HTMLButtonAttributes['children'];
   }
 
   const {
@@ -38,7 +37,7 @@
   style={backgroundColor ? `background-color: ${backgroundColor}` : ''}
   {...buttonProps}
 >
-  {@render children()}
+  {@render children?.()}
 </button>
 
 <style>
