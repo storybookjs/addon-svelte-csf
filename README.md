@@ -58,7 +58,7 @@ Svelte CSF stories files must always have the `.stories.svelte` extension.
 All stories files must have a "meta" (aka. "default export") defined, and its structure follows what's described in [the official docs on the subject](https://storybook.js.org/docs/api/csf#default-export). To define the meta in Svelte CSF, call the `defineMeta` function **within the module context**, with the meta properties you want:
 
 ```svelte
-<script context="module">
+<script module>
   //    👆 notice the module context, defineMeta does not work in a regular <script> tag - instance
   import { defineMeta } from '@storybook/addon-svelte-csf';
 
@@ -164,7 +164,7 @@ If you only need a single template that you want to share, it can be tedious to 
 In this case you can use the `setTemplate()` helper function that sets a default template for all stories. In regular CSF terms, this is the equivalent of defining a meta-level `render`-function versus story-level `render`-functions:
 
 ```svelte
-<script context="module">
+<script module>
   import { defineMeta, setTemplate } from '@storybook/addon-svelte-csf';
   //                   👆 import the function
   import MyComponent from './MyComponent.svelte';
@@ -233,7 +233,7 @@ Story snippets and args can be type-safe when necessary. The type of the args ar
 You can make your snippets type-safe with the `Args` and `StoryContext` helper types:
 
 ```svelte
-<script context="module" lang="ts">
+<script module lang="ts">
   import { defineMeta, type Args, type StoryContext } from '@storybook/addon-svelte-csf';
   //                   👆         👆 import those type helpers from this addon -->
 
