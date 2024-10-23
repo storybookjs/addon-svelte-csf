@@ -104,7 +104,7 @@
     "tslib": "^2.6.3",
     "type-fest": "^4.20.1",
     "typescript": "^5.5.2",
-    "typescript-svelte-plugin": "^0.3.39",
+    "typescript-svelte-plugin": "^0.3.42",
     "vite": "^5.3.2",
     "vite-plugin-inspect": "^0.8.4",
     "vite-plugin-virtual": "^0.3.0",
