@@ -20,11 +20,7 @@ describe(transformTemplateToSnippet.name, () => {
     `;
     const component = await parseAndExtractSvelteNode<SvelteAST.Component>(code, 'Component');
 
-    expect(
-      print(
-        transformTemplateToSnippet({ component })
-      )
-    ).toMatchInlineSnapshot(`
+    expect(print(transformTemplateToSnippet({ component }))).toMatchInlineSnapshot(`
       "{#snippet sb_default_template(args)}
       	<Button {...args} variant="primary" />
       {/snippet}"
@@ -43,15 +39,32 @@ describe(transformTemplateToSnippet.name, () => {
     `;
     const component = await parseAndExtractSvelteNode<SvelteAST.Component>(code, 'Component');
 
-    expect(
-      print(
-        transformTemplateToSnippet({ component })
-      )
-    ).toMatchInlineSnapshot(`
+    expect(print(transformTemplateToSnippet({ component }))).toMatchInlineSnapshot(`
 			"{#snippet coolTemplate(args)}
 				<Button {...args} variant="primary" />
 			{/snippet}"
 		`);
+  });
+
+  it("covers a case with provided prop 'id' and prop `id` not being a valid identifier", async ({
+    expect,
+  }) => {
+    const code = `
+      <script context="module" lang="ts">
+        import { Template } from "${pkg.name}";
+      </script>
+
+      <Template id="cool-template" let:args>
+        <Button {...args} variant="primary" />
+      </Template>
+    `;
+    const component = await parseAndExtractSvelteNode<SvelteAST.Component>(code, 'Component');
+
+    expect(print(transformTemplateToSnippet({ component }))).toMatchInlineSnapshot(`
+      "{#snippet template_haitqt(args)}
+      	<Button {...args} variant="primary" />
+      {/snippet}"
+    `);
   });
 
   it("works with 'let:context' directive", async ({ expect }) => {
@@ -66,11 +79,7 @@ describe(transformTemplateToSnippet.name, () => {
     `;
     const component = await parseAndExtractSvelteNode<SvelteAST.Component>(code, 'Component');
 
-    expect(
-      print(
-        transformTemplateToSnippet({ component })
-      )
-    ).toMatchInlineSnapshot(`
+    expect(print(transformTemplateToSnippet({ component }))).toMatchInlineSnapshot(`
       "{#snippet sb_default_template(_args, context)}
       	<p>{context.args}</p>
       {/snippet}"
