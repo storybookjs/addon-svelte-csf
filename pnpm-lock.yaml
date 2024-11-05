@@ -4212,7 +4212,6 @@ packages:
     engines: {node: '>=0.6.0', teleport: '>=0.2.0'}
     deprecated: |-
       You or someone you depend on is using Q, the JavaScript Promise library that gave JavaScript developers strong feelings about promises. They can almost certainly migrate to the native JavaScript promise now. Thank you literally everyone for joining me in this bet against the odds. Be excellent to each other.
-
       (For a CapTP with native promises, see @endo/eventual-send and @endo/captp)
 
   qs@6.13.0:
@@ -4844,12 +4843,6 @@ packages:
         optional: true
       typescript:
         optional: true
-
-  svelte2tsx@0.7.13:
-    resolution: {integrity: sha512-aObZ93/kGAiLXA/I/kP+x9FriZM+GboB/ReOIGmLNbVGEd2xC+aTCppm3mk1cc9I/z60VQf7b2QDxC3jOXu3yw==}
-    peerDependencies:
-      svelte: ^3.55 || ^4.0.0-next.0 || ^4.0 || ^5.0.0-next.0
-      typescript: ^4.9.4 || ^5.0.0
 
   svelte2tsx@0.7.22:
     resolution: {integrity: sha512-hf55ujq17ufVpDQlJzaQfRr9EjlLIwGmFlpKq4uYrQAQFw/99q1OcVYyBT6568iJySgBUY9PdccURrORmfetmQ==}
@@ -7228,7 +7221,7 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vitest/coverage-v8@2.1.4(vitest@2.1.4(@types/node@20.14.9)(@vitest/ui@2.1.4)(jsdom@24.1.0))':
+  '@vitest/coverage-v8@2.1.4(vitest@2.1.4)':
     dependencies:
       '@ampproject/remapping': 2.3.0
       '@bcoe/v8-coverage': 0.2.3
@@ -11647,7 +11640,7 @@ snapshots:
       '@auto-it/npm': 11.3.0(@types/node@20.14.9)(typescript@5.5.2)
       '@auto-it/released': 11.3.0(@types/node@20.14.9)(typescript@5.5.2)
       '@biomejs/biome': 1.9.4
-      '@vitest/coverage-v8': 2.1.4(vitest@2.1.4(@types/node@20.14.9)(@vitest/ui@2.1.4)(jsdom@24.1.0))
+      '@vitest/coverage-v8': 2.1.4(vitest@2.1.4)
       '@vitest/ui': 2.1.4(vitest@2.1.4)
       all-contributors-cli: 6.26.1
       auto: 11.3.0(@types/node@20.14.9)(typescript@5.5.2)
@@ -11694,13 +11687,6 @@ snapshots:
     optionalDependencies:
       '@babel/core': 7.26.0
       postcss: 8.4.47
-      typescript: 5.5.2
-
-  svelte2tsx@0.7.13(svelte@5.1.4)(typescript@5.5.2):
-    dependencies:
-      dedent-js: 1.0.1
-      pascal-case: 3.1.2
-      svelte: 5.1.4
       typescript: 5.5.2
 
   svelte2tsx@0.7.22(svelte@5.1.4)(typescript@5.5.2):
@@ -12001,7 +11987,7 @@ snapshots:
   typescript-svelte-plugin@0.3.42(svelte@5.1.4)(typescript@5.5.2):
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
-      svelte2tsx: 0.7.13(svelte@5.1.4)(typescript@5.5.2)
+      svelte2tsx: 0.7.22(svelte@5.1.4)(typescript@5.5.2)
     transitivePeerDependencies:
       - svelte
       - typescript
