@@ -37,7 +37,7 @@ importers:
         version: 0.30.12
       svelte-ast-print:
         specifier: ^0.4.0
-        version: 0.4.0(@types/node@20.14.9)(jsdom@24.1.0)(svelte@5.1.4)(typescript@5.5.2)
+        version: 0.4.0(@types/node@20.14.9)(happy-dom@15.11.4)(jsdom@24.1.0)(svelte@5.1.4)(typescript@5.5.2)
       zimmerframe:
         specifier: ^1.1.2
         version: 1.1.2
@@ -105,9 +105,9 @@ importers:
       eslint-plugin-storybook:
         specifier: ^0.8.0
         version: 0.8.0(eslint@7.32.0)(typescript@5.5.2)
-      jsdom:
-        specifier: ^24.1.0
-        version: 24.1.0
+      happy-dom:
+        specifier: ^15.11.4
+        version: 15.11.4
       prettier:
         specifier: ^3.3.2
         version: 3.3.2
@@ -152,7 +152,7 @@ importers:
         version: 0.3.0(vite@5.3.2(@types/node@20.14.9))
       vitest:
         specifier: ^1.6.0
-        version: 1.6.0(@types/node@20.14.9)(@vitest/ui@1.6.0)(jsdom@24.1.0)
+        version: 1.6.0(@types/node@20.14.9)(@vitest/ui@1.6.0)(happy-dom@15.11.4)(jsdom@24.1.0)
 
 packages:
 
@@ -2802,6 +2802,10 @@ packages:
     resolution: {integrity: sha512-vafaFqs8MZkRrSX7sFVUdo3ap/eNiLnb4IakshzvP56X5Nr1iGKAIqdX6tMlm6HcNRIkr6AxO5jFEoJzzpT8aQ==}
     engines: {node: '>=0.4.7'}
     hasBin: true
+
+  happy-dom@15.11.4:
+    resolution: {integrity: sha512-AU6tzh3ADd28vSmXahgLsGyGGihXPGeKH0owDn9lhHolB6vIwEhag//T+TBzDoAcHhmVEwlxwSgtW1KZep+1MA==}
+    engines: {node: '>=18.0.0'}
 
   hard-rejection@2.1.0:
     resolution: {integrity: sha512-VIZB+ibDhx7ObhAe7OVtoEbuP4h/MuOTHJ+J8h/eBXotJYl0fBgR72xDFCKgIh22OJZIOVNxBMWuhAr10r8HdA==}
@@ -5475,6 +5479,10 @@ packages:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
     engines: {node: '>=18'}
 
+  whatwg-mimetype@3.0.0:
+    resolution: {integrity: sha512-nt+N2dzIutVRxARx1nghPKGv1xHikU7HKdfafKkLNLindmPU/ch3U31NOCGGA/dmPcmb1VlofO0vnKAcsm0o/Q==}
+    engines: {node: '>=12'}
+
   whatwg-mimetype@4.0.0:
     resolution: {integrity: sha512-QaKxh0eNIi2mE9p2vEdzfagOKHCcj1pJ56EEHGQOVxp8r9/iszLUUV7v89x9O1p/T+NlTM5W7jW6+cz4Fq1YVg==}
     engines: {node: '>=18'}
@@ -7235,7 +7243,7 @@ snapshots:
       std-env: 3.7.0
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.1.4(@types/node@20.14.9)(@vitest/ui@2.1.4)(jsdom@24.1.0)
+      vitest: 2.1.4(@types/node@20.14.9)(@vitest/ui@2.1.4)(happy-dom@15.11.4)(jsdom@24.1.0)
     transitivePeerDependencies:
       - supports-color
     optional: true
@@ -7325,7 +7333,7 @@ snapshots:
       pathe: 1.1.2
       picocolors: 1.0.1
       sirv: 2.0.4
-      vitest: 1.6.0(@types/node@20.14.9)(@vitest/ui@1.6.0)(jsdom@24.1.0)
+      vitest: 1.6.0(@types/node@20.14.9)(@vitest/ui@1.6.0)(happy-dom@15.11.4)(jsdom@24.1.0)
 
   '@vitest/ui@2.1.4(vitest@2.1.4)':
     dependencies:
@@ -7336,7 +7344,7 @@ snapshots:
       sirv: 3.0.0
       tinyglobby: 0.2.10
       tinyrainbow: 1.2.0
-      vitest: 2.1.4(@types/node@20.14.9)(@vitest/ui@2.1.4)(jsdom@24.1.0)
+      vitest: 2.1.4(@types/node@20.14.9)(@vitest/ui@2.1.4)(happy-dom@15.11.4)(jsdom@24.1.0)
     optional: true
 
   '@vitest/utils@1.6.0':
@@ -7413,6 +7421,7 @@ snapshots:
       debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   ajv@6.12.6:
     dependencies:
@@ -7626,7 +7635,8 @@ snapshots:
   async@3.2.6:
     optional: true
 
-  asynckit@0.4.0: {}
+  asynckit@0.4.0:
+    optional: true
 
   author-regex@1.0.0: {}
 
@@ -7952,6 +7962,7 @@ snapshots:
   combined-stream@1.0.8:
     dependencies:
       delayed-stream: 1.0.0
+    optional: true
 
   comma-separated-tokens@2.0.3: {}
 
@@ -8115,6 +8126,7 @@ snapshots:
   cssstyle@4.0.1:
     dependencies:
       rrweb-cssom: 0.6.0
+    optional: true
 
   csstype@3.1.3: {}
 
@@ -8127,6 +8139,7 @@ snapshots:
     dependencies:
       whatwg-mimetype: 4.0.0
       whatwg-url: 14.0.0
+    optional: true
 
   data-view-buffer@1.0.1:
     dependencies:
@@ -8182,7 +8195,8 @@ snapshots:
   decamelize@1.2.0:
     optional: true
 
-  decimal.js@10.4.3: {}
+  decimal.js@10.4.3:
+    optional: true
 
   decode-named-character-reference@1.0.2:
     dependencies:
@@ -8233,7 +8247,8 @@ snapshots:
       has-property-descriptors: 1.0.2
       object-keys: 1.1.1
 
-  delayed-stream@1.0.0: {}
+  delayed-stream@1.0.0:
+    optional: true
 
   depd@2.0.0: {}
 
@@ -9001,6 +9016,7 @@ snapshots:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
+    optional: true
 
   forwarded@0.2.0: {}
 
@@ -9213,6 +9229,12 @@ snapshots:
       uglify-js: 3.19.3
     optional: true
 
+  happy-dom@15.11.4:
+    dependencies:
+      entities: 4.5.0
+      webidl-conversions: 7.0.0
+      whatwg-mimetype: 3.0.0
+
   hard-rejection@2.1.0:
     optional: true
 
@@ -9265,6 +9287,7 @@ snapshots:
   html-encoding-sniffer@4.0.0:
     dependencies:
       whatwg-encoding: 3.1.1
+    optional: true
 
   html-escaper@2.0.2:
     optional: true
@@ -9297,6 +9320,7 @@ snapshots:
       debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   https-proxy-agent@5.0.1:
     dependencies:
@@ -9311,6 +9335,7 @@ snapshots:
       debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   human-signals@2.1.0: {}
 
@@ -9323,6 +9348,7 @@ snapshots:
   iconv-lite@0.6.3:
     dependencies:
       safer-buffer: 2.1.2
+    optional: true
 
   ieee754@1.2.1: {}
 
@@ -9490,7 +9516,8 @@ snapshots:
   is-port-reachable@4.0.0:
     optional: true
 
-  is-potential-custom-element-name@1.0.1: {}
+  is-potential-custom-element-name@1.0.1:
+    optional: true
 
   is-reference@3.0.2:
     dependencies:
@@ -9648,6 +9675,7 @@ snapshots:
       - bufferutil
       - supports-color
       - utf-8-validate
+    optional: true
 
   jsesc@3.0.2:
     optional: true
@@ -10455,7 +10483,8 @@ snapshots:
     dependencies:
       path-key: 4.0.0
 
-  nwsapi@2.2.10: {}
+  nwsapi@2.2.10:
+    optional: true
 
   object-assign@4.1.1: {}
 
@@ -10623,6 +10652,7 @@ snapshots:
   parse5@7.1.2:
     dependencies:
       entities: 4.5.0
+    optional: true
 
   parseurl@1.3.3: {}
 
@@ -10790,7 +10820,8 @@ snapshots:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
 
-  psl@1.9.0: {}
+  psl@1.9.0:
+    optional: true
 
   punycode.js@2.3.1:
     optional: true
@@ -10804,7 +10835,8 @@ snapshots:
     dependencies:
       side-channel: 1.0.6
 
-  querystringify@2.2.0: {}
+  querystringify@2.2.0:
+    optional: true
 
   queue-microtask@1.2.3: {}
 
@@ -11193,7 +11225,8 @@ snapshots:
 
   requireindex@1.2.0: {}
 
-  requires-port@1.0.0: {}
+  requires-port@1.0.0:
+    optional: true
 
   resolve-from@4.0.0: {}
 
@@ -11254,9 +11287,11 @@ snapshots:
       '@rollup/rollup-win32-x64-msvc': 4.18.0
       fsevents: 2.3.3
 
-  rrweb-cssom@0.6.0: {}
+  rrweb-cssom@0.6.0:
+    optional: true
 
-  rrweb-cssom@0.7.0: {}
+  rrweb-cssom@0.7.0:
+    optional: true
 
   run-applescript@7.0.0: {}
 
@@ -11303,6 +11338,7 @@ snapshots:
   saxes@6.0.0:
     dependencies:
       xmlchars: 2.2.0
+    optional: true
 
   scheduler@0.23.2:
     dependencies:
@@ -11628,7 +11664,7 @@ snapshots:
 
   supports-preserve-symlinks-flag@1.0.0: {}
 
-  svelte-ast-print@0.4.0(@types/node@20.14.9)(jsdom@24.1.0)(svelte@5.1.4)(typescript@5.5.2):
+  svelte-ast-print@0.4.0(@types/node@20.14.9)(happy-dom@15.11.4)(jsdom@24.1.0)(svelte@5.1.4)(typescript@5.5.2):
     dependencies:
       esrap: 1.2.2
       svelte: 5.1.4
@@ -11649,7 +11685,7 @@ snapshots:
       typedoc: 0.26.10(typescript@5.5.2)
       typedoc-plugin-coverage: 3.3.0(typedoc@0.26.10(typescript@5.5.2))
       typedoc-plugin-mdn-links: 3.3.5(typedoc@0.26.10(typescript@5.5.2))
-      vitest: 2.1.4(@types/node@20.14.9)(@vitest/ui@2.1.4)(jsdom@24.1.0)
+      vitest: 2.1.4(@types/node@20.14.9)(@vitest/ui@2.1.4)(happy-dom@15.11.4)(jsdom@24.1.0)
     transitivePeerDependencies:
       - '@edge-runtime/vm'
       - '@swc/core'
@@ -11720,7 +11756,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  symbol-tree@3.2.4: {}
+  symbol-tree@3.2.4:
+    optional: true
 
   synckit@0.8.8:
     dependencies:
@@ -11830,12 +11867,14 @@ snapshots:
       punycode: 2.3.1
       universalify: 0.2.0
       url-parse: 1.5.10
+    optional: true
 
   tr46@0.0.3: {}
 
   tr46@5.0.0:
     dependencies:
       punycode: 2.3.1
+    optional: true
 
   tree-kill@1.2.2: {}
 
@@ -12157,7 +12196,8 @@ snapshots:
 
   universal-user-agent@6.0.1: {}
 
-  universalify@0.2.0: {}
+  universalify@0.2.0:
+    optional: true
 
   universalify@2.0.1: {}
 
@@ -12193,6 +12233,7 @@ snapshots:
     dependencies:
       querystringify: 2.2.0
       requires-port: 1.0.0
+    optional: true
 
   user-home@2.0.0:
     dependencies:
@@ -12348,7 +12389,7 @@ snapshots:
     optionalDependencies:
       vite: 5.3.2(@types/node@20.14.9)
 
-  vitest@1.6.0(@types/node@20.14.9)(@vitest/ui@1.6.0)(jsdom@24.1.0):
+  vitest@1.6.0(@types/node@20.14.9)(@vitest/ui@1.6.0)(happy-dom@15.11.4)(jsdom@24.1.0):
     dependencies:
       '@vitest/expect': 1.6.0
       '@vitest/runner': 1.6.0
@@ -12373,6 +12414,7 @@ snapshots:
     optionalDependencies:
       '@types/node': 20.14.9
       '@vitest/ui': 1.6.0(vitest@1.6.0)
+      happy-dom: 15.11.4
       jsdom: 24.1.0
     transitivePeerDependencies:
       - less
@@ -12383,7 +12425,7 @@ snapshots:
       - supports-color
       - terser
 
-  vitest@2.1.4(@types/node@20.14.9)(@vitest/ui@2.1.4)(jsdom@24.1.0):
+  vitest@2.1.4(@types/node@20.14.9)(@vitest/ui@2.1.4)(happy-dom@15.11.4)(jsdom@24.1.0):
     dependencies:
       '@vitest/expect': 2.1.4
       '@vitest/mocker': 2.1.4(vite@5.3.2(@types/node@20.14.9))
@@ -12408,6 +12450,7 @@ snapshots:
     optionalDependencies:
       '@types/node': 20.14.9
       '@vitest/ui': 2.1.4(vitest@2.1.4)
+      happy-dom: 15.11.4
       jsdom: 24.1.0
     transitivePeerDependencies:
       - less
@@ -12439,6 +12482,7 @@ snapshots:
   w3c-xmlserializer@5.0.0:
     dependencies:
       xml-name-validator: 5.0.0
+    optional: true
 
   walk-up-path@3.0.1: {}
 
@@ -12458,13 +12502,18 @@ snapshots:
   whatwg-encoding@3.1.1:
     dependencies:
       iconv-lite: 0.6.3
+    optional: true
 
-  whatwg-mimetype@4.0.0: {}
+  whatwg-mimetype@3.0.0: {}
+
+  whatwg-mimetype@4.0.0:
+    optional: true
 
   whatwg-url@14.0.0:
     dependencies:
       tr46: 5.0.0
       webidl-conversions: 7.0.0
+    optional: true
 
   whatwg-url@5.0.0:
     dependencies:
@@ -12567,13 +12616,16 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  ws@8.17.0: {}
+  ws@8.17.0:
+    optional: true
 
   ws@8.17.1: {}
 
-  xml-name-validator@5.0.0: {}
+  xml-name-validator@5.0.0:
+    optional: true
 
-  xmlchars@2.2.0: {}
+  xmlchars@2.2.0:
+    optional: true
 
   xtend@4.0.2:
     optional: true
