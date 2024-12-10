@@ -1,5 +1,3 @@
-import { camelCase } from 'es-toolkit/string';
-
 import {
   createASTArrayExpression,
   createASTAttribute,
@@ -11,6 +9,7 @@ import {
 } from '#parser/ast';
 import { InvalidTemplateAttribute } from '#utils/error/legacy-api/index';
 
+import { hashTemplateName } from '#utils/identifier-utils';
 import type { State } from '..';
 
 interface Params {
@@ -247,7 +246,7 @@ function templateToChildren(
     value: [
       createASTExpressionTag({
         type: 'Identifier',
-        name: camelCase(
+        name: hashTemplateName(
           value[0].type === 'Text'
             ? value[0].data
             : ((value[0].expression as ESTreeAST.Literal).value as string)

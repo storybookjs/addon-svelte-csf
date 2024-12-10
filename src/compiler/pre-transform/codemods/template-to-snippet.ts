@@ -1,5 +1,6 @@
 import { getStringValueFromAttribute } from '#parser/analyse/story/attributes';
 import type { SvelteAST } from '#parser/ast';
+import { hashTemplateName } from '#utils/identifier-utils';
 
 interface Params {
   component: SvelteAST.Component;
@@ -70,7 +71,7 @@ export function transformTemplateToSnippet(params: Params): SvelteAST.SnippetBlo
     type: 'SnippetBlock',
     expression: {
       type: 'Identifier',
-      name: id ?? 'sb_default_template',
+      name: id ? hashTemplateName(id) : 'sb_default_template',
     },
     parameters,
     body: fragment,
