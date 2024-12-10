@@ -4,10 +4,7 @@ import { defineConfig } from 'vite';
 import { svelte } from '@sveltejs/vite-plugin-svelte';
 import inspect from 'vite-plugin-inspect';
 
-export default defineConfig({
-  // define: {
-  //   'import.meta.vitest': 'undefined',
-  // },
+export default defineConfig((configEnv) => ({
   plugins: [
     svelte(),
     inspect({
@@ -15,10 +12,12 @@ export default defineConfig({
       build: true,
     }),
   ],
+  resolve: {
+    conditions: configEnv.mode === 'test' ? ['browser'] : [],
+  },
   test: {
     dir: './src/',
-    environment: 'jsdom',
+    environment: 'happy-dom',
     globals: true,
-    // includeSource: ['**/*.ts'],
   },
-});
+}));
