@@ -19,10 +19,10 @@
     "types": ["vitest/importMeta"],
     "paths": {
 			"$lib": [
-				"../src/lib"
+				"src/lib"
 			],
 			"$lib/*": [
-				"../src/lib/*"
+				"src/lib/*"
 			]
 		},
     "plugins": [
