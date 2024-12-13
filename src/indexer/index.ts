@@ -9,6 +9,7 @@ import {
 } from '#utils/error/parser/extract/svelte';
 import { LegacyTemplateNotEnabledError } from '#utils/error/legacy-api/index';
 import { NoDestructuredDefineMetaCallError } from '#utils/error/parser/analyse/define-meta';
+import { isStorybookSvelteCSFError } from '#utils/error';
 
 export const createIndexer = (legacyTemplate: boolean): Indexer => ({
   test: /\.svelte$/,
@@ -37,6 +38,11 @@ export const createIndexer = (legacyTemplate: boolean): Indexer => ({
       ) {
         const { filename } = error;
         throw new LegacyTemplateNotEnabledError(filename);
+      }
+
+      // WARN: We can't use instance of `StorybookSvelteCSFError`, because is an _abstract_ class :sob:
+      if (isStorybookSvelteCSFError(error)) {
+        throw error;
       }
 
       throw new IndexerParseError();

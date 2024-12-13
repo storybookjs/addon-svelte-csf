@@ -80,7 +80,7 @@ export abstract class StorybookSvelteCSFError extends Error {
    * Generates the error message along with additional documentation link (if applicable).
    */
   get message() {
-    if(this.customMessage) {
+    if (this.customMessage) {
       return this.customMessage;
     }
 
@@ -177,4 +177,19 @@ export abstract class StorybookSvelteCSFError extends Error {
   public get quickStoryRawCodeIdentifier() {
     return `<Story name="${this.storyNameFromAttribute}" />`;
   }
+}
+
+// WARN: We can't use instance of `StorybookSvelteCSFError`, because is an _abstract_ class :sob:
+export function isStorybookSvelteCSFError(error: unknown) {
+  if (typeof error !== 'object' || error === null) {
+    return false;
+  }
+
+  for (const key of ['category', 'code', 'data', 'documentation', 'fullErrorCode', 'template']) {
+    if (!Object.hasOwn(error, key)) {
+      return false;
+    }
+  }
+
+  return true;
 }
