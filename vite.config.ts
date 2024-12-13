@@ -1,7 +1,7 @@
 /// <reference types="vitest" />
 
 import { defineConfig } from 'vite';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
+import { sveltekit } from '@sveltejs/kit/vite';
 import inspect from 'vite-plugin-inspect';
 
 export default defineConfig({
@@ -9,7 +9,7 @@ export default defineConfig({
   //   'import.meta.vitest': 'undefined',
   // },
   plugins: [
-    svelte(),
+    sveltekit(),
     inspect({
       dev: true,
       build: true,
