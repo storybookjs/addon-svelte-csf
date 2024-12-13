@@ -45,7 +45,7 @@
     "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.json,.html,.svelte,.ts --report-unused-disable-directives",
     "prepublish": "pnpm run clean && pnpm run build",
     "release": "pnpm run build && auto shipit",
-    "start": "concurrently \"pnpm run storybook --quiet\" \"pnpm run build --watch\"",
+    "start": "pnpm run build && concurrently \"pnpm run build --watch\" \"pnpm run storybook --quiet\"",
     "storybook": "storybook dev --port 6006 --no-open",
     "test": "vitest run",
     "test:watch": "vitest watch"
