@@ -126,8 +126,8 @@ export abstract class StorybookSvelteCSFError extends Error {
     },
     options?: ConstructorParameters<typeof Error>[1]
   ) {
-    super('', options);
-
+    super();
+    this.cause = options?.cause;
     this.filename = filename;
     this.component = component;
   }
