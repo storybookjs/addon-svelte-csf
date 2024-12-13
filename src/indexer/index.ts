@@ -15,7 +15,9 @@ export const createIndexer = (legacyTemplate: boolean): Indexer => ({
   test: /\.svelte$/,
   createIndex: async (filename, { makeTitle }) => {
     try {
-      const { meta, stories } = await parseForIndexer(filename, { legacyTemplate });
+      const { meta, stories } = await parseForIndexer(filename, {
+        legacyTemplate,
+      });
 
       return stories.map((story) => {
         return {
@@ -40,12 +42,12 @@ export const createIndexer = (legacyTemplate: boolean): Indexer => ({
         throw new LegacyTemplateNotEnabledError(filename);
       }
 
-      // WARN: We can't use instance of `StorybookSvelteCSFError`, because is an _abstract_ class :sob:
+      // WARN: We can't use `instanceof StorybookSvelteCSFError`, because is an _abstract_ class
       if (isStorybookSvelteCSFError(error)) {
         throw error;
       }
 
-      throw new IndexerParseError();
+      throw new IndexerParseError({ cause: error });
     }
   },
 });

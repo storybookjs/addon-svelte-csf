@@ -116,14 +116,17 @@ export abstract class StorybookSvelteCSFError extends Error {
    */
   readonly component?: SvelteAST.Component;
 
-  constructor({
-    filename,
-    component: component,
-  }: {
-    filename?: StorybookSvelteCSFError['filename'];
-    component?: StorybookSvelteCSFError['component'];
-  }) {
-    super();
+  constructor(
+    {
+      filename,
+      component: component,
+    }: {
+      filename?: StorybookSvelteCSFError['filename'];
+      component?: StorybookSvelteCSFError['component'];
+    },
+    options?: ConstructorParameters<typeof Error>[1]
+  ) {
+    super('', options);
 
     this.filename = filename;
     this.component = component;
