@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
+
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "esModuleInterop": true,
@@ -16,7 +17,14 @@
     "target": "esnext",
     "verbatimModuleSyntax": true,
     "types": ["vitest/importMeta"],
-    "customConditions": ["development"],
+    "paths": {
+			"$lib": [
+				"../src/lib"
+			],
+			"$lib/*": [
+				"../src/lib/*"
+			]
+		},
     "plugins": [
       {
         "name": "typescript-svelte-plugin",

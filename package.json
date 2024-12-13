@@ -13,15 +13,6 @@
   },
   "license": "MIT",
   "type": "module",
-  "imports": {
-    "#tests/*": {
-      "development": "./tests/*.ts"
-    },
-    "#*": {
-      "development": "./src/*.ts",
-      "default": "./dist/*.js"
-    }
-  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -44,7 +35,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "svelte-package --input ./src --types",
+    "build": "svelte-package --types",
     "build-storybook": "storybook build",
     "check": "svelte-check",
     "chromatic": "chromatic --exit-zero-on-changes",
@@ -82,6 +73,7 @@
     "@storybook/svelte": "^8.0.0",
     "@storybook/svelte-vite": "^8.0.0",
     "@storybook/test": "^8.0.0",
+    "@sveltejs/kit": "^2.11.1",
     "@sveltejs/package": "^2.3.7",
     "@sveltejs/vite-plugin-svelte": "4.0.0",
     "@tsconfig/svelte": "^5.0.4",
