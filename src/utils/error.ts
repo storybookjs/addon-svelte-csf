@@ -10,6 +10,7 @@ import type { SvelteAST } from '#parser/ast';
  * and modified for this addon needs.
  */
 export abstract class StorybookSvelteCSFError extends Error {
+  public static isStorybookCSFSvelteError = true;
   public static packageName = pkg.name;
   public static packageVersion = pkg.version;
 
@@ -179,17 +180,10 @@ export abstract class StorybookSvelteCSFError extends Error {
   }
 }
 
-// WARN: We can't use instance of `StorybookSvelteCSFError`, because is an _abstract_ class :sob:
-export function isStorybookSvelteCSFError(error: unknown) {
-  if (typeof error !== 'object' || error === null) {
-    return false;
-  }
-
-  for (const key of ['category', 'code', 'data', 'documentation', 'fullErrorCode', 'template']) {
-    if (!Object.hasOwn(error, key)) {
-      return false;
-    }
-  }
-
-  return true;
+// WARN: We can't use `instanceof StorybookSvelteCSFError`, because is an _abstract_ class
+export function isStorybookSvelteCSFError(error: unknown): error is StorybookSvelteCSFError {
+  return Boolean(
+    (Object.getPrototypeOf(error)?.constructor as typeof StorybookSvelteCSFError)
+      ?.isStorybookCSFSvelteError
+  );
 }
