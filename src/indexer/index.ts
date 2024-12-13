@@ -39,7 +39,7 @@ export const createIndexer = (legacyTemplate: boolean): Indexer => ({
         error instanceof GetDefineMetaFirstArgumentError
       ) {
         const { filename } = error;
-        throw new LegacyTemplateNotEnabledError(filename);
+        throw new LegacyTemplateNotEnabledError(filename, { cause: error });
       }
 
       // WARN: We can't use `instanceof StorybookSvelteCSFError`, because is an _abstract_ class
