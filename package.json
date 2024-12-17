@@ -13,15 +13,6 @@
   },
   "license": "MIT",
   "type": "module",
-  "imports": {
-    "#tests/*": {
-      "development": "./tests/*.ts"
-    },
-    "#*": {
-      "development": "./src/*.ts",
-      "default": "./dist/*.js"
-    }
-  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -44,7 +35,7 @@
     "README.md"
   ],
   "scripts": {
-    "build": "svelte-package --input ./src --types",
+    "build": "svelte-package --types",
     "build-storybook": "storybook build",
     "check": "svelte-check",
     "chromatic": "chromatic --exit-zero-on-changes",
@@ -54,7 +45,7 @@
     "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.json,.html,.svelte,.ts --report-unused-disable-directives",
     "prepublish": "pnpm run clean && pnpm run build",
     "release": "pnpm run build && auto shipit",
-    "start": "concurrently \"pnpm run storybook --quiet\" \"pnpm run build --watch\"",
+    "start": "pnpm run build && concurrently \"pnpm run build --watch\" \"pnpm run storybook --quiet\"",
     "storybook": "storybook dev --port 6006 --no-open",
     "test": "vitest run",
     "test:watch": "vitest watch"
