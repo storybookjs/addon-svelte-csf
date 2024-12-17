@@ -73,7 +73,6 @@
     "@storybook/svelte": "^8.0.0",
     "@storybook/svelte-vite": "^8.0.0",
     "@storybook/test": "^8.0.0",
-    "@sveltejs/kit": "^2.11.1",
     "@sveltejs/package": "^2.3.7",
     "@sveltejs/vite-plugin-svelte": "4.0.0",
     "@tsconfig/svelte": "^5.0.4",

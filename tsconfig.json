@@ -1,12 +1,8 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
-
-    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "esModuleInterop": true,
-    "incremental": false,
-    "lib": ["esnext", "dom"],
+    "lib": ["esnext", "DOM", "DOM.Iterable"],
     "module": "esnext",
     "moduleResolution": "bundler",
     "noImplicitAny": false,
@@ -16,13 +12,15 @@
     "strict": true,
     "target": "esnext",
     "verbatimModuleSyntax": true,
+    "isolatedModules": true,
     "types": ["vitest/importMeta"],
+		"forceConsistentCasingInFileNames": true,
     "paths": {
 			"$lib": [
-				"src/lib"
+				"src"
 			],
 			"$lib/*": [
-				"src/lib/*"
+				"src/*"
 			]
 		},
     "plugins": [
