@@ -67,7 +67,6 @@
     "@storybook/addon-actions": "^8.0.0",
     "@storybook/addon-essentials": "^8.0.0",
     "@storybook/addon-interactions": "^8.0.0",
-    "@storybook/client-logger": "^8.0.0",
     "@storybook/eslint-config-storybook": "^4.0.0",
     "@storybook/preview-api": "^8.0.0",
     "@storybook/svelte": "^8.0.0",
