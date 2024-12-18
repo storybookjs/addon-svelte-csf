@@ -54,9 +54,6 @@ importers:
       '@storybook/addon-interactions':
         specifier: ^8.0.0
         version: 8.3.6(storybook@8.3.5)
-      '@storybook/client-logger':
-        specifier: ^8.0.0
-        version: 8.3.6(storybook@8.3.5)
       '@storybook/eslint-config-storybook':
         specifier: ^4.0.0
         version: 4.0.0(eslint@7.32.0)(prettier@3.3.2)(remark@15.0.1)(typescript@5.5.2)
@@ -900,11 +897,6 @@ packages:
         optional: true
       vite-plugin-glimmerx:
         optional: true
-
-  '@storybook/client-logger@8.3.6':
-    resolution: {integrity: sha512-URq/whw3cYs/GSDxOVqrwdPloN1ZPYMUPoABHQi/Kzx3nW0+ZRkNzwDGsQ4L8EoaYuNUB/g/82/0pz3z6k/aGA==}
-    peerDependencies:
-      storybook: ^8.3.6
 
   '@storybook/components@8.3.6':
     resolution: {integrity: sha512-TXuoGZY7X3iixF45lXkYOFk8k2q9OHcqHyHyem1gATLLQXgyOvDgzm+VB7uKBNzssRQPEE+La70nfG8bq/viRw==}
@@ -6704,10 +6696,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
       - webpack-sources
-
-  '@storybook/client-logger@8.3.6(storybook@8.3.5)':
-    dependencies:
-      storybook: 8.3.5
 
   '@storybook/components@8.3.6(storybook@8.3.5)':
     dependencies:
