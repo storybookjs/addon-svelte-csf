@@ -8,9 +8,9 @@ import { describe, it } from 'vitest';
 
 import { transformStoriesCode } from '.';
 
-import { getSvelteAST } from '#parser/ast';
-import { extractSvelteASTNodes } from '#parser/extract/svelte/nodes';
-import { extractCompiledASTNodes } from '#parser/extract/compiled/nodes';
+import { getSvelteAST } from '$lib/parser/ast.js';
+import { extractSvelteASTNodes } from '$lib/parser/extract/svelte/nodes.js';
+import { extractCompiledASTNodes } from '$lib/parser/extract/compiled/nodes.js';
 
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -69,7 +69,7 @@ describe(transformStoriesCode.name, () => {
        * * _Italic_,
        * * \`Code\`.
        */
-      const { Story, meta } = defineMeta({
+      const meta = {
       	title: 'Example',
       	component: Example,
       	tags: ['autodocs'],
@@ -85,7 +85,8 @@ describe(transformStoriesCode.name, () => {
       			}
       		}
       	}
-      });
+      };
+      const { Story } = defineMeta(meta);
 
       function Example_stories($$anchor, $$props) {
         $.check_target(new.target);
