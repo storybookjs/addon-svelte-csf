@@ -1,17 +1,16 @@
 <script lang="ts">
   import type { Component } from 'svelte';
-  import type { EmptyObject } from 'type-fest';
 
-  import type { Cmp, Meta } from '#types';
+  import type { Cmp } from '$lib/types';
 
   import {
     type StoriesRepository,
     createStoriesExtractorContext,
-  } from '#runtime/contexts/extractor.svelte';
+  } from '$lib/runtime/contexts/extractor.svelte';
 
   interface Props {
     Stories: Component;
-    repository: () => StoriesRepository<EmptyObject, Cmp, Meta<Cmp>>;
+    repository: () => StoriesRepository<Cmp>;
   }
 
   const { Stories, repository }: Props = $props();
