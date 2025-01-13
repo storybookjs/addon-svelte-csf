@@ -3,8 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "lib": ["esnext", "DOM", "DOM.Iterable"],
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "noImplicitAny": false,
     "resolveJsonModule": true,
     "rootDir": ".",
