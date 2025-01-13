@@ -14,15 +14,11 @@
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "types": ["vitest/importMeta"],
-		"forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true,
     "paths": {
-			"$lib": [
-				"src"
-			],
-			"$lib/*": [
-				"src/*"
-			]
-		},
+      "$lib": ["src"],
+      "$lib/*": ["src/*"]
+    },
     "plugins": [
       {
         "name": "typescript-svelte-plugin",

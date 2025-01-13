@@ -1,7 +1,7 @@
 export default {
-    kit: {
-        files: {
-            lib: 'src',
-        }
-    }
+  kit: {
+    files: {
+      lib: 'src',
+    },
+  },
 };
