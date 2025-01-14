@@ -16,7 +16,7 @@ export default defineConfig({
   resolve: {
     alias: {
       // This is already set up in svelte.config.js, but we need it explicitly here for vitest
-      '$lib': path.resolve(__dirname, 'src'),
+      $lib: path.resolve(__dirname, 'src'),
     },
   },
   test: {

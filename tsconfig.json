@@ -3,8 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "lib": ["esnext", "DOM", "DOM.Iterable"],
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "noImplicitAny": false,
     "resolveJsonModule": true,
     "rootDir": ".",
@@ -14,15 +14,11 @@
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
     "types": ["vitest/importMeta"],
-		"forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": true,
     "paths": {
-			"$lib": [
-				"src"
-			],
-			"$lib/*": [
-				"src/*"
-			]
-		},
+      "$lib": ["src"],
+      "$lib/*": ["src/*"]
+    },
     "plugins": [
       {
         "name": "typescript-svelte-plugin",
