@@ -38,6 +38,15 @@ jobs:
           pnpm install
           --frozen-lockfile
 
+      - name: Install Playwright Dependencies
+        # Required for Vitest browser-mode
+        run: pnpm exec playwright install chromium --with-deps
+
+      - name: Build package
+        # Required for testing stories
+        run: >
+          pnpm build
+
       - name: Run tests with Vitest
         # https://vitest.dev/guide/cli.html
         run: >

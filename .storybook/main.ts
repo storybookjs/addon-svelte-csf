@@ -25,7 +25,7 @@ const config: StorybookConfig = {
       },
     },
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
+    '@storybook/experimental-addon-test',
   ],
 };
 
