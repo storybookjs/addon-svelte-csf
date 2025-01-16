@@ -1,18 +1,9 @@
-import { defineWorkspace, mergeConfig } from 'vitest/config';
+import { defineWorkspace } from 'vitest/config';
 import { storybookTest } from '@storybook/experimental-addon-test/vitest-plugin';
-import path from 'path';
-import { svelte } from '@sveltejs/vite-plugin-svelte';
-import inspect from 'vite-plugin-inspect';
 
 export default defineWorkspace([
   {
     extends: './vite.config.ts',
-    resolve: {
-      alias: {
-        // This is already set up in svelte.config.js, but we need it explicitly here for vitest
-        $lib: path.resolve(__dirname, 'src'),
-      },
-    },
     test: {
       name: 'unit',
       dir: './src/',
@@ -21,24 +12,12 @@ export default defineWorkspace([
     },
   },
   {
-    // extends: './vite.config.ts', 👈 commented out
+    extends: './vite.config.ts',
     plugins: [
-      storybookTest({
-        storybookScript: 'pnpm run storybook --no-open',
-      }),
-      // 👆 BEFORE svelte plugin
-      svelte(),
-      inspect({
-        dev: true,
-        build: true,
-      }),
+        storybookTest({
+          storybookScript: 'pnpm run storybook --no-open',
+        }),
     ],
-    resolve: {
-      alias: {
-        // This is already set up in svelte.config.js, but we need it explicitly here for vitest
-        $lib: path.resolve(__dirname, 'src'),
-      },
-    },
     test: {
       name: 'storybook',
       browser: {
