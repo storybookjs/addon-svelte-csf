@@ -25,7 +25,8 @@ const config: StorybookConfig = {
       },
     },
     '@storybook/addon-essentials',
-    '@storybook/addon-interactions',
+    '@chromatic-com/storybook',
+    '@storybook/experimental-addon-test',
   ],
 };
 
