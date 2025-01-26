@@ -63,6 +63,7 @@
   },
   "devDependencies": {
     "@auto-it/released": "^11.1.6",
+    "@chromatic-com/storybook": "^3.2.3",
     "@storybook/addon-actions": "8.5.0-beta.11",
     "@storybook/addon-essentials": "8.5.0-beta.11",
     "@storybook/eslint-config-storybook": "^4.0.0",
