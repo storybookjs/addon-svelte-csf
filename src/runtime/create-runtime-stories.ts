@@ -68,9 +68,21 @@ export const createRuntimeStories = (Stories: Component, meta: Meta<Cmp>) => {
        * The 'play' function should be delegated to the real play Story function
        * in order to be run into the component scope.
        */
-      function params(fn) { return fn.toString().match(/[^(]*\(([^)]*)/)?.slice(1) ?? [] }
-      const isMounting = params(storyObj.play).filter((p) => /\{\s*mount\s*\}/.test(p)).length != 0
-      storyObj.play = isMounting ? function ({ mount }) { return playDelegator(arguments[0]) } : (storyContext) => playDelegator(storyContext);
+      function params(fn) {
+        return (
+          fn
+            .toString()
+            .match(/[^(]*\(([^)]*)/)
+            ?.slice(1) ?? []
+        );
+      }
+      const isMounting =
+        params(storyObj.play).filter((p) => /\{.*,?\s*mount\s*,?.*\}/.test(p)).length != 0;
+      storyObj.play = isMounting
+        ? function ({ mount }) {
+            return playDelegator(arguments[0]);
+          }
+        : (storyContext) => playDelegator(storyContext);
       function playDelegator(storyContext) {
         const delegate = storyContext.playFunction?.__play;
 
@@ -80,7 +92,7 @@ export const createRuntimeStories = (Stories: Component, meta: Meta<Cmp>) => {
 
         // @ts-expect-error WARN: It should not affect user perspective- the problem lies in this addon's type `SvelteRenderer` missing type constrains or default generic parameter type
         return play(storyContext);
-      };
+      }
     }
 
     stories[exportName] = storyObj;
