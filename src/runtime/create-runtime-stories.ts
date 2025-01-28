@@ -82,7 +82,7 @@ export const createRuntimeStories = (Stories: Component, meta: Meta<Cmp>) => {
         ? function ({ mount }) {
             return playDelegator(arguments[0]);
           }
-        : (storyContext) => playDelegator(storyContext);
+        : playDelegator;
       function playDelegator(storyContext) {
         const delegate = storyContext.playFunction?.__play;
 
