@@ -53,6 +53,7 @@
   "dependencies": {
     "@storybook/csf": "^0.1.11",
     "@storybook/docs-tools": "^8.0.0",
+    "@storybook/preview-api": "8.5.0-beta.11",
     "@storybook/types": "^8.0.0",
     "dedent": "^1.5.3",
     "es-toolkit": "^1.26.1",
@@ -68,7 +69,6 @@
     "@storybook/addon-essentials": "8.5.0-beta.11",
     "@storybook/eslint-config-storybook": "^4.0.0",
     "@storybook/experimental-addon-test": "^8.5.0-beta.11",
-    "@storybook/preview-api": "8.5.0-beta.11",
     "@storybook/svelte": "8.5.0-beta.11",
     "@storybook/svelte-vite": "8.5.0-beta.11",
     "@storybook/test": "8.5.0-beta.11",

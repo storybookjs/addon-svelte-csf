@@ -19,6 +19,9 @@ importers:
       '@storybook/docs-tools':
         specifier: 8.5.0-beta.11
         version: 8.5.0-beta.11(storybook@8.5.0-beta.11(prettier@3.3.2))
+      '@storybook/preview-api':
+        specifier: 8.5.0-beta.11
+        version: 8.5.0-beta.11(storybook@8.5.0-beta.11(prettier@3.3.2))
       '@storybook/types':
         specifier: 8.5.0-beta.11
         version: 8.5.0-beta.11(storybook@8.5.0-beta.11(prettier@3.3.2))
@@ -59,9 +62,6 @@ importers:
       '@storybook/experimental-addon-test':
         specifier: ^8.5.0-beta.11
         version: 8.5.0-beta.11(@vitest/browser@2.1.4)(@vitest/runner@2.1.4)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(storybook@8.5.0-beta.11(prettier@3.3.2))(vitest@2.1.4)
-      '@storybook/preview-api':
-        specifier: 8.5.0-beta.11
-        version: 8.5.0-beta.11(storybook@8.5.0-beta.11(prettier@3.3.2))
       '@storybook/svelte':
         specifier: 8.5.0-beta.11
         version: 8.5.0-beta.11(storybook@8.5.0-beta.11(prettier@3.3.2))(svelte@5.1.4)
