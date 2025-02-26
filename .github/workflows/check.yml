@@ -29,6 +29,7 @@ jobs:
         # https://github.com/actions/setup-node
         uses: actions/setup-node@v4
         with:
+          cache: pnpm
           node-version-file: '.nvmrc'
 
       - name: Install Node.js dependencies with pnpm
