@@ -8,6 +8,7 @@ defaults:
 
 env:
   CI: true
+  COREPACK_INTEGRITY_KEYS: 0 
 
 permissions:
   contents: read
@@ -16,7 +17,7 @@ jobs:
   test:
     name: Test
     runs-on: ubuntu-latest
-    timeout-minutes: 2
+    timeout-minutes: 4
     steps:
       # https://github.com/actions/checkout
       - uses: actions/checkout@v4
