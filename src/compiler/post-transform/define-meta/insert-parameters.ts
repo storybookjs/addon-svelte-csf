@@ -1,12 +1,13 @@
 import {
   findASTPropertyIndex,
   findPropertyDescriptionIndex,
+  findPropertyDisableFromUIIndex,
   findPropertyDocsIndex,
   findPropertyParametersIndex,
   getDescriptionPropertyValue,
   getDocsPropertyValue,
   getParametersPropertyValue,
-} from '$lib/compiler/post-transform/shared/description.js';
+} from '$lib/compiler/post-transform/shared/parameters.js';
 import { createASTObjectExpression, createASTProperty, type ESTreeAST } from '$lib/parser/ast.js';
 import type { SvelteASTNodes } from '$lib/parser/extract/svelte/nodes.js';
 import type { CompiledASTNodes } from '$lib/parser/extract/compiled/nodes.js';
@@ -21,6 +22,10 @@ interface Params {
 }
 
 /**
+ * This function inserts parameters to `defineMeta()`.
+ *
+ * ## Case 1
+ *
  * Attempt to insert JSDoc comment above the `defineMeta()` call.
  *
  * Before:
@@ -41,19 +46,22 @@ interface Params {
  *   },
  * });
  * ```
+ *
+ * ## Case 2
+ *
+ * Inserts https://storybook.js.org/docs/essentials/controls#disablesavefromui
+ * Reference: https://github.com/storybookjs/addon-svelte-csf/issues/240
+ * TODO: Restore this feature
  */
-export function insertDefineMetaJSDocCommentAsDescription(params: Params): void {
+export function insertDefineMetaParameters(params: Params): void {
   const { nodes, filename } = params;
-  const { compiled, svelte } = nodes;
-  const { defineMetaVariableDeclaration } = svelte;
-  const { leadingComments } = defineMetaVariableDeclaration;
 
-  if (!leadingComments) {
+  if (!nodes.svelte.defineMetaVariableDeclaration.leadingComments) {
     return;
   }
 
   const defineMetaFirstArgumentObjectExpression = getDefineMetaFirstArgumentObjectExpression({
-    nodes: compiled,
+    nodes: nodes.compiled,
     filename,
   });
 
@@ -68,6 +76,34 @@ export function insertDefineMetaJSDocCommentAsDescription(params: Params): void 
     );
   }
 
+  // Related to case 2
+  const disableSaveFromUIIndex = findPropertyDisableFromUIIndex({
+    filename,
+    node: defineMetaFirstArgumentObjectExpression,
+  });
+  // Related to case 2
+  if (disableSaveFromUIIndex === -1) {
+    getParametersPropertyValue({
+      filename,
+      node: defineMetaFirstArgumentObjectExpression,
+    }).properties.push(
+      createASTProperty('disableSaveFromUI', {
+        type: 'Literal',
+        value: true,
+      })
+    );
+  } else {
+    // WARN: We're overriding the existing value for user
+    getParametersPropertyValue({
+      filename,
+      node: defineMetaFirstArgumentObjectExpression,
+    }).properties[disableSaveFromUIIndex] = createASTProperty('disableSaveFromUI', {
+      type: 'Literal',
+      value: true,
+    });
+  }
+
+  // Related to case 1
   if (
     findPropertyDocsIndex({
       filename,
@@ -80,6 +116,7 @@ export function insertDefineMetaJSDocCommentAsDescription(params: Params): void 
     }).properties.push(createASTProperty('docs', createASTObjectExpression()));
   }
 
+  // Related to case 1
   if (
     findPropertyDescriptionIndex({
       filename,
@@ -92,6 +129,7 @@ export function insertDefineMetaJSDocCommentAsDescription(params: Params): void 
     }).properties.push(createASTProperty('description', createASTObjectExpression()));
   }
 
+  // Related to case 1
   if (
     findASTPropertyIndex({
       name: 'component',
@@ -111,13 +149,14 @@ export function insertDefineMetaJSDocCommentAsDescription(params: Params): void 
     return;
   }
 
+  // Related to case 1
   getDescriptionPropertyValue({
     filename,
     node: defineMetaFirstArgumentObjectExpression,
   }).properties.push(
     createASTProperty('component', {
       type: 'Literal',
-      value: extractDescription(leadingComments),
+      value: extractDescription(nodes.svelte.defineMetaVariableDeclaration.leadingComments),
     })
   );
 }

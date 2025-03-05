@@ -1,8 +1,6 @@
 import dedent from 'dedent';
 
-import type { ESTreeAST, SvelteAST } from '$lib/parser/ast.js';
-
-import { createASTObjectExpression } from '$lib/parser/ast.js';
+import { createASTObjectExpression, type ESTreeAST, type SvelteAST } from '$lib/parser/ast.js';
 
 interface FindPropertyOptions {
   name: string;
@@ -101,6 +99,14 @@ export const getParametersPropertyValue = (
   }
 
   return property.value;
+};
+
+export const findPropertyDisableFromUIIndex = (options: Omit<FindPropertyOptions, 'name'>) => {
+  return findASTPropertyIndex({
+    ...options,
+    name: 'disableSaveFromUI',
+    node: getParametersPropertyValue(options),
+  });
 };
 
 export const findPropertyDocsIndex = (options: Omit<FindPropertyOptions, 'name'>) => {
