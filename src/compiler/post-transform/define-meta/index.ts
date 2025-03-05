@@ -25,7 +25,6 @@ export function transformDefineMeta(params: Params): void {
   const { code, nodes, filename } = params;
 
   insertDefineMetaParameters({ nodes, filename });
-
   const metaObjectExpression = replaceDefineMetaArgument({ nodes, filename });
   const metaVariableDeclaration = createMetaVariableDeclaration({ init: metaObjectExpression });
 
@@ -42,7 +41,6 @@ export function createMetaVariableDeclaration({
 }: {
   init: ESTreeAST.ObjectExpression;
 }): ESTreeAST.VariableDeclaration {
-  //
   return {
     type: 'VariableDeclaration',
     kind: 'const',
