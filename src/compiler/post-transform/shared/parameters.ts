@@ -101,14 +101,6 @@ export const getParametersPropertyValue = (
   return property.value;
 };
 
-export const findPropertyDisableFromUIIndex = (options: Omit<FindPropertyOptions, 'name'>) => {
-  return findASTPropertyIndex({
-    ...options,
-    name: 'disableSaveFromUI',
-    node: getParametersPropertyValue(options),
-  });
-};
-
 export const findPropertyDocsIndex = (options: Omit<FindPropertyOptions, 'name'>) => {
   return findASTPropertyIndex({
     ...options,

@@ -1,7 +1,6 @@
 import {
   findASTPropertyIndex,
   findPropertyDescriptionIndex,
-  findPropertyDisableFromUIIndex,
   findPropertyDocsIndex,
   findPropertyParametersIndex,
   getDescriptionPropertyValue,
@@ -23,9 +22,6 @@ interface Params {
 
 /**
  * This function inserts parameters to `defineMeta()`.
- *
- * ## Case 1
- *
  * Attempt to insert JSDoc comment above the `defineMeta()` call.
  *
  * Before:
@@ -46,12 +42,6 @@ interface Params {
  *   },
  * });
  * ```
- *
- * ## Case 2
- *
- * Inserts https://storybook.js.org/docs/essentials/controls#disablesavefromui
- * Reference: https://github.com/storybookjs/addon-svelte-csf/issues/240
- * TODO: Restore this feature
  */
 export function insertDefineMetaParameters(params: Params): void {
   const { nodes, filename } = params;
@@ -76,34 +66,6 @@ export function insertDefineMetaParameters(params: Params): void {
     );
   }
 
-  // Related to case 2
-  const disableSaveFromUIIndex = findPropertyDisableFromUIIndex({
-    filename,
-    node: defineMetaFirstArgumentObjectExpression,
-  });
-  // Related to case 2
-  if (disableSaveFromUIIndex === -1) {
-    getParametersPropertyValue({
-      filename,
-      node: defineMetaFirstArgumentObjectExpression,
-    }).properties.push(
-      createASTProperty('disableSaveFromUI', {
-        type: 'Literal',
-        value: true,
-      })
-    );
-  } else {
-    // WARN: We're overriding the existing value for user
-    getParametersPropertyValue({
-      filename,
-      node: defineMetaFirstArgumentObjectExpression,
-    }).properties[disableSaveFromUIIndex] = createASTProperty('disableSaveFromUI', {
-      type: 'Literal',
-      value: true,
-    });
-  }
-
-  // Related to case 1
   if (
     findPropertyDocsIndex({
       filename,
@@ -116,7 +78,6 @@ export function insertDefineMetaParameters(params: Params): void {
     }).properties.push(createASTProperty('docs', createASTObjectExpression()));
   }
 
-  // Related to case 1
   if (
     findPropertyDescriptionIndex({
       filename,
@@ -129,7 +90,6 @@ export function insertDefineMetaParameters(params: Params): void {
     }).properties.push(createASTProperty('description', createASTObjectExpression()));
   }
 
-  // Related to case 1
   if (
     findASTPropertyIndex({
       name: 'component',
@@ -149,7 +109,6 @@ export function insertDefineMetaParameters(params: Params): void {
     return;
   }
 
-  // Related to case 1
   getDescriptionPropertyValue({
     filename,
     node: defineMetaFirstArgumentObjectExpression,
