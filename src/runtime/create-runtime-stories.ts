@@ -87,10 +87,14 @@ export const createRuntimeStories = (Stories: Component, meta: Meta<Cmp>) => {
     meta.parameters = {};
   }
 
+  if (!meta.parameters.controls) {
+    meta.parameters.controls = {};
+  }
+
   // Inserts https://storybook.js.org/docs/essentials/controls#disablesavefromui
   // Ref: https://github.com/storybookjs/addon-svelte-csf/issues/240
   // TODO: Restore this feature
-  meta.parameters.disableSaveFromUI = true;
+  meta.parameters.controls.disableSaveFromUI = true;
 
   return stories;
 };
