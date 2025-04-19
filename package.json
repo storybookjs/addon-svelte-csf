@@ -42,7 +42,7 @@
     "clean": "rimraf ./dist ./node_modules/.cache ./storybook-static ./svelte-kit ./.vite-inspect",
     "coverage": "vitest run --coverage",
     "format": "prettier --write .",
-    "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.json,.html,.svelte,.ts --report-unused-disable-directives",
+    "lint": "eslint . --cache --cache-location=\"./node_modules/.cache\"",
     "prepublish": "pnpm run clean && pnpm run build",
     "release": "pnpm run build && auto shipit",
     "start": "pnpm run build && concurrently \"pnpm run build --watch\" \"pnpm run storybook --quiet\"",
