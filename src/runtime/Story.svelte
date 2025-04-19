@@ -1,4 +1,4 @@
-<script lang="ts" generics="const TCmp extends Cmp">
+<script lang="ts" generics="TCmp extends Cmp">
   import type { Snippet } from 'svelte';
 
   import { useStoriesExtractor } from './contexts/extractor.svelte.js';
