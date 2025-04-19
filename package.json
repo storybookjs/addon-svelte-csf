@@ -80,7 +80,6 @@
     "chromatic": "^11.26.1",
     "concurrently": "^8.2.2",
     "eslint": "^7.32.0",
-    "eslint-plugin-storybook": "^0.11.3",
     "happy-dom": "^15.11.4",
     "playwright": "^1.49.1",
     "prettier": "^3.3.2",
