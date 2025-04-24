@@ -52,8 +52,6 @@
   },
   "dependencies": {
     "@storybook/csf": "^0.1.11",
-    "@storybook/docs-tools": "^8.0.0",
-    "@storybook/types": "^8.0.0",
     "dedent": "^1.5.3",
     "es-toolkit": "^1.26.1",
     "esrap": "^1.2.2",
@@ -63,15 +61,13 @@
   },
   "devDependencies": {
     "@auto-it/released": "^11.1.6",
-    "@chromatic-com/storybook": "^3.2.3",
-    "@storybook/addon-actions": "8.5.0-beta.11",
-    "@storybook/addon-essentials": "8.5.0-beta.11",
-    "@storybook/eslint-config-storybook": "^4.0.0",
-    "@storybook/experimental-addon-test": "^8.5.0-beta.11",
-    "@storybook/preview-api": "8.5.0-beta.11",
-    "@storybook/svelte": "8.5.0-beta.11",
-    "@storybook/svelte-vite": "8.5.0-beta.11",
-    "@storybook/test": "8.5.0-beta.11",
+    "@chromatic-com/storybook": "^4.0.0-0",
+    "@storybook/addon-actions": "^9.0.0-0",
+    "@storybook/addon-essentials": "^9.0.0-0",
+    "@storybook/experimental-addon-test": "^9.0.0-0",
+    "@storybook/svelte": "^9.0.0-0",
+    "@storybook/svelte-vite": "^9.0.0-0",
+    "@storybook/test": "^9.0.0-0",
     "@sveltejs/package": "^2.3.7",
     "@sveltejs/vite-plugin-svelte": "4.0.0",
     "@tsconfig/svelte": "^5.0.4",
@@ -81,17 +77,17 @@
     "@vitest/coverage-v8": "2.1.4",
     "@vitest/ui": "^2.1.4",
     "auto": "^11.1.6",
-    "chromatic": "^11.16.1",
+    "chromatic": "^11.26.1",
     "concurrently": "^8.2.2",
     "eslint": "^7.32.0",
-    "eslint-plugin-storybook": "^0.8.0",
+    "eslint-plugin-storybook": "^0.11.3",
     "happy-dom": "^15.11.4",
     "playwright": "^1.49.1",
     "prettier": "^3.3.2",
     "prettier-plugin-svelte": "^3.2.5",
     "rimraf": "^5.0.7",
     "rollup": "^4.25.0",
-    "storybook": "8.5.0-beta.11",
+    "storybook": "^9.0.0-0",
     "svelte": "^5.0.0",
     "svelte-check": "^4.0.5",
     "tslib": "^2.6.3",
@@ -104,16 +100,12 @@
     "vitest": "^2.1.4"
   },
   "peerDependencies": {
-    "@storybook/svelte": "^8.0.0",
+    "storybook": "^0.0.0-0 || ^8.2.0 || ^9.0.0-0",
+    "@storybook/svelte": "^0.0.0-0 || ^8.2.0 || ^9.0.0-0",
     "@sveltejs/vite-plugin-svelte": "^4.0.0 || ^5.0.0",
     "svelte": "^5.0.0",
     "vite": "^5.0.0 || ^6.0.0"
   },
-  "resolutions": {
-    "@storybook/docs-tools": "8.5.0-beta.11",
-    "@storybook/types": "8.5.0-beta.11"
-  },
-  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee",
   "publishConfig": {
     "access": "public"
   },
@@ -134,5 +126,6 @@
       "svelte"
     ],
     "icon": "https://user-images.githubusercontent.com/321738/63501763-88dbf600-c4cc-11e9-96cd-94adadc2fd72.png"
-  }
+  },
+  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee"
 }
