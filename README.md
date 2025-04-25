@@ -99,12 +99,22 @@ If your component only accepts props and doesn't require snippets or slots, you 
 
 This will render the component defined in the meta, with the args passed as props.
 
-#### Static template
+#### With children
 
-If you need more customization of the story, like composing components or defining snippets, you can pass in children to the `Story`, and write whatever component structure you desire:
+If your component needs children, you can pass them in directly to the story, and they will be forwarded to your component:
 
 ```svelte
-<Story name="Composed">
+<Story name="With Children">
+  I will be the child of the component from defineMeta
+</Story>
+```
+
+#### Static template
+
+If you need more customization of the story, like composing components or defining snippets, you can set the `asChild` prop on the Story. Instead of forwarding the children to your component, it will instead use the children directly as the story output. This allows you to write whatever component structure you desire:
+
+```svelte
+<Story name="Composed" asChild>
   <MyComponent>
     <AChild label="Hello world!" />
   </MyComponent>
