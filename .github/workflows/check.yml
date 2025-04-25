@@ -1,6 +1,11 @@
 name: Check
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+      - next
+  pull_request:
 
 defaults:
   run:
