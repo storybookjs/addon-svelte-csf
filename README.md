@@ -99,12 +99,22 @@ If your component only accepts props and doesn't require snippets or slots, you 
 
 This will render the component defined in the meta, with the args passed as props.
 
-#### Static template
+#### With children
 
-If you need more customization of the story, like composing components or defining snippets, you can pass in children to the `Story`, and write whatever component structure you desire:
+If your component needs children, you can pass them in directly to the story, and they will be forwarded to your component:
 
 ```svelte
-<Story name="Composed">
+<Story name="With Children">
+  I will be the child of the component from defineMeta
+</Story>
+```
+
+#### Static template
+
+If you need more customization of the story, like composing components or defining snippets, you can set the `asChild` prop on the Story. Instead of forwarding the children to your component, it will instead use the children directly as the story output. This allows you to write whatever component structure you desire:
+
+```svelte
+<Story name="Composed" asChild>
   <MyComponent>
     <AChild label="Hello world!" />
   </MyComponent>
@@ -116,11 +126,11 @@ If you need more customization of the story, like composing components or defini
 
 #### Inline snippet
 
-If you need composition/snippets but also want a dynamic story that reacts to args or the story context, you can define a `children` snippet in the `Story` component:
+If you need composition/snippets but also want a dynamic story that reacts to args or the story context, you can define a `template` snippet in the `Story` component:
 
 ```svelte
-<Story name="Simple Children" args={{ simpleChild: true }}>
-  {#snippet children(args)}
+<Story name="Simple Template" args={{ simpleChild: true }}>
+  {#snippet template(args)}
     <MyComponent {...args}>Component with args</MyComponent>
   {/snippet}
 </Story>
@@ -128,7 +138,7 @@ If you need composition/snippets but also want a dynamic story that reacts to ar
 
 #### Shared snippet
 
-Often your stories are very similar and their only differences are args or play-functions. In this case it can be cumbersome to define the same `children` snippet over and over again. You can share snippets by defining them at the top-level and passing them as props to `Story`:
+Often your stories are very similar and their only differences are args or play-functions. In this case it can be cumbersome to define the same `template` snippet over and over again. You can share snippets by defining them at the top-level and passing them as props to `Story`:
 
 ```svelte
 {#snippet template(args)}
@@ -142,23 +152,23 @@ Often your stories are very similar and their only differences are args or play-
   </MyComponent>
 {/snippet}
 
-<Story name="Simple Children" args={{ simpleChild: true }} children={template} />
+<Story name="Simple Template" args={{ simpleChild: true }} {template} />
 
-<Story name="Complex Children" args={{ simpleChild: false }} children={template} />
+<Story name="Complex Template" args={{ simpleChild: false }} {template} />
 ```
 
 You can also use this pattern to define multiple templates and share the different templates among different stories.
 
 #### Default snippet
 
-If you only need a single template that you want to share, it can be tedious to include `children={template}` in each `Story` component. Like in th example below:
+If you only need a single template that you want to share, it can be tedious to include `{template}` in each `Story` component. Like in th example below:
 
 ```svelte
-<Story name="Primary" args={{ variant: 'primary' }} children={template} />
-<Story name="Secondary" args={{ variant: 'secondary' }} children={template} />
-<Story name="Tertiary" args={{ variant: 'tertiary' }} children={template} />
+<Story name="Primary" args={{ variant: 'primary' }} {template} />
+<Story name="Secondary" args={{ variant: 'secondary' }} {template} />
+<Story name="Tertiary" args={{ variant: 'tertiary' }} {template} />
 <!-- ... more ... -->
-<Story name="Denary" args={{ variant: 'denary' }} children={template} />
+<Story name="Denary" args={{ variant: 'denary' }} {template} />
 ```
 
 In this case you can use the `setTemplate()` helper function that sets a default template for all stories. In regular CSF terms, this is the equivalent of defining a meta-level `render`-function versus story-level `render`-functions:
@@ -215,11 +225,11 @@ At least one of the `name` or `exportName` props must be passed to the `Story` c
 
 #### Accessing Story context
 
-If for some reason you need to access the [Story context](https://storybook.js.org/docs/writing-stories/decorators#context-for-mocking) _(e.g. for mocking)_ while rendering the story, then `<Story />`'s attribute `children` snippet provides an optional second argument.
+If for some reason you need to access the [Story context](https://storybook.js.org/docs/writing-stories/decorators#context-for-mocking) _(e.g. for mocking)_ while rendering the story, then `<Story />`'s attribute `template` snippet provides an optional second argument.
 
 ```svelte
 <Story name="Default">
-  {#snippet children(args, context)}
+  {#snippet template(args, context)}
    <!--                    👆 use the optional second argument to access Story context -->
      <MyComponent {...args}>
   {/snippet}

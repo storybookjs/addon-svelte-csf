@@ -79,7 +79,7 @@
     "@vitest/coverage-v8": "2.1.4",
     "@vitest/ui": "^2.1.4",
     "auto": "^11.1.6",
-    "chromatic": "^11.26.1",
+    "chromatic": "^11.28.2",
     "concurrently": "^8.2.2",
     "eslint": "^9.25.0",
     "eslint-plugin-svelte": "^3.5.1",
