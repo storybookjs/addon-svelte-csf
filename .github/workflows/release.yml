@@ -4,7 +4,7 @@ on: [push]
 
 env:
   CI: true
-  COREPACK_INTEGRITY_KEYS: 0 
+  COREPACK_INTEGRITY_KEYS: 0
 
 jobs:
   release:
