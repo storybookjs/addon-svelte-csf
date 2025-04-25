@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   test:
-    name: Test
+    name: Unit and Storybook Tests
     runs-on: ubuntu-latest
     timeout-minutes: 4
     steps:
