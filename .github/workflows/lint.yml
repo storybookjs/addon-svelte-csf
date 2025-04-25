@@ -16,7 +16,7 @@ permissions:
 jobs:
   lint:
     name: lint
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
       # https://github.com/actions/checkout
