@@ -200,6 +200,9 @@ Similar to regular CSF, you can define a meta-level `render`-function, by refere
 
 Stories can still override this default snippet using any of the methods for defining story-level content.
 
+> [!NOTE]
+> Svelte has the limitation, that you can't reference a snippet from a `<script module>` if it reference any declarations in a non-module `<script>` (whether directly or indirectly, via other snippets). See [svelte.dev/docs/svelte/snippet#Exporting-snippets](https://svelte.dev/docs/svelte/snippet#Exporting-snippets)
+
 #### Custom export name
 
 Behind-the-scenes, each `<Story />` definition is compiled to a variable export like `export const MyStory = ...;`. In most cases you don't have to care about this detail, however sometimes naming conflicts can arise from this. The variable names are simplifications of the story names - to make them valid JavaScript variables.
