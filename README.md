@@ -177,7 +177,7 @@ Similar to regular CSF, you can define a meta-level `render`-function, by refere
   import MyComponent from './MyComponent.svelte';
 
   const { Story } = defineMeta({
-    render: template
+    render: template,
     //      👆 the name of the snippet as defined below (can be any name)
   });
 </script>
