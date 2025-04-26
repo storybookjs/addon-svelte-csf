@@ -169,23 +169,17 @@ If you only need a single template that you want to share, it can be tedious to 
 <Story name="Denary" args={{ variant: 'denary' }} {template} />
 ```
 
-In this case you can use the `setTemplate()` helper function that sets a default template for all stories. In regular CSF terms, this is the equivalent of defining a meta-level `render`-function versus story-level `render`-functions:
+Similar to regular CSF, you can define a meta-level `render`-function, by referencing your default snippet in the `render` property of your `defineMeta` call:
 
 ```svelte
 <script module>
-  import { defineMeta, setTemplate } from '@storybook/addon-svelte-csf';
-  //                   👆 import the function
+  import { defineMeta } from '@storybook/addon-svelte-csf';
   import MyComponent from './MyComponent.svelte';
 
   const { Story } = defineMeta({
-    /* ... */
+    render: template
+    //      👆 the name of the snippet as defined below (can be any name)
   });
-</script>
-
-<script>
-  // 👆 note this must be within a instance (regular) <script> tag as the module context can not reference snippets defined in the markup
-  setTemplate(template);
-  //          👆 the name of the snippet as defined below (can be any name)
 </script>
 
 {#snippet template(args)}
