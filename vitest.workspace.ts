@@ -14,9 +14,9 @@ export default defineWorkspace([
   {
     extends: './vite.config.ts',
     plugins: [
-        storybookTest({
-          storybookScript: 'pnpm run storybook --no-open',
-        }),
+      storybookTest({
+        storybookScript: 'pnpm run storybook --no-open',
+      }),
     ],
     test: {
       name: 'storybook',
