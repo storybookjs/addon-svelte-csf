@@ -32,6 +32,7 @@
   "files": [
     "dist/**/*",
     "!dist/**/*.test.*",
+    "preset.js",
     "README.md"
   ],
   "scripts": {
