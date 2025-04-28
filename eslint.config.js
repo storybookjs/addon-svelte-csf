@@ -8,6 +8,7 @@ import url from 'node:url';
 import { includeIgnoreFile } from '@eslint/compat';
 import js from '@eslint/js';
 import svelte from 'eslint-plugin-svelte';
+import storybook from 'eslint-plugin-storybook';
 import ts from 'typescript-eslint';
 
 import svelteConfig from './svelte.config.js';
@@ -22,6 +23,7 @@ export default ts.config(
   js.configs.recommended,
   ...ts.configs.recommended,
   ...svelte.configs.recommended,
+  ...storybook.configs['flat/recommended'],
   {
     files: ['**/*.svelte', '**/*.svelte.js', '**/*.svelte.ts'],
     languageOptions: {
