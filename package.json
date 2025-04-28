@@ -32,6 +32,7 @@
   "files": [
     "dist/**/*",
     "!dist/**/*.test.*",
+    "preset.js",
     "README.md"
   ],
   "scripts": {
@@ -43,7 +44,7 @@
     "coverage": "vitest run --coverage",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.json,.html,.svelte,.ts --report-unused-disable-directives",
+    "lint": "eslint . --cache --cache-location=\"./node_modules/.cache\"",
     "prepublish": "pnpm run clean && pnpm run build",
     "release": "pnpm run build && auto shipit",
     "start": "pnpm run build && concurrently \"pnpm run build --watch\" \"pnpm run storybook --quiet\"",
@@ -63,6 +64,8 @@
   "devDependencies": {
     "@auto-it/released": "^11.1.6",
     "@chromatic-com/storybook": "^4.0.0-0",
+    "@eslint/compat": "^1.2.8",
+    "@eslint/js": "^9.25.0",
     "@storybook/addon-actions": "^9.0.0-0",
     "@storybook/addon-essentials": "^9.0.0-0",
     "@storybook/experimental-addon-test": "^9.0.0-0",
@@ -80,8 +83,9 @@
     "auto": "^11.1.6",
     "chromatic": "^11.28.2",
     "concurrently": "^8.2.2",
-    "eslint": "^7.32.0",
-    "eslint-plugin-storybook": "^0.11.3",
+    "eslint": "^9.25.0",
+    "eslint-plugin-storybook": "^0.12.0",
+    "eslint-plugin-svelte": "^3.5.1",
     "happy-dom": "^15.11.4",
     "playwright": "^1.49.1",
     "prettier": "^3.3.2",
@@ -94,6 +98,7 @@
     "tslib": "^2.6.3",
     "type-fest": "^4.20.1",
     "typescript": "^5.5.2",
+    "typescript-eslint": "^8.30.1",
     "typescript-svelte-plugin": "^0.3.42",
     "vite": "^5.4.11",
     "vite-plugin-inspect": "^0.8.7",
