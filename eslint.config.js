@@ -43,5 +43,11 @@ export default ts.config(
       'prefer-const': ['warn'],
       'svelte/no-useless-children-snippet': ['warn'],
     },
+  },
+  {
+    files: ['**/*.svelte', '**/*.svelte.js', '**/*.svelte.ts'],
+    rules: {
+      'prefer-const': ['off'],
+    },
   }
 );
