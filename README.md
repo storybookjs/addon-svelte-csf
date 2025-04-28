@@ -104,9 +104,7 @@ This will render the component defined in the meta, with the args passed as prop
 If your component needs children, you can pass them in directly to the story, and they will be forwarded to your component:
 
 ```svelte
-<Story name="With Children">
-  I will be the child of the component from defineMeta
-</Story>
+<Story name="With Children">I will be the child of the component from defineMeta</Story>
 ```
 
 #### Static template
