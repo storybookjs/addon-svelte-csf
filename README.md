@@ -169,23 +169,18 @@ If you only need a single template that you want to share, it can be tedious to 
 <Story name="Denary" args={{ variant: 'denary' }} {template} />
 ```
 
-In this case you can use the `setTemplate()` helper function that sets a default template for all stories. In regular CSF terms, this is the equivalent of defining a meta-level `render`-function versus story-level `render`-functions:
+Similar to regular CSF, you can define a meta-level `render`-function, by referencing your default snippet in the `render` property of your `defineMeta` call:
 
 ```svelte
 <script module>
-  import { defineMeta, setTemplate } from '@storybook/addon-svelte-csf';
-  //                   👆 import the function
+  import { defineMeta } from '@storybook/addon-svelte-csf';
   import MyComponent from './MyComponent.svelte';
 
   const { Story } = defineMeta({
-    /* ... */
+    // @ts-expect-error -- TypeScript does not know this is valid: https://github.com/sveltejs/language-tools/issues/2653
+    render: template,
+    //      👆 the name of the snippet as defined below (can be any name)
   });
-</script>
-
-<script>
-  // 👆 note this must be within a instance (regular) <script> tag as the module context can not reference snippets defined in the markup
-  setTemplate(template);
-  //          👆 the name of the snippet as defined below (can be any name)
 </script>
 
 {#snippet template(args)}
@@ -205,6 +200,12 @@ In this case you can use the `setTemplate()` helper function that sets a default
 ```
 
 Stories can still override this default snippet using any of the methods for defining story-level content.
+
+> [!NOTE]
+> Svelte has the limitation, that you can't reference a snippet from a `<script module>` if it reference any declarations in a non-module `<script>` (whether directly or indirectly, via other snippets). See [svelte.dev/docs/svelte/snippet#Exporting-snippets](https://svelte.dev/docs/svelte/snippet#Exporting-snippets)
+
+> [!IMPORTANT]
+> There is currently a bug in the Svelte language tools, which causes TypeScript to error with `TS(2448): Block-scoped variable 'SNIPPET_NAMAE' used before its declaration.`. Until that is fixed, you have to silent it with `//@ts-ignore` or `//@ts-expect-error`. See https://github.com/sveltejs/language-tools/issues/2653
 
 #### Custom export name
 
