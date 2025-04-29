@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   test:
-    name: Svelte Check
+    name: Format
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
@@ -48,6 +48,6 @@ jobs:
         run: >
           pnpm build
 
-      - name: Run svelte-check
+      - name: Run prettier check
         run: >
-          pnpm check
+          pnpm format:check

@@ -1,11 +1,6 @@
 name: Check
 
-on:
-  push:
-    branches:
-      - main
-      - next
-  pull_request:
+on: [push]
 
 defaults:
   run:
@@ -19,8 +14,8 @@ permissions:
   contents: read
 
 jobs:
-  test:
-    name: Svelte Check
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
@@ -44,10 +39,5 @@ jobs:
           pnpm install
           --frozen-lockfile
 
-      - name: Build package
-        run: >
-          pnpm build
-
-      - name: Run svelte-check
-        run: >
-          pnpm check
+      - name: Run ESLint
+        run: pnpm lint
