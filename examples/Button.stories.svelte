@@ -15,6 +15,7 @@
     tags: ['autodocs'],
     args: {
       onclick: onclickFn,
+      children: 'Click me' as any,
     },
     argTypes: {
       backgroundColor: { control: 'color' },
@@ -24,14 +25,8 @@
       },
       children: { control: 'text' },
     },
-    //@ts-expect-error TS does not understand that the snippet is defined before this call
-    render: template,
   });
 </script>
-
-{#snippet template(args: Args<typeof Story>, context: StoryContext<typeof Story>)}
-  <Button {...args}>Click me</Button>
-{/snippet}
 
 <!-- Only use this sparingly as the main CTA. -->
 <Story name="Primary" args={{ primary: true }} />

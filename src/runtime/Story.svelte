@@ -68,53 +68,90 @@
            */
           name: string;
         }
-    ) &
-    (
-      | {
-          /**
-           * Children to pass to the story's component
-           * Or if `asChild` is true, the content to render in the story as **static** markup.
-           */
-          children?: TChildren;
-          /**
-           * Make the children the actual story content. This is useful when you want to create a **static story**.
-           */
-          asChild?: boolean;
-          template?: never;
-        }
-      | {
-          children?: never;
-          asChild?: never;
-          /**
-           * The content to render in the story with a snippet taking `args` and `storyContext` as parameters
-           *
-           * NOTE: Can be omitted if a default template is set with [`render`](https://github.com/storybookjs/addon-svelte-csf/blob/main/README.md#default-snippet)
-           */
-          template?: TTemplate;
-        }
-    );
+    ) & {
+      /**
+       * Children to pass to the story's component
+       * Or if `asChild` is true, the content to render in the story as **static** markup.
+       */
+      children?: TChildren;
+      /**
+       * Make the children the actual story content. This is useful when you want to create a **static story**.
+       */
+      asChild?: boolean;
+      /**
+       * The content to render in the story with a snippet taking `args` and `storyContext` as parameters
+       *
+       * NOTE: Can be omitted if a default template is set with [`render`](https://github.com/storybookjs/addon-svelte-csf/blob/main/README.md#default-snippet)
+       */
+      template?: TTemplate;
+    };
   let {
-    children,
+    children: storyChildren,
     name,
     exportName: exportNameProp,
     play,
     template,
     asChild = false,
-    ...restProps
+    ...restStoryProps
   }: Props = $props();
   const exportName = exportNameProp ?? storyNameToExportName(name!);
 
   let extractor = useStoriesExtractor<TCmp>();
   let renderer = useStoryRenderer<TCmp>();
 
+  const BUILT_IN_STORY_ANNOTATIONS: (keyof typeof restStoryProps)[] = [
+    'decorators',
+    'loaders',
+    'parameters',
+    'experimental_afterEach',
+    'beforeEach',
+    'render',
+    'argTypes',
+    'args',
+    'storyName',
+    'autodocs',
+    'globals',
+    'mount',
+    'tags',
+    'id',
+    'source',
+    'story',
+  ];
+
+  let args = $derived.by(() => {
+    const storySnippets = Object.fromEntries(
+      Object.entries(restStoryProps).filter(([key, value]) => {
+        if (BUILT_IN_STORY_ANNOTATIONS.includes(key as any)) {
+          return false;
+        }
+        return isSnippet(value);
+      })
+    );
+    return {
+      ...renderer.args,
+      ...storySnippets,
+      ...(storyChildren ?? renderer.args.children
+        ? {
+            children: isSnippet(renderer.args.children)
+              ? renderer.args.children
+              : argsChildrenSnippet,
+          }
+        : {}),
+    };
+  });
+
   let isCurrentlyViewed = $derived(
     !extractor.isExtracting && renderer.currentStoryExportName === exportName
   );
 
   if (extractor.isExtracting) {
-    extractor.register({ children, name, exportName, play, ...restProps } as Parameters<
-      (typeof extractor)['register']
-    >[0]);
+    extractor.register({
+      children: storyChildren,
+      name,
+      exportName,
+      play,
+      ...restStoryProps,
+    } as Parameters<(typeof extractor)['register']>[0]);
   }
 
   function injectIntoPlayFunction(
@@ -143,21 +180,21 @@
   );
 </script>
 
+{#snippet argsChildrenSnippet()}
+  {renderer.args.children}
+{/snippet}
+
 {#if isCurrentlyViewed}
-  {#if isSnippet(template)}
-    {@render template(renderer.args, renderer.storyContext)}
-  {:else if isSnippet(children)}
-    {#if asChild || isLegacyStory}
-      {@render children()}
-    {:else if renderer.storyContext.component}
-      <renderer.storyContext.component {children} {...renderer.args} />
-    {:else}
-      {@render children()}
-    {/if}
+  {#if isSnippet(storyChildren) && (asChild || isLegacyStory)}
+    {@render storyChildren()}
+  {:else if isSnippet(template)}
+    {@render template(args as any, renderer.storyContext)}
   {:else if renderer.metaRenderSnippet}
-    {@render renderer.metaRenderSnippet(renderer.args, renderer.storyContext)}
+    {@render renderer.metaRenderSnippet(args as any, renderer.storyContext)}
   {:else if renderer.storyContext.component}
-    <renderer.storyContext.component {...renderer.args} />
+    <renderer.storyContext.component {...args} />
+  {:else if isSnippet(storyChildren)}
+    {@render storyChildren()}
   {:else}
     <p>
       No story rendered. See

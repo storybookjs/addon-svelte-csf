@@ -227,33 +227,9 @@ export class DuplicateStoryIdentifiersError extends StorybookSvelteCSFError {
   }
 }
 
-export class StoryTemplateAndChildrenError extends StorybookSvelteCSFError {
-  readonly category = StorybookSvelteCSFError.CATEGORY.parserAnalyseStory;
-  readonly code = 7;
-  public documentation = true;
-
-  constructor({
-    filename,
-    component,
-  }: {
-    filename: StorybookSvelteCSFError['filename'];
-    component: NonNullable<StorybookSvelteCSFError['component']>;
-  }) {
-    super({ component, filename });
-  }
-
-  template(): string {
-    return dedent`
-      A '${this.quickStoryRawCodeIdentifier}' has both a 'template' prop and children elements defined, which is not allowed.
-      Use the 'template' snippet to define the story's content structure.
-      Found in file: ${this.filepathURL}
-    `;
-  }
-}
-
 export class StoryTemplateAndAsChildError extends StorybookSvelteCSFError {
   readonly category = StorybookSvelteCSFError.CATEGORY.parserAnalyseStory;
-  readonly code = 8;
+  readonly code = 7;
   public documentation = true;
 
   constructor({

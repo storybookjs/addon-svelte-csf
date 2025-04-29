@@ -307,43 +307,6 @@ See more in [the `exportName` API docs](./README.md#custom-export-name).
 
 ### `SB_SVELTE_CSF_PARSER_ANALYSE_STORY_0007`
 
-When analysing one of the `<Story />` definitions, both a `template` prop and children elements were found.
-
-The `template` prop uses a [snippet](https://svelte.dev/docs/svelte/snippet) to define the story content, while children are forwarded to the component.
-These two approaches cannot be combined.
-
-If you intend to use a snippet, remove the children from the `<Story>` tags:
-
-```diff
-  <Story name="MyStory" {template}>
--    <SomeComponent />
-  </Story>
-```
-
-If you intend to pass the children to the component (or potentially render as is with [`asChild`](./README.md#static-template)), remove the `template` prop:
-
-```diff
--  <Story name="MyStory" {template}>
-+  <Story name="MyStory">
-     <SomeComponent />
-  </Story>
-```
-
-If you intend to use a `template` that also uses children, define the `template`-snippet inline and put the children directly in that:
-
-```diff
--  <Story name="MyStory" {template}>
-+  <Story name="MyStory">
-+    {#snippet template(args)}
-+      <MyComponent>
-         <SomeComponent />
-+      </MyComponent>
-+    {/snippet}
-  </Story>
-```
-
-### `SB_SVELTE_CSF_PARSER_ANALYSE_STORY_0008`
-
 When analysing one of the `<Story />` definitions, both a `template` prop and the `asChild` prop were found.
 
 The `template` prop uses a [snippet](https://svelte.dev/docs/svelte/snippet) to define the story content, while the `asChild` prop indicates that the children defined within the `<Story>` component should become the entire story content.
