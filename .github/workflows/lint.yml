@@ -1,4 +1,4 @@
-name: Lint
+name: Check
 
 on: [push]
 
@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   lint:
-    name: lint
+    name: Lint
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:

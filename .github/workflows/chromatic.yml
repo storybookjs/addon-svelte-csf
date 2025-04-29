@@ -39,7 +39,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          onlyChanged: true
           exitOnceUploaded: true
 
       - name: Upload "Examples" to Chromatic
