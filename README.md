@@ -297,7 +297,7 @@ If you use the `render`-property to define a custom template that might use cust
 </script>
 
 <!--                👇 you need to omit 'children' from args to satisfy Svelte's constraints -->
-{#snippet template({ children, ...args }: Args, context: StoryContext<typeof Layout>)}
+{#snippet template({ children, ...args }: Args, context: StoryContext<typeof MyComponent>)}
   <MyComponent {...args}>
     {children}
     {#snippet footer()}
