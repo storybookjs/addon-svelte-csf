@@ -177,7 +177,6 @@ Similar to regular CSF, you can define a meta-level `render`-function, by refere
   import MyComponent from './MyComponent.svelte';
 
   const { Story } = defineMeta({
-    // @ts-expect-error -- TypeScript does not know this is valid: https://github.com/sveltejs/language-tools/issues/2653
     render: template,
     //      👆 the name of the snippet as defined below (can be any name)
   });
@@ -203,9 +202,6 @@ Stories can still override this default snippet using any of the methods for def
 
 > [!NOTE]
 > Svelte has the limitation, that you can't reference a snippet from a `<script module>` if it reference any declarations in a non-module `<script>` (whether directly or indirectly, via other snippets). See [svelte.dev/docs/svelte/snippet#Exporting-snippets](https://svelte.dev/docs/svelte/snippet#Exporting-snippets)
-
-> [!IMPORTANT]
-> There is currently a bug in the Svelte language tools, which causes TypeScript to error with `TS(2448): Block-scoped variable 'SNIPPET_NAMAE' used before its declaration.`. Until that is fixed, you have to silent it with `//@ts-ignore` or `//@ts-expect-error`. See https://github.com/sveltejs/language-tools/issues/2653
 
 #### Custom export name
 
@@ -237,34 +233,77 @@ If for some reason you need to access the [Story context](https://storybook.js.o
 
 ### TypeScript
 
-Story snippets and args can be type-safe when necessary. The type of the args are inferred from the component props passed to `defineMeta`.
+Story template snippets can be type-safe when necessary. The type of the args are inferred from the `component` or `render` property passed to `defineMeta`.
 
-You can make your snippets type-safe with the `Args` and `StoryContext` helper types:
+If you're just rendering the component directly without a custom template, you can use Svelte's `ComponentProps` type and `StoryContext` from the addon to make your template snippet type-safe:
 
 ```svelte
 <script module lang="ts">
-  import { defineMeta, type Args, type StoryContext } from '@storybook/addon-svelte-csf';
-  //                   👆         👆 import those type helpers from this addon -->
+  import { defineMeta, type StoryContext } from '@storybook/addon-svelte-csf';
+  import { type ComponentProps } from 'svelte';
 
   import MyComponent from './MyComponent.svelte';
 
   const { Story } = defineMeta({
     component: MyComponent,
   });
+
+  type Args = ComponentProps<MyComponent>;
 </script>
 
-<!--                     👇 use to infer `args` type from the `Story` component -->
-{#snippet template(args: Args<typeof Story>, context: StoryContext<typeof Story>)}
-  <!--                                         👆 use to infer `context` type from the `Story` component -->
+{#snippet template(args: Args, context: StoryContext<typeof Layout>)}
   <MyComponent {...args} />
 {/snippet}
 ```
 
-If you need to customize the type of the `args`, you can pass in a generic type parameter to `defineMeta` that will override the types inferred from the component:
+If you use the `render`-property to define a custom template that might use custom args, the args will be inferred from the types of the snippet passed to `render`. This is especially useful when you're converting primitive args to snippets:
 
 ```svelte
-const { Story } = defineMeta<{ anotherProp: boolean }>( ... );
+<script module lang="ts">
+  import { defineMeta, type StoryContext } from '@storybook/addon-svelte-csf';
+  import { type ComponentProps } from 'svelte';
+
+  import MyComponent from './MyComponent.svelte';
+
+  const { Story } = defineMeta({
+    component: MyComponent,
+    render: template, // 👈 args will be inferred from this, which is the Args type below
+    argTypes: {
+      children: {
+        control: 'text',
+      },
+      footer: {
+        control: 'text',
+      },
+    },
+  });
+
+  type Args = Omit<ComponentProps<MyComponent>, 'children' | 'footer'> & {
+    children: string;
+    footer?: string;
+  };
+  // OR use the Merge helper from the 'type-fest' package:
+  type Args = Merge<
+    ComponentProps<MyComponent>,
+    {
+      children: string;
+      footer?: string;
+    }
+  >;
+</script>
+
+<!--                👇 you need to omit 'children' from args to satisfy Svelte's constraints -->
+{#snippet template({ children, ...args }: Args, context: StoryContext<typeof MyComponent>)}
+  <MyComponent {...args}>
+    {children}
+    {#snippet footer()}
+      {args.footer}
+    {/snippet}
+  </MyComponent>
+{/snippet}
 ```
+
+See [the `Types.stories.svelte` examples](./examples/Types.stories.svelte) on how to use complex types properly.
 
 ### Legacy API
 
