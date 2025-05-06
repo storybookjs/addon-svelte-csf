@@ -22,9 +22,11 @@ export default defineWorkspace([
       name: 'storybook',
       browser: {
         enabled: true,
-        name: 'chromium',
-        provider: 'playwright',
-        headless: true,
+        instances: [
+          {
+            browser: 'chromium',
+          },
+        ],
       },
       setupFiles: ['./.storybook/vitest.setup.ts'],
     },
