@@ -4,112 +4,115 @@
   "description": "Allows to write stories in Svelte syntax",
   "keywords": [
     "storybook-addons",
+    "csf",
     "svelte"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/storybookjs/addon-svelte-csf"
+    "url": "git+https://github.com/storybookjs/addon-svelte-csf.git"
   },
   "license": "MIT",
   "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js",
       "default": "./dist/index.js"
     },
     "./preset": {
-      "types": "./dist/preset/index.d.ts",
-      "default": "./dist/preset/index.js"
+      "types": "./dist/preset.d.ts",
+      "default": "./dist/preset.js"
+    },
+    "./internal/create-runtime-stories": {
+      "types": "./dist/runtime/create-runtime-stories.d.ts",
+      "default": "./dist/runtime/create-runtime-stories.js"
     },
     "./package.json": "./package.json"
   },
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "files": [
     "dist/**/*",
-    "README.md",
-    "*.js",
-    "*.d.ts"
+    "!dist/**/*.test.*",
+    "preset.js",
+    "README.md"
   ],
   "scripts": {
-    "build": "svelte-package --input ./src --types",
+    "build": "svelte-package --types",
     "build-storybook": "storybook build",
     "check": "svelte-check",
     "chromatic": "chromatic --exit-zero-on-changes",
-    "clean": "rimraf ./dist",
+    "clean": "rimraf ./dist ./node_modules/.cache ./storybook-static ./svelte-kit ./.vite-inspect",
     "coverage": "vitest run --coverage",
-    "lint": "eslint --cache --cache-location=.cache/eslint --ext .js,.jsx,.json,.html,.ts,.tsx,.mjs --report-unused-disable-directives",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint . --cache --cache-location=\"./node_modules/.cache\"",
     "prepublish": "pnpm run clean && pnpm run build",
     "release": "pnpm run build && auto shipit",
-    "start": "concurrently \"pnpm run storybook --quiet\" \"pnpm run build --watch\"",
-    "storybook": "storybook dev --port 6006",
-    "test": "vitest run"
+    "start": "pnpm run build && concurrently \"pnpm run build --watch\" \"pnpm run storybook --quiet\"",
+    "storybook": "storybook dev --port 6006 --no-open",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
   },
   "dependencies": {
-    "@babel/runtime": "^7.22.6",
-    "@storybook/types": "^8.0.0",
-    "dedent": "^1.2.0",
-    "magic-string": "^0.30.1"
+    "@storybook/csf": "^0.1.11",
+    "dedent": "^1.5.3",
+    "es-toolkit": "^1.26.1",
+    "esrap": "^1.2.2",
+    "magic-string": "^0.30.12",
+    "svelte-ast-print": "^0.4.0",
+    "zimmerframe": "^1.1.2"
   },
   "devDependencies": {
-    "@auto-it/released": "^10.32.6",
-    "@storybook/addon-actions": "~8.1.0",
-    "@storybook/addon-essentials": "~8.1.0",
-    "@storybook/addon-interactions": "~8.1.0",
-    "@storybook/blocks": "~8.1.0",
-    "@storybook/client-logger": "~8.1.0",
-    "@storybook/components": "~8.1.0",
-    "@storybook/csf": "^0.1.1",
-    "@storybook/eslint-config-storybook": "^3.1.2",
-    "@storybook/preview-api": "~8.1.0",
-    "@storybook/svelte": "~8.1.0",
-    "@storybook/svelte-vite": "~8.1.0",
-    "@storybook/test": "~8.1.0",
-    "@storybook/theming": "~8.1.0",
-    "@sveltejs/kit": "^2.5.7",
-    "@sveltejs/package": "^2.2.0",
-    "@sveltejs/vite-plugin-svelte": "^2.4.2",
-    "@tsconfig/svelte": "^5.0.0",
-    "@types/estree": "^1.0.1",
-    "auto": "^11.1.1",
-    "chromatic": "^11.3.5",
-    "concurrently": "^8.2.0",
-    "eslint": "^7.17.0",
-    "eslint-plugin-storybook": "^0.8.0",
-    "jsdom": "^22.1.0",
-    "prettier": "^3.0.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "rimraf": "^3.0.2",
-    "storybook": "~8.1.0",
-    "svelte": "^4.2.2",
-    "svelte-check": "^3.5.0",
-    "svelte-jester": "^2.3.2",
-    "svelte-loader": "^3.1.7",
-    "svelte-package": "^0.1.0",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.3",
-    "vitest": "^1.6.0"
+    "@auto-it/released": "^11.1.6",
+    "@chromatic-com/storybook": "^4.0.0-0",
+    "@eslint/compat": "^1.2.8",
+    "@eslint/js": "^9.25.0",
+    "@storybook/addon-actions": "^9.0.0-0",
+    "@storybook/addon-essentials": "^9.0.0-0",
+    "@storybook/experimental-addon-test": "^9.0.0-0",
+    "@storybook/svelte": "^9.0.0-0",
+    "@storybook/svelte-vite": "^9.0.0-0",
+    "@storybook/test": "^9.0.0-0",
+    "@sveltejs/package": "^2.3.7",
+    "@sveltejs/vite-plugin-svelte": "4.0.0",
+    "@tsconfig/svelte": "^5.0.4",
+    "@types/estree": "^1.0.6",
+    "@types/node": "^20.14.9",
+    "@vitest/browser": "^3.1.3",
+    "@vitest/coverage-v8": "^3.1.3",
+    "@vitest/ui": "^3.1.3",
+    "auto": "^11.1.6",
+    "chromatic": "^11.28.2",
+    "concurrently": "^8.2.2",
+    "eslint": "^9.25.0",
+    "eslint-plugin-storybook": "^0.12.0",
+    "eslint-plugin-svelte": "^3.5.1",
+    "happy-dom": "^15.11.4",
+    "playwright": "^1.49.1",
+    "prettier": "^3.3.2",
+    "prettier-plugin-svelte": "^3.2.5",
+    "rimraf": "^5.0.7",
+    "rollup": "^4.25.0",
+    "storybook": "^9.0.0-0",
+    "svelte": "^5.28.2",
+    "svelte-check": "^4.1.7",
+    "tslib": "^2.6.3",
+    "type-fest": "^4.20.1",
+    "typescript": "^5.5.2",
+    "typescript-eslint": "^8.30.1",
+    "typescript-svelte-plugin": "^0.3.42",
+    "vite": "^6.3.5",
+    "vite-plugin-inspect": "^0.8.7",
+    "vite-plugin-virtual": "^0.3.0",
+    "vitest": "^3.1.3"
   },
   "peerDependencies": {
-    "@storybook/svelte": "^7.0.0 || ^8.0.0 || ^8.0.0-beta.0 || ^8.2.0-beta.0",
-    "@sveltejs/vite-plugin-svelte": "^2.0.0 || ^3.0.0",
-    "svelte": "^4.0.0",
-    "svelte-loader": "^3.1.2",
-    "vite": "^4.0.0 || ^5.0.0 || ^6.0.0"
+    "@storybook/svelte": "^0.0.0-0 || ^8.2.0 || ^9.0.0-0",
+    "@sveltejs/vite-plugin-svelte": "^4.0.0 || ^5.0.0",
+    "storybook": "^0.0.0-0 || ^8.2.0 || ^9.0.0-0",
+    "svelte": "^5.0.0",
+    "vite": "^5.0.0 || ^6.0.0"
   },
-  "peerDependenciesMeta": {
-    "@sveltejs/vite-plugin-svelte": {
-      "optional": true
-    },
-    "svelte-loader": {
-      "optional": true
-    },
-    "vite": {
-      "optional": true
-    }
-  },
-  "packageManager": "pnpm@9.1.1",
+  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee",
   "publishConfig": {
     "access": "public"
   },

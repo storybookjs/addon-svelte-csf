@@ -2,35 +2,36 @@ name: Release
 
 on: [push]
 
+env:
+  CI: true
+  COREPACK_INTEGRITY_KEYS: 0
+
 jobs:
   release:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     steps:
-      # https://github.com/actions/checkout
       - uses: actions/checkout@v4
-
-      - name: Prepare repository
-        run: git fetch --unshallow --tags
+        with:
+          fetch-depth: 0
 
       - name: 'Set git user'
         run: |
           git config --global user.name 'storybook-bot'
           git config --global user.email '32066757+storybook-bot@users.noreply.github.com'
 
-      # https://nodejs.org/api/corepack.html
       - name: Enable corepack (for pnpm)
+        # https://nodejs.org/api/corepack.html
         run: corepack enable
 
-      # https://github.com/actions/setup-node
-      - name: Setup Node.js
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          cache: pnpm
-          node-version: 20
+          cache: 'pnpm'
+          node-version-file: '.nvmrc'
 
-      # https://pnpm.io/cli/install
       - name: Install Node.js dependencies with pnpm
+        # https://pnpm.io/cli/install
         run: >
           pnpm install
           --frozen-lockfile

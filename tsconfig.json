@@ -1,20 +1,31 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "incremental": false,
-    "isolatedModules": true,
-    "lib": ["esnext", "dom"],
-    "module": "es2020",
+    "lib": ["esnext", "DOM", "DOM.Iterable"],
+    "module": "nodenext",
     "moduleResolution": "nodenext",
     "noImplicitAny": false,
+    "resolveJsonModule": true,
     "rootDir": ".",
     "skipLibCheck": true,
+    "strict": true,
     "target": "esnext",
-    "strict": true
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "types": ["vitest/importMeta"],
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "$lib": ["src"],
+      "$lib/*": ["src/*"]
+    },
+    "plugins": [
+      {
+        "name": "typescript-svelte-plugin",
+        "enabled": true,
+        "assumeIsSvelteProject": true
+      }
+    ]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "examples/**/*", "tests/**/*"]
 }

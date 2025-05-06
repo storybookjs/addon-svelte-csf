@@ -1,0 +1,59 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+      - next
+  pull_request:
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  CI: true
+  COREPACK_INTEGRITY_KEYS: 0
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Unit and Storybook Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      # https://github.com/actions/checkout
+      - uses: actions/checkout@v4
+
+      - name: Enable corepack (for pnpm)
+        # https://nodejs.org/api/corepack.html
+        run: corepack enable
+
+      - name: Setup Node.js
+        # https://github.com/actions/setup-node
+        uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version-file: '.nvmrc'
+
+      - name: Install Node.js dependencies with pnpm
+        # https://pnpm.io/cli/install
+        run: >
+          pnpm install
+          --frozen-lockfile
+
+      - name: Install Playwright Dependencies
+        # Required for Vitest browser-mode
+        run: pnpm exec playwright install chromium --with-deps
+
+      - name: Build package
+        # Required for testing stories
+        run: >
+          pnpm build
+
+      - name: Run tests with Vitest
+        # https://vitest.dev/guide/cli.html
+        run: >
+          pnpm vitest run
