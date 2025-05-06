@@ -203,9 +203,6 @@ Stories can still override this default snippet using any of the methods for def
 > [!NOTE]
 > Svelte has the limitation, that you can't reference a snippet from a `<script module>` if it reference any declarations in a non-module `<script>` (whether directly or indirectly, via other snippets). See [svelte.dev/docs/svelte/snippet#Exporting-snippets](https://svelte.dev/docs/svelte/snippet#Exporting-snippets)
 
-> [!IMPORTANT]
-> There is currently a bug in the Svelte language tools, which causes TypeScript to error with `TS(2448): Block-scoped variable 'SNIPPET_NAMAE' used before its declaration.`. Until that is fixed, you have to silent it with `//@ts-ignore` or `//@ts-expect-error`. See https://github.com/sveltejs/language-tools/issues/2653
-
 #### Custom export name
 
 Behind-the-scenes, each `<Story />` definition is compiled to a variable export like `export const MyStory = ...;`. In most cases you don't have to care about this detail, however sometimes naming conflicts can arise from this. The variable names are simplifications of the story names - to make them valid JavaScript variables.
