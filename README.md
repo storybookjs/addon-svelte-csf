@@ -177,7 +177,6 @@ Similar to regular CSF, you can define a meta-level `render`-function, by refere
   import MyComponent from './MyComponent.svelte';
 
   const { Story } = defineMeta({
-    // @ts-expect-error -- TypeScript does not know this is valid: https://github.com/sveltejs/language-tools/issues/2653
     render: template,
     //      👆 the name of the snippet as defined below (can be any name)
   });
@@ -203,9 +202,6 @@ Stories can still override this default snippet using any of the methods for def
 
 > [!NOTE]
 > Svelte has the limitation, that you can't reference a snippet from a `<script module>` if it reference any declarations in a non-module `<script>` (whether directly or indirectly, via other snippets). See [svelte.dev/docs/svelte/snippet#Exporting-snippets](https://svelte.dev/docs/svelte/snippet#Exporting-snippets)
-
-> [!IMPORTANT]
-> There is currently a bug in the Svelte language tools, which causes TypeScript to error with `TS(2448): Block-scoped variable 'SNIPPET_NAMAE' used before its declaration.`. Until that is fixed, you have to silent it with `//@ts-ignore` or `//@ts-expect-error`. See https://github.com/sveltejs/language-tools/issues/2653
 
 #### Custom export name
 
