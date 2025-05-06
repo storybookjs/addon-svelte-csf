@@ -177,7 +177,6 @@ Similar to regular CSF, you can define a meta-level `render`-function, by refere
   import MyComponent from './MyComponent.svelte';
 
   const { Story } = defineMeta({
-    // @ts-expect-error -- TypeScript does not know this is valid: https://github.com/sveltejs/language-tools/issues/2653
     render: template,
     //      👆 the name of the snippet as defined below (can be any name)
   });
