@@ -22,9 +22,11 @@ export default defineWorkspace([
       name: 'storybook',
       browser: {
         enabled: true,
+        provider: 'playwright',
         instances: [
           {
             browser: 'chromium',
+            headless: true,
           },
         ],
       },
