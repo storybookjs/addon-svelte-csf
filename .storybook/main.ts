@@ -24,9 +24,9 @@ const config: StorybookConfig = {
         legacyTemplate: true,
       },
     },
-    '@storybook/addon-essentials',
     '@chromatic-com/storybook',
-    '@storybook/experimental-addon-test',
+    '@storybook/addon-docs',
+    '@storybook/addon-vitest',
   ],
 };
 
