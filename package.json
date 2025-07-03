@@ -49,8 +49,7 @@
     "release": "pnpm run build && auto shipit",
     "start": "pnpm run build && concurrently \"pnpm run build --watch\" \"pnpm run storybook --quiet\"",
     "storybook": "storybook dev --port 6006 --no-open",
-    "test": "vitest run",
-    "test:watch": "vitest watch"
+    "test": "vitest"
   },
   "dependencies": {
     "@storybook/csf": "^0.1.13",
