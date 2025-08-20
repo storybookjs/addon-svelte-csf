@@ -52,7 +52,6 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@storybook/csf": "^0.1.13",
     "dedent": "^1.5.3",
     "es-toolkit": "^1.26.1",
     "esrap": "^1.2.2",
