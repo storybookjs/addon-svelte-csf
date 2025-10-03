@@ -28,10 +28,6 @@ jobs:
         # https://nodejs.org/api/corepack.html
         run: corepack enable
 
-      - name: Update npm to latest
-        shell: bash
-        run: npm install -g npm@latest
-
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
