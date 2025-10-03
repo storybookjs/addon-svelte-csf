@@ -6,6 +6,9 @@ env:
   CI: true
   COREPACK_INTEGRITY_KEYS: 0
 
+permissions:
+  id-token: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -15,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 'Set git user'
+      - name: "Set git user"
         run: |
           git config --global user.name 'storybook-bot'
           git config --global user.email '32066757+storybook-bot@users.noreply.github.com'
@@ -24,11 +27,14 @@ jobs:
         # https://nodejs.org/api/corepack.html
         run: corepack enable
 
+      - name: Update npm to latest
+        run: npm install -g npm@latest
+
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          cache: 'pnpm'
-          node-version-file: '.nvmrc'
+          cache: "pnpm"
+          node-version-file: ".nvmrc"
 
       - name: Install Node.js dependencies with pnpm
         # https://pnpm.io/cli/install
