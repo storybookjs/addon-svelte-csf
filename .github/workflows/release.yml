@@ -29,6 +29,7 @@ jobs:
         run: corepack enable
 
       - name: Update npm to latest
+        shell: bash
         run: npm install -g npm@latest
 
       - name: Use Node.js
