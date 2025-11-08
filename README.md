@@ -1,12 +1,11 @@
 # Svelte CSF
 
-This Storybook addon allows you to write Storybook stories using the Svelte language instead of ESM that regular CSF is based on.
+The **Svelte CSF** addon lets you write [Storybook](https://storybook.js.org/) stories directly in `.svelte` files instead of `.js` or `.ts` files. 
+By leveraging native Svelte syntax and reactivity, it provides a more natural and seamless way to document and showcase your Svelte components directly within Storybook.
 
-```bash
-npx storybook@latest add @storybook/addon-svelte-csf
-```
+- Official tutorial using `Svelte` and `addon-svelte-csf`. ( [link](https://storybook.js.org/tutorials/intro-to-storybook/svelte/en/get-started/) )
+- A published storybook. ( [chromatic](https://next--667492d3e52064f1d418ec95.chromatic.com) / [src](./examples/) )
 
-Using the Svelte language makes it easier to write stories for composed components that rely on snippets or slots, which aren't easily re-created outside of Svelte files.
 
 ## 🐣 Getting Started
 
@@ -16,11 +15,22 @@ Using the Svelte language makes it easier to write stories for composed componen
 > [!IMPORTANT]  
 > Not running the latest and greatest versions of Storybook or Svelte? Be sure to check [the version compatibility section below](#version-compatibility).
 
-The easiest way to install the addon is with `storybook add`:
+### Sveltekit
+If you’re using SvelteKit, you can set up Storybook with the [official Svelte CLI](https://svelte.dev/docs/cli/storybook):
+
+```bash
+npx sv add storybook
+```
+
+### Storybook CLI
+
+Install via the storybook CLI:
 
 ```bash
 npx storybook@latest add @storybook/addon-svelte-csf
 ```
+
+### Manual Setup
 
 You can also add the addon manually. First, install the package:
 
@@ -39,19 +49,17 @@ export default {
     ...
   ],
   ...
-}
+};
 ```
-
 Restart your Storybook server for the changes to take effect.
 
 ## 🐓 Usage
 
 > [!NOTE]
-> The documentation here does not cover all of Storybook's features, only the aspects that are specific to the addon and Svelte CSF. We recommend that you familiarize yourself with Storybook's core concepts at <https://storybook.js.org/docs>.
+> This documentation only covers Storybook features specific to this addon. We recommend that you familiarize yourself with Storybook's core concepts at <https://storybook.js.org/docs>.
 
-The [`examples`](./examples/) directory contains examples describing each feature of the addon. The [`Button.stories.svelte` example](./examples/Button.stories.svelte) is a good one to get started with. [The Storybook with all the examples is published on Chromatic here](https://next--667492d3e52064f1d418ec95.chromatic.com).
-
-Svelte CSF stories files must always have the `.stories.svelte` extension.
+> [!NOTE]
+> Svelte CSF stories files must always have the `.stories.svelte` extension.
 
 ### Defining the meta
 
