@@ -3,7 +3,8 @@
 The **Svelte CSF** addon lets you write [Storybook](https://storybook.js.org/) stories directly in `.svelte` files instead of `.js` or `.ts` files. 
 By leveraging native Svelte syntax and reactivity, it provides a more natural and seamless way to document and showcase your Svelte components directly within Storybook.
 
-- Official tutorial using `Svelte` and `addon-svelte-csf`. ( [link](https://storybook.js.org/tutorials/intro-to-storybook/svelte/en/get-started/) )
+- Official tutorial using `Svelte`. ( [link](https://storybook.js.org/tutorials/intro-to-storybook/svelte/en/get-started/) )
+- Official tutorial using `Sveltekit`. ( [link](https://storybook.js.org/docs/get-started/frameworks/sveltekit) )
 - A published storybook. ( [chromatic](https://next--667492d3e52064f1d418ec95.chromatic.com) / [src](./examples/) )
 
 
