@@ -62,6 +62,12 @@ Restart your Storybook server for the changes to take effect.
 - Getting started with `Svelte`. ( [link](https://storybook.js.org/docs/get-started/frameworks/svelte-vite) )
 - A published storybook. ( [chromatic](https://next--667492d3e52064f1d418ec95.chromatic.com) / [src](./examples/) )
 
+- [Storybook for Svelte Part 1: Intro](https://youtu.be/GQLgq09-knM?t=2635)
+- [Storybook for Svelte Part 2: Docs](https://youtu.be/h0MHSpLRx_o?t=2957)
+- [Storybook for Svelte Part 3: Testing](https://youtu.be/P8jdPBKwq54?t=2167)
+
+- [Storybook is actually good now, with Jeppe Reinhold](https://youtu.be/TDTS74Bz6Eo)
+
 ### Defining the meta
 
 All stories files must have a "meta" (aka. "default export") defined, and its structure follows what's described in [the official docs on the subject](https://storybook.js.org/docs/api/csf#default-export). To define the meta in Svelte CSF, call the `defineMeta` function **within the module context**, with the meta properties you want:
