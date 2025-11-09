@@ -58,7 +58,8 @@ Restart your Storybook server for the changes to take effect.
 > Svelte CSF stories files must always have the `.stories.svelte` extension.
 
 - Official tutorial using `Svelte`. ( [link](https://storybook.js.org/tutorials/intro-to-storybook/svelte/en/get-started/) )
-- Official tutorial using `Sveltekit`. ( [link](https://storybook.js.org/docs/get-started/frameworks/sveltekit) )
+- Getting started with `Sveltekit`. ( [link](https://storybook.js.org/docs/get-started/frameworks/sveltekit) )
+- Getting started with `Svelte`. ( [link](https://storybook.js.org/docs/get-started/frameworks/svelte-vite) )
 - A published storybook. ( [chromatic](https://next--667492d3e52064f1d418ec95.chromatic.com) / [src](./examples/) )
 
 ### Defining the meta
