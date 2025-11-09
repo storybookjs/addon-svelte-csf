@@ -1,19 +1,14 @@
 # Svelte CSF
 
-The **Svelte CSF** addon lets you write [Storybook](https://storybook.js.org/) stories directly in `.svelte` files instead of `.js` or `.ts` files. 
+The **Svelte CSF** addon lets you write [Storybook](https://storybook.js.org/) stories directly in `.svelte` files instead of `.js` or `.ts` files.
 By leveraging native Svelte syntax and reactivity, it provides a more natural and seamless way to document and showcase your Svelte components directly within Storybook.
-
-- Official tutorial using `Svelte`. ( [link](https://storybook.js.org/tutorials/intro-to-storybook/svelte/en/get-started/) )
-- Official tutorial using `Sveltekit`. ( [link](https://storybook.js.org/docs/get-started/frameworks/sveltekit) )
-- A published storybook. ( [chromatic](https://next--667492d3e52064f1d418ec95.chromatic.com) / [src](./examples/) )
-
 
 ## 🐣 Getting Started
 
 > [!TIP]
 > If you've initialized your Storybook project with Storybook version 8.2.0 or above, this addon is already set up for you!
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Not running the latest and greatest versions of Storybook or Svelte? Be sure to check [the version compatibility section below](#version-compatibility).
 
 ### Sveltekit
@@ -61,6 +56,10 @@ Restart your Storybook server for the changes to take effect.
 
 > [!NOTE]
 > Svelte CSF stories files must always have the `.stories.svelte` extension.
+
+- Official tutorial using `Svelte`. ( [link](https://storybook.js.org/tutorials/intro-to-storybook/svelte/en/get-started/) )
+- Official tutorial using `Sveltekit`. ( [link](https://storybook.js.org/docs/get-started/frameworks/sveltekit) )
+- A published storybook. ( [chromatic](https://next--667492d3e52064f1d418ec95.chromatic.com) / [src](./examples/) )
 
 ### Defining the meta
 
@@ -128,7 +127,7 @@ If you need more customization of the story, like composing components or defini
 </Story>
 ```
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > This format completely ignores args, as they are not passed down to any of the child components defined. Even if your story has args and Controls, they won't have an effect. See the snippet-based formats below.
 
 #### Inline snippet
