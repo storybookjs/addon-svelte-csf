@@ -66,6 +66,7 @@ Restart your Storybook server for the changes to take effect.
 - [Storybook for Svelte Part 2: Docs](https://youtu.be/h0MHSpLRx_o?t=2957)
 - [Storybook for Svelte Part 3: Testing](https://youtu.be/P8jdPBKwq54?t=2167)
 
+- [Adding Storybook to sveltesociety.dev](https://www.youtube.com/live/3u-PXSbU5iA)
 - [Storybook is actually good now, with Jeppe Reinhold](https://youtu.be/TDTS74Bz6Eo)
 
 ### Defining the meta
