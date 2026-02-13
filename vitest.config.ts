@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitest/config';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
-import { playwright } from '@vitest/browser-playwright'
+import { playwright } from '@vitest/browser-playwright';
 
 export default defineConfig({
   test: {
@@ -36,6 +36,6 @@ export default defineConfig({
           setupFiles: ['./.storybook/vitest.setup.ts'],
         },
       },
-    ]
-  }
+    ],
+  },
 });
