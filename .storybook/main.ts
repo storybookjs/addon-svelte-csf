@@ -28,6 +28,9 @@ const config: StorybookConfig = {
     '@storybook/addon-docs',
     '@storybook/addon-vitest',
   ],
+  features: {
+    sidebarOnboardingChecklist: false,
+  },
 };
 
 export default config;
