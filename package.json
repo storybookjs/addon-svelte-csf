@@ -1,6 +1,6 @@
 {
   "name": "@storybook/addon-svelte-csf",
-  "version": "5.1.0",
+  "version": "5.1.2",
   "description": "Allows to write stories in Svelte syntax",
   "keywords": [
     "storybook-addons",
@@ -46,10 +46,11 @@
     "format:check": "prettier --check .",
     "lint": "eslint . --cache --cache-location=\"./node_modules/.cache\"",
     "prepublish": "pnpm run clean && pnpm run build",
-    "release": "pnpm run build && auto shipit",
+    "release": "pnpm changeset publish",
     "start": "pnpm run build && concurrently \"pnpm run build --watch\" \"pnpm run storybook --quiet\"",
     "storybook": "storybook dev --port 6006 --no-open",
-    "test": "vitest"
+    "test": "vitest",
+    "changeset": "changeset"
   },
   "dependencies": {
     "@storybook/csf": "^0.1.13",
@@ -61,7 +62,8 @@
     "zimmerframe": "^1.1.2"
   },
   "devDependencies": {
-    "@auto-it/released": "^11.3.6",
+    "@changesets/changelog-github": "^0.5.1",
+    "@changesets/cli": "^2.29.6",
     "@chromatic-com/storybook": "^5.0.2",
     "@eslint/compat": "^1.2.8",
     "@eslint/js": "^9.25.0",
@@ -77,13 +79,13 @@
     "@vitest/browser-playwright": "^4.1.0",
     "@vitest/coverage-v8": "^4.1.0",
     "@vitest/ui": "^4.1.0",
-    "auto": "^11.3.6",
     "chromatic": "^15.1.0",
     "concurrently": "^9.2.1",
     "eslint": "^9.25.0",
     "eslint-plugin-storybook": "^10.3.0",
     "eslint-plugin-svelte": "^3.15.0",
     "happy-dom": "^20.6.1",
+    "pkg-pr-new": "^0.0.57",
     "playwright": "^1.58.2",
     "prettier": "^3.8.1",
     "prettier-plugin-svelte": "^3.4.1",
@@ -110,13 +112,8 @@
   },
   "packageManager": "pnpm@10.18.0+sha512.e804f889f1cecc40d572db084eec3e4881739f8dec69c0ff10d2d1beff9a4e309383ba27b5b750059d7f4c149535b6cd0d2cb1ed3aeb739239a4284a68f40cfa",
   "publishConfig": {
-    "access": "public"
-  },
-  "auto": {
-    "plugins": [
-      "npm",
-      "released"
-    ]
+    "access": "public",
+    "provenance": true
   },
   "storybook": {
     "displayName": "Svelte CSF",
