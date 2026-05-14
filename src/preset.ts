@@ -22,10 +22,15 @@ export interface StorybookAddonSvelteCsFOptions extends Options {
   injectComponentCss?: boolean;
 }
 
-export const viteFinal = async (config, options) => {
+export const viteFinal: StorybookConfig['viteFinal'] = async (
+  config,
+  options: StorybookAddonSvelteCsFOptions
+) => {
   const { plugins = [], ...restConfig } = config;
   const { legacyTemplate = false, injectComponentCss = true } = options;
-  if (legacyTemplate) plugins.unshift(await preTransformPlugin());
+  if (legacyTemplate) {
+    plugins.unshift(await preTransformPlugin());
+  }
   plugins.push(await transformPlugin());
 
   if (injectComponentCss) {
