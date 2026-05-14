@@ -35,16 +35,18 @@ export const viteFinal: StorybookConfig['viteFinal'] = async (
 
   if (injectComponentCss) {
     // Force Svelte to inject component CSS at runtime in Storybook builds
-    //When Svelte emits CSS as separate files, Vite hoists shared CSS into a single chunk that loads before the per-story chunks, which reverses the declaration order of equal-specificity rules vs. the user's app build, causing Storybook to render differently from SvelteKit even though the source is the same. 
+    //When Svelte emits CSS as separate files, Vite hoists shared CSS into a single chunk that loads before the per-story chunks, which reverses the declaration order of equal-specificity rules vs. the user's app build, causing Storybook to render differently from SvelteKit even though the source is the same.
     // Injecting CSS into the JS module ties cascade odrer to component mount order so Storybook output matches how the app would reder
     plugins.push({
       name: 'storybook-svelte-csf:inject-component-css',
       enforce: 'post',
       configResolved(resolved) {
-        const cfg = resolved.plugins.find(p => p?.name === 'vite-plugin-svelte:config');
+        const cfg = resolved.plugins.find((p) => p?.name === 'vite-plugin-svelte:config');
         const opts = cfg?.api?.options;
         if (!opts) {
-          console.debug('[@storybook/addon-svelte-csf] could not locate vite-plugin-svelte options; skipping CSS-injection patch.');
+          console.debug(
+            '[@storybook/addon-svelte-csf] could not locate vite-plugin-svelte options; skipping CSS-injection patch.'
+          );
           return;
         }
         opts.emitCss = false;
@@ -54,7 +56,7 @@ export const viteFinal: StorybookConfig['viteFinal'] = async (
   }
 
   return { ...restConfig, plugins };
-}
+};
 
 export const experimental_indexers: StorybookConfig['experimental_indexers'] = (
   indexers,
