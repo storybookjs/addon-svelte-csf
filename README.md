@@ -1,7 +1,7 @@
 # Svelte CSF
 
 > [!IMPORTANT]
-> Svelte CSF is moving into [Storybook](https://github.com/storybookjs/storybook), and this repository is archived. Version 5.1.5 is the last release of the standalone addon.
+> Svelte CSF is moving into [core Storybook](https://github.com/storybookjs/storybook), and this repository is archived. Version 5.1.5 is the last release of the standalone addon.
 >
 > Open new issues and discussions in [storybookjs/storybook](https://github.com/storybookjs/storybook).
 
