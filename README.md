@@ -1,5 +1,10 @@
 # Svelte CSF
 
+> [!IMPORTANT]
+> Svelte CSF is moving into [Storybook](https://github.com/storybookjs/storybook), and this repository is archived. Version 5.1.5 is the last release of the standalone addon.
+>
+> Open new issues and discussions in [storybookjs/storybook](https://github.com/storybookjs/storybook).
+
 The **Svelte CSF** addon lets you write [Storybook](https://storybook.js.org/) stories directly in `.svelte` files instead of `.js` or `.ts` files.
 By leveraging native Svelte syntax and reactivity, it provides a more natural and seamless way to document and showcase your Svelte components directly within Storybook.
 
