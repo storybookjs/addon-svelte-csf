@@ -12,6 +12,7 @@ By leveraging native Svelte syntax and reactivity, it provides a more natural an
 > Not running the latest and greatest versions of Storybook or Svelte? Be sure to check [the version compatibility section below](#version-compatibility).
 
 ### Sveltekit
+
 If you’re using SvelteKit, you can set up Storybook with the [official Svelte CLI](https://svelte.dev/docs/cli/storybook):
 
 ```bash
@@ -47,6 +48,7 @@ export default {
   ...
 };
 ```
+
 Restart your Storybook server for the changes to take effect.
 
 ## 🐓 Usage
