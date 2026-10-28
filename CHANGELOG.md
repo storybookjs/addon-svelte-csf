@@ -1,5 +1,11 @@
 # @storybook/addon-svelte-csf
 
+## 5.1.6
+
+### Patch Changes
+
+- [#373](https://github.com/storybookjs/addon-svelte-csf/pull/373) [`d7406dc`](https://github.com/storybookjs/addon-svelte-csf/commit/d7406dcdcc3154574f165f26514374262063608c) Thanks [@huang-julien](https://github.com/huang-julien)! - Fix code snippet generation crashing when a story references a `null` arg directly.
+
 ## 5.1.5
 
 ### Patch Changes
